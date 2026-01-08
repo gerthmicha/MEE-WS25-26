@@ -2,13 +2,23 @@ project:
   type: book
 
 book:
-  title: "Methods in evolutionary ecology ()"
-  author: "Stefanos Siozios & Michael Gerth"
+  title: "Methods in evolutionary ecology – bioinformatics and data analysis"
+  author: 
+    - id: 1
+      name: Stefanos Siozios
+      email: stefanos.siozios@zoologie.uni-halle.de
+    - id: 2
+      name: Michael Gerth
+      email: michael.gerth@zoologie.uni-halle.de
   downloads: [pdf]
   chapters:
     - index.qmd
-    - Rintro.qmd
-    - tidyverse.qmd
+    - part: "`R`"
+      chapters:
+        - Rintro.qmd
+        - tidyverse.qmd
+    - part: "UNIX"
+    - part: "Phylogenetics" 
     - references.qmd
 
 bibliography: references.bib
