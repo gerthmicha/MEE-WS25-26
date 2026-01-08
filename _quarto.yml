@@ -3,13 +3,13 @@ project:
 
 book:
   title: "MEE-WS25-26"
-  author: "Jane Doe"
-  date: "08/01/2026"
+  author: "Stefanos Siozios & Michael Gerth"
+  date: "WS 25/26"
   chapters:
-    - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
+    - chapters/index.qmd
+    - chapters/Rintro.qmd
+    - chapters/tidyverse.qmd
+    - chapters/references.qmd
 
 bibliography: references.bib
 
