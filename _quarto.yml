@@ -6,10 +6,10 @@ book:
   author: "Stefanos Siozios & Michael Gerth"
   date: "WS 25/26"
   chapters:
-    - chapters/index.qmd
-    - chapters/Rintro.qmd
-    - chapters/tidyverse.qmd
-    - chapters/references.qmd
+    - index.qmd
+    - Rintro.qmd
+    - tidyverse.qmd
+    - references.qmd
 
 bibliography: references.bib
 
