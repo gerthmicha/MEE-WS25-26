@@ -29,8 +29,8 @@ jobs:
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
+        uses: r-lib/actions/setup-tinytex@master
         with:
           target: gh-pages
-          tinytex: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
