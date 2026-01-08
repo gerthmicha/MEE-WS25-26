@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Methods in evolutionary ecology ()",
+    "title": "Methods in evolutionary ecology – bioinformatics and data analysis",
     "section": "",
-    "text": "Background\nSome info about the script\n\n1 + 1\n\n[1] 2",
+    "text": "Background\nThis script covers the computational and bioinformatics parts of the module “Methods in Evolutionary Ecology”. We will introduce you to R and BASH, two of the most widely used scripting languages, and make you familiar with navigating in a UNIX environment. These skills are important for any biologist, irrespective of the field you may want to specialise in in the future. Building upon your new knowledge, we will learn how to reconstruct phylogenies from sequencing data, how to work with genomic data, and how to characterise microbiomes. At the end of three weeks computational work, you will tackle a small computational group project, putting your new skills into practise.\nThe script is designed to cover the entire course content. While we will go you through all of the material in detail during the course, the script should enable you to work through the content on your own, e.g., to recap the material after the course has finished and as a reference and starting point for future computational endeavours.\nThe text is formatted using Quarto, which comes with a number of benefits. The format allows us to provide explanations as structured and nicely formatted regular text, and to include code blocks for all computational steps. When compiling Quarto documents, all of the code is run, which means that you not only see the code, but also the outputs it creates. Quarto supports many formats, we here provide a webpage and a printable pdf. Writing Quarto documents is straightforward and can be done using RStudio as an editor. The entire script is available for you on github – feel free to download it and modify it with your own comments, notes, and code.",
     "crumbs": [
       "Background"
     ]
@@ -16,6 +16,7 @@
     "section": "",
     "text": "1 + 1\n\n[1] 2",
     "crumbs": [
+      "`R`",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction into `R`</span>"
     ]
   },
@@ -26,6 +27,7 @@
     "section": "",
     "text": "Some stuff about tidyverse\n\n1 + 1\n\n[1] 2",
     "crumbs": [
+      "`R`",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tidyverse</span>"
     ]
   }
