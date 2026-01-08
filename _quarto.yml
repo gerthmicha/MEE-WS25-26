@@ -2,9 +2,9 @@ project:
   type: book
 
 book:
-  title: "MEE-WS25-26"
+  title: "Methods in evolutionary ecology ()"
   author: "Stefanos Siozios & Michael Gerth"
-  date: "WS 25/26"
+  downloads: [pdf]
   chapters:
     - index.qmd
     - Rintro.qmd
