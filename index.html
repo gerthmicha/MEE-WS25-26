@@ -201,8 +201,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a></li>
+  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a>
+  <ul class="collapse">
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
   <li><a href="#how-to-find-your-way-around" id="toc-how-to-find-your-way-around" class="nav-link" data-scroll-target="#how-to-find-your-way-around">How to find your way around</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -239,7 +242,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1 class="unnumbered">About</h1>
 <p>This script covers the computational and bioinformatics parts of the module “Methods in Evolutionary Ecology”. We will introduce you to <code>R</code> and <code>BASH</code>, two of the most widely used scripting languages, and make you familiar with navigating in a UNIX environment. These skills are important for any biologist, irrespective of the field you may want to specialise in in the future. Building upon your new knowledge, we will learn how to reconstruct phylogenies from sequencing data, how to work with genomic data, and how to characterise microbiomes. At the end of three weeks computational work, you will tackle a small computational group project, putting your new skills into practise.</p>
 <p>The script is designed to cover the entire course content. While we will go you through all of the material together in detail during the course, the script should also enable you to work through the content on your own, e.g., to recap after the course has finished and as a reference and starting point for future computational endeavours.</p>
-<p>Quarto</p>
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
 <p>The text is formatted using <a href="https://quarto.org/" title="Link to Quarto webpage">Quarto</a>, which comes with a number of benefits. It allows us to provide explanations as structured and nicely formatted regular text, and to include code blocks for all computational steps. When compiling Quarto documents, all of the code is run, which means that you not only see the code, but also the outputs it creates.</p>
 <p>Here is an example:</p>
 <p>This little block of <code>R</code> code generates 100 random coordinates and plots them. The code is shown below, together with the output the code has produced (in this case, a plot).</p>
@@ -258,14 +262,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The code can conveniently be copied from the block into your own scripts.</p>
 <p>Quarto supports many formats, we here provide the script as a webpage and a printable pdf. Writing Quarto documents is very simple and can be done using RStudio as an editor. The entire script is available for you on <a href="https://gerthmicha.github.io/MEE-WS25-26/">github</a> – feel free to download it and modify it with your own comments, notes, and code. We will provide a short introduction to github and Quarto in the course.</p>
 </section>
-<section id="how-to-find-your-way-around" class="level1">
-<h1>How to find your way around</h1>
+<section id="how-to-find-your-way-around" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-find-your-way-around">How to find your way around</h2>
 <p>Simply use the navigation on the left to quickly access the different topics, or flip through the individual pages using the buttons at the bottom of the page. You may wish to download the pdf version of the script (click the pdf icon in the top left) which is ideal for printing. The script is organized by topics, rather than course days, because we will adapt the tempo according to your needs.</p>
 <blockquote class="blockquote">
 <p>Please note: The script will very likely only be complete at the end of the course. We will still be modifying and correcting it throughtout the three weeks you are with us. So make sure to check out the final version at the end of the course.</p>
 </blockquote>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
