@@ -2,7 +2,7 @@ project:
   type: book
 
 book:
-  title: "Methods in evolutionary ecology – bioinformatics and data analysis"
+  title: "Methods in evolutionary ecology WS25/26"
   author: 
     - id: 1
       name: Stefanos Siozios
@@ -11,6 +11,7 @@ book:
       name: Michael Gerth
       email: michael.gerth@zoologie.uni-halle.de
   downloads: [pdf]
+  repo-url: https://github.com/gerthmicha/MEE-WS25-26
   chapters:
     - index.qmd
     - part: "`R`"
