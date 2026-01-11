@@ -28,6 +28,9 @@ jobs:
         uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 1
+          
+      - name: Install curl dependency
+        run: sudo apt install -y libcurl4-openssl-dev
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
