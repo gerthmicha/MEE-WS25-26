@@ -1,0 +1,178 @@
+# The `ggplot2` package
+
+## Very (!) brief introduction
+
+`ggplot2` is a graphing library, i.e., a tool to make graphs in `R`. Compared with base graphs and other graphics packages, it comes with a number of advantages:
+
+* Beautiful!
+* Highly customizable (which is not always necessary though) 
+* Easiest way to create very complex plots
+* Tightly integrated into the `tidyverse`
+
+Compared with other packages the major drawbacks would be that it comes with a steep(ish) learning curve and is probably less intuitive for beginners. The reason is that `ggplot2` doesn't have fixed commands for scatterplots, boxplots, barplots, etc, but rather creates the plot in layers. The most important elements (or layers) of a plot in `ggplot2` are:
+
+* *Data*: as we are still in the `tidyverse`, this is always a data frame
+* *Aesthetics*: i.e., **what** you want to plot. Often, this will correpond to variables (columns) in your dataframe
+* *Geometric objects*: i.e., **how** you want to plot the data. This can be points, bars, boxplots, lines, etc..
+* *Facets*: more about this later
+* *Additional (optional) adjustments*: this includes themes that specify the overall design
+
+## Building up the plot
+
+We will start off with a very simple scatterplot and gradually increase the complexity to illustrate `ggplot2` functionality.
+
+```{r Simplest plot}
+# data and packages
+library(tidyverse, quietly = TRUE)
+be <-  read.table("data/butterfly_ecology.csv", header = TRUE, sep = ",")
+
+# simple plot
+be %>%                                # DATA
+  ggplot(aes(x = WSP_Female_average,  # AESTHETICS
+             y = range.size))   
+```
+
+In the above example, the data is the data frame that we have been using the whole time. Notice how we can simply pipe it to `ggplot2`. `aes` specifies our aesthetics, i.e., **what** we want to plot. What is missing?
+
+```{r warning=FALSE}
+# simple scatter plot
+be %>%                               # DATA
+  ggplot(aes(x = WSP_Female_average, # Aesthetics
+             y = range.size)) +
+  geom_point()                       # Geometric object
+```
+
+The geometric object, i.e., **how** we want to plot our aesthetics. Notice that elements in `ggplot2` are added with the `+` symbol (this is specific to `ggplot2`). We can add more geometric objects that will use the same aesthetics: 
+
+```{r Geometric objects can be exchanged or added, warning=FALSE}
+# lets add another geom (a regression line), and also change the theme
+be %>%                               # DATA
+  ggplot(aes(x = WSP_Female_average, # Aesthetics
+             y = range.size)) +
+  geom_point() +                     # Geometric object
+  geom_smooth(method = "lm") +       # Another geometric object
+  theme_light()                      # Let's also change the theme
+
+```
+
+Changing the theme changes many layout options. For different applications, different themes might be appropriate. There are many additional themes available through packages such as [`ggthemr`](https://github.com/cttobin/ggthemr) or [`ggthemes`](https://github.com/jrnold/ggthemes). 
+
+A bit more on aesthetics: have you noticed that you only specify x and y once, and all geoms know **what** you want to plot. You can also specify additional aesthetics for each geom. 
+
+```{r More aesthetics, warning=FALSE}
+# Add additional aesthetics, here: we want to plot the sonservation status. How? With colour! 
+
+be %>%                                   # DATA
+  ggplot(aes(x = WSP_Female_average,     # Aesthetics
+             y = range.size)) +
+  geom_point(aes(color = conserv.eu)) +  # aesthetics specific to the points only
+  geom_smooth(method = "lm",
+              color = "black",
+              se = FALSE) +              
+  theme_light() +
+  scale_color_viridis_c()                # let's use some nicer colors                         
+
+
+```
+
+>
+> Aesthetics can be added through colors or shapes
+>
+
+## Faceting
+
+So far, we have cramped as much information as possible into the plot. This was useful to illustrate the functionality of `ggplot2`, but did not create very readable plots. Often, faceting is a better solution. The implementation in `ggplot2` is very straightforward. 
+
+```{r A plot with facets, warning=FALSE}
+# Same example as before, faceted over family
+be %>%                                   
+  ggplot(aes(x = WSP_Female_average,     
+             y = range.size)) +
+  geom_point(aes(color = conserv.eu)) + 
+  geom_smooth(method = "lm",
+              color = "black",
+              se = FALSE) +              
+  theme_light() +
+  scale_color_viridis_c() +                
+  facet_wrap(~family, scales = "free")   
+
+# And now, faceting over 2 variables
+be %>%   
+  ggplot(aes(x = WSP_Female_average,     
+             y = range.size)) +
+  geom_point(aes(color = conserv.eu)) +  
+  geom_smooth(method = "lm",
+              color = "black",
+              se = FALSE) +              
+  theme_light() +
+  scale_color_viridis_c() +                
+  facet_grid(OWS_egg ~ family, scales = "free") # faceting
+```
+
+>The above plot would need a little 'cleaning up'. How would you do that?
+
+## Some common plot types
+
+We have looked at scatterplots, now let's look at a number of other commonly used plots.
+
+```{r histograms, warning=FALSE}
+# histograms
+be %>% 
+  ggplot(aes(x = WSP_Female_average, fill = family)) +
+  geom_histogram(bins = 50) +
+  theme_light() +
+  scale_fill_brewer(palette = "Set1")
+
+
+# better alternative are often density plots
+be %>% 
+  ggplot(aes(x = WSP_Female_average, fill = family)) +
+  geom_density(alpha = 0.5, colour = NA) +
+  theme_light() +
+  scale_fill_brewer(palette = "Set1") 
+
+# boxplots
+be %>% 
+  ggplot(aes(y = WSP_Female_average, x = family)) +
+  geom_boxplot() +
+  theme_light() 
+
+# better alternative are violin plots
+be %>% 
+  ggplot(aes(y = WSP_Female_average, x = family)) +
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75)) +
+  theme_light() 
+
+
+```
+
+## Fine tuning plots
+
+We now know how to plot some common chart types but most of these don't look publishable yet. Lets return to one of our first examples and see how to polish it a little.
+
+```{r Fine tuning, warning=FALSE}
+# A publication ready plot
+be %>% 
+  filter(family != "Riodinidae") %>%
+  ggplot(aes(y = WSP_Female_average, x = family, color = family)) +
+  geom_boxplot(lwd = 1, outlier.shape = NA) +
+  geom_point(position = position_jitterdodge(jitter.width = 2), alpha = 0.5) +
+  theme_light() +
+  labs(title = "Wing span across European butterfly families",
+       y = "Average wing span of female")+ 
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.y = element_text(size = 12),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        strip.text = element_text(size = 11)) +
+  scale_color_brewer(palette = "Set1", name = "Family")
+
+```
+
+## Exercise
+
+Using `ggplot2`, explore how range size differs between butterfly families and plot check if butterflies with smaller ranges have higher protection status. 
+Try to find appropriate plot types for this, use the help pages to find plot types that were not introduced to you yet.
+Explore other variables that may explain some trends in the data. Find a theme that you like!
+Remember, start with the **data**, add **aesthetics (what do you want to plot)**, and then think about **geometric objects (how do you want to plot the data)**. How can colour help in your visualisations? Does faceting make sense?
+

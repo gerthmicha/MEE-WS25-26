@@ -15,7 +15,7 @@ Some examples:
 3 - 4  
 3 * 4  
 3 / 4  
-3 ^ 4  
+3 ^ 4  # power of
 ```
 
 As with a regular calculator, there is operator precedence: power \> multiplicative operations \> additive operations:

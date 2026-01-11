@@ -6,9 +6,9 @@ The script is designed to cover the entire course content. While we will go you 
 
 ## Quarto
 
-The text is formatted using [Quarto](https://quarto.org/ "Link to Quarto webpage"), which comes with a number of benefits. It allows us to provide explanations as structured and nicely formatted regular text, and to include code blocks for all computational steps. When compiling Quarto documents, all of the code is run, which means that you not only see the code, but also the outputs it creates. 
+The text is formatted using [Quarto](https://quarto.org/ "Link to Quarto webpage"), which comes with a number of benefits. It allows us to provide explanations as structured and nicely formatted regular text, and to include code blocks for all computational steps. When compiling Quarto documents, all of the code is run, which means that you not only see the code, but also the outputs it creates.
 
-Here is an example: 
+Here is an example:
 
 This little block of `R` code generates 100 random coordinates and plots them. The code is shown below, together with the output the code has produced (in this case, a plot).
 
@@ -17,12 +17,13 @@ x <- runif(100)
 y <- runif(100)
 plot(x, y)
 ```
+
 The code can conveniently be copied from the block into your own scripts.
 
 Quarto supports many formats, we here provide the script as a webpage and a printable pdf. Writing Quarto documents is very simple and can be done using RStudio as an editor. The entire script is available for you on [github](https://gerthmicha.github.io/MEE-WS25-26/) -- feel free to download it and modify it with your own comments, notes, and code. We will provide a short introduction to github and Quarto in the course.
 
 ## How to find your way around
 
-Simply use the navigation on the left to quickly access the different topics, or flip through the individual pages using the buttons at the bottom of the page. You may wish to download the pdf version of the script (click the pdf icon in the top left) which is ideal for printing. The script is organized by topics, rather than course days, because we will adapt the tempo according to your needs. 
+Simply use the navigation on the left to quickly access the different topics, or flip through the individual pages using the buttons at the bottom of the page. You may wish to download the pdf version of the script (click the pdf icon in the top left) which is ideal for printing. The script is organized by topics, rather than course days, because we will adapt the tempo according to your needs.
 
-> Please note: The script will very likely only be complete at the end of the course. We will still be modifying and correcting it throughtout the three weeks you are with us. So make sure to check out the final version at the end of the course. 
+> Please note: The script will very likely only be complete at the end of the course. We will still be modifying and correcting it throughtout the three weeks you are with us. So make sure to check out the final version at the end of the course.

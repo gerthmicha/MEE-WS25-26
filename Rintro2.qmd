@@ -191,6 +191,54 @@ a) create a matrix using with 20 rows & 5 columns, using 100 randomly generated 
 
 b) replace all values in the 3rd column of this matrix that are larger than 500 with `NA`.
 
+::: callout-tip
+## Tip
 
+use the function `runif` to create random values
+:::
 
 ## Data frames
+
+**Data frames** are the `R` equivalent of spread sheets. Like matrices, they are two-dimensional, however they may combine different data types. Most biological data sets you will encounter will be data frames. 
+
+Lets create a data frame 
+
+```{r}
+# create some data
+species <- rep(c("beech","ash","elm","maple", "sycamore"),40)
+species
+dbh <- runif(200, 5, 40)
+dbh
+age <- as.integer(runif(200, 20, 120))
+age
+df1 <- data.frame(species, dbh, age)
+df1
+```
+
+To access values, we can use the same approaches as for matrices:
+
+```{r}
+df1[1:12, 1:2]
+```
+but can also access and filter the columns directly using their names like this:
+
+```{r}
+df1$species
+df1[df1$dbh > 15, ]
+```
+
+### Exercise
+
+a) Using `df1`, select only entries corresponding to ash and maple with an age over 50 and a diameter less than 30.
+
+b) Add a new column to the dataframe called "year". Generate data for this column so that there are 10 different years and the same number of entries for each tree species per year. 
+
+::: callout-tip
+## Tip
+
+Use the function `rep` for this exercise 
+:::
+
+
+
+

@@ -3,7 +3,7 @@
 .RData
 .Ruserdata
 _book
-
+myenv.Rdata
 /.quarto/
 
 **/*.quarto_ipynb

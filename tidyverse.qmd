@@ -1,7 +1,214 @@
 # Tidyverse
 
-Some stuff about tidyverse
+## What is the `tidyverse`? 
 
-```{r}
-1 + 1
+* A collection of R packages for data science
+* All packages share a "philosophy" about design and data structure
+* All packages are highly compatible and functions complement each other
+
+We will only be looking at a couple of functions from a 2 packages (`dplyr` & `ggplot2`). All functions are about **data manipulation and visualisation** and are especially well suited for exploring very large data sets.
+
+You can install all tidyverse packages by running 
+
+```{r Installing the tidyverse packages, eval=FALSE, message=FALSE, warning=FALSE}
+install.packages("tidyverse", dependencies = TRUE)
 ```
+
+
+> **Let's refresh what we learned earlier this week:**
+>
+> 1. What different types of data structures are used in R?
+> 2. Which of these do you think is most likely to be used in the `tidyverse`?
+
+(Remember, you can just add the answers into this document for future reference!)
+
+## Our data set for today
+
+We will be looking at a data set of ecological traits of european butterflies. Download the table and read it into R.
+
+```{r Reading in the dataset}
+# The table contains headers, and the fields are separated by commas
+be <-  read.table("data/butterfly_ecology.csv", header = TRUE, sep = ",")
+
+# Let's have a glimpse at the data 
+head(be)
+
+```
+
+Each of the rows contains data for 1 European species, and the columns contain the following information:
+
+| Trait abbreviation 	| Meaning                 	| States                                                           	| Notes             	|
+|--------------------	|-------------------------	|------------------------------------------------------------------	|-------------------	|
+| OWS                	| Overwintering stage     	| egg, larvae, pupae, adult                                        	|                   	|
+| GEN                	| Generations             	| average, min, max, range                                         	|                   	|
+| WSP                	| Wingspan                	| average, range                                                   	| Measured in mm    	|
+| HSI                	| Hostplant index         	| N/A                                                              	| Measured from 0-1 	|
+| LEV                	| Larval environment      	| buried, ground layer, field layer, shrub layer, canopy layer     	|                   	|
+| ELT                	| Egg laying type         	| single, small batch, large batch                                 	|                   	|
+| ALT                	| Altitude                	| min, range                                                       	|                   	|
+| FM                 	| Flight months           	| average, range                                                   	|                   	|
+| AFB                	| Adult feeding behaviour 	| herb flower, grass, shrub flower, honeydew, sap, animal, mineral 	|                   	|
+
+Now that we are familiar with the dataset, lets look at some `tidyverse` functions.
+
+## `filter()` for filtering data frames
+
+As the name suggests, this is used to filter data frames, with a simple and efficient syntax:
+
+```{r A simple filter command, message=FALSE, warning=FALSE}
+# first, we have to load the tidyverse packages
+library(tidyverse, quietly = TRUE)
+
+# the command always takes a dataframe as first argument, and a filtering criterion as second argument
+# Here, we only look butterflies that overwinter as eggs
+filter(be, OWS_egg == 1)
+```
+
+The filtering criterion can be specified using the methods you are already familiar with (e.g., `>`, `>=`, `!=`, `%in%`).
+
+Notice that the variable names can be used directly here, so instead of using `be$OWS_egg`, `filter()` lets you use `OWS_egg` directly. All `tidyverse` functions work like that. Let's look at more complex filtering:
+
+```{r More complex filtering}
+# combine 2 filters with boolean "AND" ...
+filter(be, OWS_egg == 1 , ALT_Min > 500)
+
+# ... or boolean "OR"
+filter(be, OWS_egg == 1 | AFB_honeydew == 1)
+```
+
+> *NOTE*
+>
+> `filter()` (and many other `tidyverse` functions) return a data frame. In the tidyverse, these are called `tibble()` and behave slightly different to regular data frames. For our purposes however, these differences are not important.
+
+
+## The pipe `%>%` for combining commands
+
+The filtering using `filter()` is very useful, but you can see that the commands can become very long when you have many filters. Also, trying out many different filters to see what they do with the data can be cumbersome. This where `%>%` comes in really handy. 
+
+The "pipe" `%>%` (keyboard shortcut: `Ctrl+Shift+M`) simply passes the result of one function to the next function. For the next function, one does not have to specify the data frame. Let's see an example.
+
+```{r A simple pipe example}
+# this is how we filtered our data frame earlier 
+filter(be, OWS_egg == 1)
+
+# same command, this time using the pipe
+be %>% 
+  filter(OWS_egg == 1)
+```
+
+Note how in the second command, the output of `be` (which is our data frame) gets passed on to the `filter()` command. There, you don't have to specify the name of the data frame again. The result of this can be piped further to other commands:
+
+```{r How to use the pipe}
+# Multiple filters are connected by pipes
+be %>% 
+  filter(OWS_egg == 1) %>% 
+  filter(LEV_ground_layer == 1) %>% 
+  filter(AFB_honeydew == 1)
+
+# As always in R, assign the result to a new variable using "<-" 
+be_filtered <- be %>% 
+  filter(OWS_egg == 1) %>% 
+  filter(LEV_ground_layer == 1) %>% 
+  filter(AFB_honeydew == 1)
+
+```
+
+Note how easy this command is to read (you could write it in a single line, but it's much easier to follow with line breaks)! The usefulness of the pipe will become more obvious when we combine multiple different commands. In all the following examples, I will always use the pipe.
+
+## Sort by column with `arrange()`
+
+This doesn't change the dataframe itself, it simply orders the columns (similar to the sort function in Excel):
+
+```{r sorting by column with arrange}
+# sort by age (ascending) and weight (descending)
+be %>% 
+  arrange(conserv.eu, -range.size)
+```
+
+## Select columns with `select()`
+
+```{r selecting with select}
+# choose which columns to keep
+be %>% 
+  select(species, range.size, conserv.eu, FM_Average, WSP_Female_average)
+
+# or specify which columns to remove
+be %>% 
+  select(-(OWS_egg:OWS_adult))
+
+# contains is another useful command to select columns. 
+be %>% 
+  select(species, contains("LEV")) %>% 
+  drop_na()
+
+
+```
+
+Funtions like `contains` can be powerful for filtering and selecting. `starts_with` and `ends_with` work just the same way and are equally useful. 
+
+## Create new variables with `mutate()`
+
+This is a very powerful and flexible function that uses existing variables to create novel ones. Let's look at a simple example
+
+```{r Simple mutate example}
+
+# Create a new variable summarizing all the overwintering stages that are not adults
+be %>% 
+  mutate(OWS_juvenile = 1-OWS_adult) %>% 
+  select(OWS_juvenile, OWS_adult) %>% 
+  drop_na()
+
+# Determine how different the protection levels between EU and Europe and extract the species for which the difference is striking
+be %>% 
+  mutate(protect_diff = abs(conserv.europe - conserv.eu)) %>% 
+  filter(protect_diff > 2)
+
+```
+
+## Exercise
+
+a) From our dataset, filter out all butterflies with average wingspans larger than 60mm and smaller than 30mm. Only keep the species that have a conservation classification on the EU level. Only keep the species names and all variables associated with adult feeding, and store this in a new data frame. How many rows and columns does the new data frame have?
+
+b) Re-calculate the generation range from the provided minima and maxima. Check if your calculations match the original range values given in the data. 
+
+
+## `group_by()` and `summarise()` as powerful data exploration tools
+
+Although `dplyr` has a simpler syntax overall, everything we have looked at so far could have been done fairly easily with base `R` functions: data frame filtering, sorting, and adding and removing columns. One of the strengths of `dplyr` is explorative data analysis, and this is where `group_by()` and `summarize()` are really helpful. We'll only look at very simple examples today. 
+
+When browsing through the complete data table, it is very hard to recognize any patterns. Let's assume we wanted to compare the average wing span of butterflies with that overwinter as adults vs all other butterflies:
+
+```{r A simple group_by() and summarise() example}
+# Are butterflies that overwinter as adults larger than other species?
+be %>% 
+  drop_na() %>% 
+  group_by(OWS_adult) %>% 
+  summarise(mean_wsp = mean(WSP_Female_average))
+```
+
+After choosing which variable to group by (here: OWS_adult), `summarise()` then calculates a function for each group. In our simple example, there are 2 groups: 0 (not overwintering as adult) and 1 (overwintering as adult); and the function to be calculated is the mean of the female wing span. This is a very flexible set of functions, because you can group by multiple groups and also use `summarise()` with many different functions (e.g., `mean()`, `sum()`, `min()`, `max()`, `median()` – just to name a few). Let's look at a more complex example:
+
+```{r 2 slightly more complex examples}
+# Let's add another group. How large is the standard deviation? How large is each group?
+be %>% 
+  drop_na() %>% 
+  group_by(OWS_adult, LEV_ground_layer) %>% 
+  summarise(mean_wsp = mean(WSP_Female_average),
+            sd = sd(WSP_Female_average),
+            group_size=n())
+
+```
+
+## More exercises
+
+Using `dplyr` functions, determine 
+
+a) If butterflies overwintering as pupae have higher level of legal protection
+
+b) If butterflies occuring at higher altitudes on average have a higher level of protection 
+
+c) If feeding on honeydew is more common in larger butterflies. 
+
+d) How many butterfly species are there per family?
+
+For a–c also determine how many species belong to each group.
