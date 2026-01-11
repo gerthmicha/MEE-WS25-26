@@ -16,7 +16,8 @@ book:
     - index.qmd
     - part: "`R`"
       chapters:
-        - Rintro.qmd
+        - Rintro1.qmd
+        - Rintro2.qmd
         - tidyverse.qmd
     - part: "UNIX"
     - part: "Phylogenetics" 

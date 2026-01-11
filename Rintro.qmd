@@ -1,6 +1,0 @@
-# Introduction into `R`
-
-
-```{r}
-1 + 1
-```

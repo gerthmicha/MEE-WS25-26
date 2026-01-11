@@ -1,0 +1,139 @@
+# First steps
+
+`R` is a statistical programming environment that has become a standard tool in the data and life sciences and many other fields. You may have used `R` already to run some statistics in a course you took in your studies, and this will be a likely use case for your remaining degree. However, `R` is much more: it can be used to analyse massive the datasets of the "omics"- age, build webpages, blogs, and interactive apps, and even for art!
+
+Before taking full advantage of what the various `R` packages have to offer, we need to become familiar with its basic structure and commands. It pays off to invest a little effort in practicing the basics, because all `R` packages use the same syntax -- a solid familiarity with base `R` thus allows you to explore the entire `R` universe independently.
+
+## Operators and functions
+
+`R` can be used just like an arithmetic calculator. You are familiar with all of the basic syntax already, if you know how to use a calculator!
+
+Some examples:
+
+```{r}
+3 + 4  
+3 - 4  
+3 * 4  
+3 / 4  
+3 ^ 4  
+```
+
+As with a regular calculator, there is operator precedence: power \> multiplicative operations \> additive operations:
+
+```{r}
+(1 + 2) * 3
+2^3 * 3
+2^(3 * 3)
+```
+
+Square roots, exponentials, and logarithms also work just as with a calculator:
+
+```{r}
+sqrt(9) 
+exp(3) 
+log(3) 
+log(exp(3)) # natural logarithm
+log10(100)  # logarithm to base 10
+```
+
+In order to "save" a value for use later on, you have to assign it to a variable! `<-` is the assignment operator you need to use for this (handy shortcut in RStudio is `ALT` + `-`).
+
+```{r}
+x <- 3 + 4
+```
+
+Calling the variable will then print the result to the R console, and can be used in other calculations.
+
+```{r}
+x
+
+x + 10
+```
+
+You can call your variables whatever you want, but be careful: `R` will overwrite any variable if you tell it to, without a warning! You should also avoid giving your variables names that are already assigned to functions. 
+
+```{r}
+my_favourite_variable <- 100
+my_favourite_variable <- 50
+my_favourite_variable
+```
+
+All variables (among other things) are visible in the environment panel in RStudio (default: top right part of the screen).
+
+> "=" can also be used to assign variables but is discouraged, because the direction of the assignment is not immediately obvious. It is best practise to always start with the variable, followed by the assignment operator
+
+## Data types
+
+You need to be familiar with at least three important data types in `R`: `logical`, `numeric`, and `character`. Data being stored in a different data type than required is one of the most frequent error messages you will encounter as an `R` beginner.
+
+`logical` simply means true or false. `R` also understands the abbreviations T and F. To determine which types you data is in, you can use `mode` or `class`.
+
+```{r}
+var1 <- TRUE 
+mode(var1)
+```
+
+`numeric` means numbers
+
+```{r}
+var2 <- 10
+class(10)
+```
+
+A character is any form of text, a so called "string". It must always be surrounded by quotation marks!
+
+```{r}
+var3 <- "A so called string"
+mode(var3)
+```
+
+If in doubt, `R` will often convert or read in data as characters. Watch out for some common errors!
+
+```{r}
+var4 <- "5"
+var4
+is.numeric(var4)
+
+var5 <- "TRUE"
+var5
+is.logical(var5)
+```
+
+You can convert between types easily!
+
+```{r}
+var6 <- as.numeric(var4)
+var6
+class(var6)
+```
+
+
+## Exercises
+ 
+a)  Sum the values of 1 to 5
+
+b)  Create a variable v1 and assign it a character value
+
+c)  Copy variable v1 to v2
+
+d)  Compare the value of v1 against v2
+
+
+
+::: callout-tip
+## Tip
+
+Compare values and variables using the following operators
+
+|     |                          |
+|-----|--------------------------|
+| `<` | less than                |
+| `<=`| less than or equal to    |
+| `>` | greater than             |
+| `>=`| greater than or equal to |
+| `==`| equals                   |
+| `!=`| not equal                |
+
+Please note, `=` and `==` do very different things! Don't mix them up.
+
+:::
