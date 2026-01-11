@@ -30,25 +30,102 @@
     ]
   },
   {
-    "objectID": "Rintro.html",
-    "href": "Rintro.html",
-    "title": "1  Introduction into R",
+    "objectID": "Rintro1.html",
+    "href": "Rintro1.html",
+    "title": "1  First steps",
     "section": "",
-    "text": "1 + 1\n\n[1] 2",
+    "text": "1.1 Operators and functions\nR is a statistical programming environment that has become a standard tool in the data and life sciences and many other fields. You may have used R already to run some statistics in a course you took in your studies, and this will be a likely use case for your remaining degree. However, R is much more: it can be used to analyse massive the datasets of the “omics”- age, build webpages, blogs, and interactive apps, and even for art!\nBefore taking full advantage of what the various R packages have to offer, we need to become familiar with its basic structure and commands. It pays off to invest a little effort in practicing the basics, because all R packages use the same syntax – a solid familiarity with base R thus allows you to explore the entire R universe independently.\nR can be used just like an arithmetic calculator. You are familiar with all of the basic syntax already, if you know how to use a calculator!\nSome examples:\n3 + 4  \n\n[1] 7\n\n3 - 4  \n\n[1] -1\n\n3 * 4  \n\n[1] 12\n\n3 / 4  \n\n[1] 0.75\n\n3 ^ 4  \n\n[1] 81\nAs with a regular calculator, there is operator precedence: power &gt; multiplicative operations &gt; additive operations:\n(1 + 2) * 3\n\n[1] 9\n\n2^3 * 3\n\n[1] 24\n\n2^(3 * 3)\n\n[1] 512\nSquare roots, exponentials, and logarithms also work just as with a calculator:\nsqrt(9) \n\n[1] 3\n\nexp(3) \n\n[1] 20.08554\n\nlog(3) \n\n[1] 1.098612\n\nlog(exp(3)) # natural logarithm\n\n[1] 3\n\nlog10(100)  # logarithm to base 10\n\n[1] 2\nIn order to “save” a value for use later on, you have to assign it to a variable! &lt;- is the assignment operator you need to use for this (handy shortcut in RStudio is ALT + -).\nx &lt;- 3 + 4\nCalling the variable will then print the result to the R console, and can be used in other calculations.\nx\n\n[1] 7\n\nx + 10\n\n[1] 17\nYou can call your variables whatever you want, but be careful: R will overwrite any variable if you tell it to, without a warning! You should also avoid giving your variables names that are already assigned to functions.\nmy_favourite_variable &lt;- 100\nmy_favourite_variable &lt;- 50\nmy_favourite_variable\n\n[1] 50\nAll variables (among other things) are visible in the environment panel in RStudio (default: top right part of the screen).",
     "crumbs": [
       "`R`",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction into `R`</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>First steps</span>"
+    ]
+  },
+  {
+    "objectID": "Rintro1.html#operators-and-functions",
+    "href": "Rintro1.html#operators-and-functions",
+    "title": "1  First steps",
+    "section": "",
+    "text": "“=” can also be used to assign variables but is discouraged, because the direction of the assignment is not immediately obvious. It is best practise to always start with the variable, followed by the assignment operator",
+    "crumbs": [
+      "`R`",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>First steps</span>"
+    ]
+  },
+  {
+    "objectID": "Rintro1.html#data-types",
+    "href": "Rintro1.html#data-types",
+    "title": "1  First steps",
+    "section": "1.2 Data types",
+    "text": "1.2 Data types\nYou need to be familiar with at least three important data types in R: logical, numeric, and character. Data being stored in a different data type than required is one of the most frequent error messages you will encounter as an R beginner.\nlogical simply means true or false. R also understands the abbreviations T and F. To determine which types you data is in, you can use mode or class.\n\nvar1 &lt;- TRUE \nmode(var1)\n\n[1] \"logical\"\n\n\nnumeric means numbers\n\nvar2 &lt;- 10\nclass(10)\n\n[1] \"numeric\"\n\n\nA character is any form of text, a so called “string”. It must always be surrounded by quotation marks!\n\nvar3 &lt;- \"A so called string\"\nmode(var3)\n\n[1] \"character\"\n\n\nIf in doubt, R will often convert or read in data as characters. Watch out for some common errors!\n\nvar4 &lt;- \"5\"\nvar4\n\n[1] \"5\"\n\nis.numeric(var4)\n\n[1] FALSE\n\nvar5 &lt;- \"TRUE\"\nvar5\n\n[1] \"TRUE\"\n\nis.logical(var5)\n\n[1] FALSE\n\n\nYou can convert between types easily!\n\nvar6 &lt;- as.numeric(var4)\nvar6\n\n[1] 5\n\nclass(var6)\n\n[1] \"numeric\"",
+    "crumbs": [
+      "`R`",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>First steps</span>"
+    ]
+  },
+  {
+    "objectID": "Rintro1.html#exercises",
+    "href": "Rintro1.html#exercises",
+    "title": "1  First steps",
+    "section": "1.3 Exercises",
+    "text": "1.3 Exercises\n\nSum the values of 1 to 5\nCreate a variable v1 and assign it a character value\nCopy variable v1 to v2\nCompare the value of v1 against v2\n\n\n\n\n\n\n\nTipTip\n\n\n\nCompare values and variables using the following operators\n\n\n\n&lt;\nless than\n\n\n&lt;=\nless than or equal to\n\n\n&gt;\ngreater than\n\n\n&gt;=\ngreater than or equal to\n\n\n==\nequals\n\n\n!=\nnot equal\n\n\n\nPlease note, = and == do very different things! Don’t mix them up.",
+    "crumbs": [
+      "`R`",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>First steps</span>"
+    ]
+  },
+  {
+    "objectID": "Rintro2.html",
+    "href": "Rintro2.html",
+    "title": "2  Data structures",
+    "section": "",
+    "text": "2.1 Vectors\nSo far we’ve only looked at simple variables consisting of a single value or character. Typically, your data will be more complex. In R, there are three structures relevant for the data you will be working with.\nA vector is a number of elements of the same data type (logical, numeric, character). It can be generated by concatenating the elements using the function c.\nvec1 &lt;- c(T, F, T, F)\nvec1\n\n[1]  TRUE FALSE  TRUE FALSE\n\nmode(vec1)\n\n[1] \"logical\"\n\nvec2 &lt;- c(1, 2, 3, 4, 5)\nvec2\n\n[1] 1 2 3 4 5\n\nmode(vec2)\n\n[1] \"numeric\"\n\nvec3 &lt;- c(\"Spring\", \"Summer\", \"Autumn\", \"Winter\")\nvec3\n\n[1] \"Spring\" \"Summer\" \"Autumn\" \"Winter\"\n\nmode(vec3)\n\n[1] \"character\"\nOther ways to generate vectors are rep and seq. rep is used to repeat any number of elements any number of times.\nrep(5, 10)\n\n [1] 5 5 5 5 5 5 5 5 5 5\n\nrep(vec3, 5)\n\n [1] \"Spring\" \"Summer\" \"Autumn\" \"Winter\" \"Spring\" \"Summer\" \"Autumn\" \"Winter\"\n [9] \"Spring\" \"Summer\" \"Autumn\" \"Winter\" \"Spring\" \"Summer\" \"Autumn\" \"Winter\"\n[17] \"Spring\" \"Summer\" \"Autumn\" \"Winter\"\nseq can be used to create numerical sequences.\nseq(from = 0, to = 100, by = 5)\n\n [1]   0   5  10  15  20  25  30  35  40  45  50  55  60  65  70  75  80  85  90\n[20]  95 100\nThe command above is easy to read and understand for humans, which is good. R will also understand if you specify it as\nseq(0, 100, 5)\n\n [1]   0   5  10  15  20  25  30  35  40  45  50  55  60  65  70  75  80  85  90\n[20]  95 100\nAs a shortcut for a common sequences, you can use\n1:10\n\n [1]  1  2  3  4  5  6  7  8  9 10\nAs mentioned above,, vectors can only combine elements of a single data type. Combining multiple different data types may result in some unwanted behaviour.\nvec_mix1 &lt;- c(5, TRUE, 65)\nmode(vec_mix1)\n\n[1] \"numeric\"\n\nvec_mix2 &lt;- c(\"blue\", TRUE, \"red\")\nmode(vec_mix2)\n\n[1] \"character\"\nIn many cases you may wish to access a single element of a vector. You can do so using square brackets.\nz &lt;- c(\"order\", \"family\", \"genus\", \"species\")\nz[2]\n\n[1] \"family\"\nSimilarly, you can access any combination of elements from the vector.\nz[1:2]\n\n[1] \"order\"  \"family\"\n\ni &lt;- c(1, 3)\nz[i]\n\n[1] \"order\" \"genus\"\n\nz[c(1, 1, 1, 4)]\n\n[1] \"order\"   \"order\"   \"order\"   \"species\"\n\nz[-1]\n\n[1] \"family\"  \"genus\"   \"species\"\nThe square brackets are also used if you need to change elements of the vector. Changes are made using the assignment operator which you already know.\nx &lt;- 1:5\nx\n\n[1] 1 2 3 4 5\n\nx[c(1, 4)] &lt;- 10\nx\n\n[1] 10  2  3 10  5\nWhich elements of a vector have certain characteristics? This is important for filtering/selecting in your dataset. You can combine different queries using logical operators.\nx &gt;= 5\n\n[1]  TRUE FALSE FALSE  TRUE  TRUE\n\nx[x &gt;= 5]\n\n[1] 10 10  5\n\nwhich(x &gt;= 5)\n\n[1] 1 4 5\n\nz\n\n[1] \"order\"   \"family\"  \"genus\"   \"species\"\n\nwhich(z == \"genus\")\n\n[1] 3\n\nz[z== \"genus\"]\n\n[1] \"genus\"\n\nz[z != \"genus\"]\n\n[1] \"order\"   \"family\"  \"species\"\n\nwhich(z== \"genus\" | z == \"order\")\n\n[1] 1 3\nLogical operators in R\nConveniently, the elements of a vector can be named and accessed using the names. Let’s first create a vector…\ndmel &lt;- c(\"Hexapoda\", \"Diptera\", \"Drosophilidae\", \"Drosophila\", \"Drosophila melanogaster\")\ndmel\n\n[1] \"Hexapoda\"                \"Diptera\"                \n[3] \"Drosophilidae\"           \"Drosophila\"             \n[5] \"Drosophila melanogaster\"\n… and then add names for each element\nnames(dmel) &lt;- c(\"Class\", \"Order\", \"Family\", \"Genus\", \"Species\")\ndmel\n\n                    Class                     Order                    Family \n               \"Hexapoda\"                 \"Diptera\"           \"Drosophilidae\" \n                    Genus                   Species \n             \"Drosophila\" \"Drosophila melanogaster\" \n\nstr(dmel)\n\n Named chr [1:5] \"Hexapoda\" \"Diptera\" \"Drosophilidae\" \"Drosophila\" ...\n - attr(*, \"names\")= chr [1:5] \"Class\" \"Order\" \"Family\" \"Genus\" ...\nNow we can use the names to access the values\ndmel[c(\"Class\", \"Species\")]\n\n                    Class                   Species \n               \"Hexapoda\" \"Drosophila melanogaster\" \n\ndmel[names(dmel) == \"Order\"]\n\n    Order \n\"Diptera\"",
+    "crumbs": [
+      "`R`",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data structures</span>"
+    ]
+  },
+  {
+    "objectID": "Rintro2.html#vectors",
+    "href": "Rintro2.html#vectors",
+    "title": "2  Data structures",
+    "section": "",
+    "text": "|\nOR\n\n\n&\nAND\n\n\n!\nNOT\n\n\n\n\n\n\n\n\n\n\n2.1.1 Exercises\n\nCreate a vector consecutively numbering all days of the year 2026. Assign the correct weekday names for all elements of the vector.\nUse the vector to determine how many days in 2026 are weekend days.\n\n\n\n\n\n\n\nTipTip\n\n\n\nIf you struggle to assign the correct names, have a look at the help for rep.",
+    "crumbs": [
+      "`R`",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data structures</span>"
+    ]
+  },
+  {
+    "objectID": "Rintro2.html#matrices",
+    "href": "Rintro2.html#matrices",
+    "title": "2  Data structures",
+    "section": "2.2 Matrices",
+    "text": "2.2 Matrices\nA matrix in R can be thought of as a two-dimensional vector. All elements must be of the same data type. There are various ways to create a matrix. For example, one can use the matrix function like this.\n\nmat1 &lt;- matrix(data = 1:12, nrow = 3, ncol = 4, byrow=T) \nmat1\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    2    3    4\n[2,]    5    6    7    8\n[3,]    9   10   11   12\n\n\nAlternatively, a vector can be transformed into a matrix\n\nmat2 &lt;- 1:12\ndim(mat2) &lt;- c(3, 4)\nmat2\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    4    7   10\n[2,]    2    5    8   11\n[3,]    3    6    9   12\n\n\nOften you will want to combine multiple vectors into a matrix\n\ndmel &lt;- c(\"Hexapoda\", \"Diptera\", \"Drosophilidae\", \"Drosophila\", \"Drosophila melanogaster\")\ndhyd &lt;- c(\"Hexapoda\", \"Diptera\", \"Drosophilidae\", \"Drosophila\", \"Drosophila hydei\")\nmat3 &lt;- cbind(dmel, dhyd)\nmat3\n\n     dmel                      dhyd              \n[1,] \"Hexapoda\"                \"Hexapoda\"        \n[2,] \"Diptera\"                 \"Diptera\"         \n[3,] \"Drosophilidae\"           \"Drosophilidae\"   \n[4,] \"Drosophila\"              \"Drosophila\"      \n[5,] \"Drosophila melanogaster\" \"Drosophila hydei\"\n\nmat4 &lt;- rbind(dmel, dhyd)\nmat4\n\n     [,1]       [,2]      [,3]            [,4]        \ndmel \"Hexapoda\" \"Diptera\" \"Drosophilidae\" \"Drosophila\"\ndhyd \"Hexapoda\" \"Diptera\" \"Drosophilidae\" \"Drosophila\"\n     [,5]                     \ndmel \"Drosophila melanogaster\"\ndhyd \"Drosophila hydei\"       \n\n\nJust like vectors, matrix elements can have names\n\nmat3\n\n     dmel                      dhyd              \n[1,] \"Hexapoda\"                \"Hexapoda\"        \n[2,] \"Diptera\"                 \"Diptera\"         \n[3,] \"Drosophilidae\"           \"Drosophilidae\"   \n[4,] \"Drosophila\"              \"Drosophila\"      \n[5,] \"Drosophila melanogaster\" \"Drosophila hydei\"\n\ncolnames(mat3)\n\n[1] \"dmel\" \"dhyd\"\n\nrownames(mat3) &lt;- c(\"Class\", \"Order\", \"Family\", \"Genus\", \"Species\")\nmat3\n\n        dmel                      dhyd              \nClass   \"Hexapoda\"                \"Hexapoda\"        \nOrder   \"Diptera\"                 \"Diptera\"         \nFamily  \"Drosophilidae\"           \"Drosophilidae\"   \nGenus   \"Drosophila\"              \"Drosophila\"      \nSpecies \"Drosophila melanogaster\" \"Drosophila hydei\"\n\n\nAnd just like with vectors, we can use square brackets to access and replace values. Because there are 2 dimensions, we need to provide 2 values (one for rows, one for columns, separated by ,).\n\nmat3\n\n        dmel                      dhyd              \nClass   \"Hexapoda\"                \"Hexapoda\"        \nOrder   \"Diptera\"                 \"Diptera\"         \nFamily  \"Drosophilidae\"           \"Drosophilidae\"   \nGenus   \"Drosophila\"              \"Drosophila\"      \nSpecies \"Drosophila melanogaster\" \"Drosophila hydei\"\n\nmat3[1:3, 2]\n\n          Class           Order          Family \n     \"Hexapoda\"       \"Diptera\" \"Drosophilidae\" \n\nmat3[1:3, ]\n\n       dmel            dhyd           \nClass  \"Hexapoda\"      \"Hexapoda\"     \nOrder  \"Diptera\"       \"Diptera\"      \nFamily \"Drosophilidae\" \"Drosophilidae\"\n\nmat3[c(\"Class\", \"Species\"), ]\n\n        dmel                      dhyd              \nClass   \"Hexapoda\"                \"Hexapoda\"        \nSpecies \"Drosophila melanogaster\" \"Drosophila hydei\"\n\n\n\n2.2.1 Exercise\n\ncreate a matrix using with 20 rows & 5 columns, using 100 randomly generated numbers between 0 and 1000.\nreplace all values in the 3rd column of this matrix that are larger than 500 with NA.",
+    "crumbs": [
+      "`R`",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data structures</span>"
+    ]
+  },
+  {
+    "objectID": "Rintro2.html#data-frames",
+    "href": "Rintro2.html#data-frames",
+    "title": "2  Data structures",
+    "section": "2.3 Data frames",
+    "text": "2.3 Data frames",
+    "crumbs": [
+      "`R`",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data structures</span>"
     ]
   },
   {
     "objectID": "tidyverse.html",
     "href": "tidyverse.html",
-    "title": "2  Tidyverse",
+    "title": "3  Tidyverse",
     "section": "",
     "text": "Some stuff about tidyverse\n\n1 + 1\n\n[1] 2",
     "crumbs": [
       "`R`",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tidyverse</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Tidyverse</span>"
     ]
   }
 ]
