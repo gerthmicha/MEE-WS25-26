@@ -4,11 +4,8 @@
 
 Usually when working in `R`, you want to look at your own data, and not generate it from random distributions. To read in a data file, we first need to tell `R` where the working directory is located.
 
-<<<<<<< HEAD
-```{r}
-=======
+
 ```{r, eval = FALSE}
->>>>>>> fbbf8a0 (bug)
 setwd("/home/of22haqi/Documents/TEACHING/MEE-WS25-26/")
 ```
 
