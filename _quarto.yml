@@ -22,6 +22,10 @@ book:
         - tidyverse.qmd
         - ggplot.qmd
     - part: "UNIX"
+      chapters:
+        - unixIntro.qmd
+        - unixPart1.qmd
+        - unixPart2.qmd
     - part: "Phylogenetics" 
     - part: "Microbiome"
     - references.qmd
