@@ -1,0 +1,176 @@
+# Part 2. Working with Files and Directories
+
+> What we will cover:
+>
+> 1.  Working with simple text files
+> 2.  Working with directories
+> 3.  Intro to a command-line text editor
+
+## Creating new directories and files
+
+You can create a new directory using the **`mkdir`** command. It takes as a parameter a relative or absolute path to the directory to create
+
+``` bash
+# Let's try some examples. From your home directory navigate to Documents/ and create 2 new nested sub-directories with the names projects and project1
+pwd
+cd Documents
+mkdir projects
+cd projects
+mkdir projects1
+pwd
+# Try to create a new directory with the same name e.g. projects1. What do you see?
+```
+
+**Exercise**
+
+In the previous example we created the two directories in two separate steps. Can we do it in one step instead? (check the help page for **mkdir** command).
+
+Now that we saw how to create a new directory lets see how we can create a new file. There are several ways to do this in Linux command line but we will start with the basic one. The command **`touch`** will create a new, empty file.
+
+``` bash
+# Create an Empty File within the new directory project1.
+touch notes.txt
+# can you do it if you are outside the project1 directory?
+```
+
+## Move or Rename a File or Directory
+
+The **`mv`** command serves for both moving and renaming files and directories. Works by specifying a "source_path" and a "destination_path", wheres "source_path" is the path (absolute or relative) of the file/directory to move or rename, and "destination_path" is the new name or location to give it.
+
+Copying files and directories is similar operation, except that the original file or directory is not removed! We will use the **`cp`** command for this.
+
+> NOTE: copying, moving or renaming files at the command line will overwrite files if they have the same name!!
+
+Let's try them both.
+
+``` bash
+# move the notes.txt file one directory up assuming your current directory is project1
+mv notes.txt ../notes.txt
+# rename the notes.txt to README.txt
+mv ../notes.txt ../README.txt
+# copy the README.txt file to project1 directory as README1.txt
+cp ../README.txt ./README1.txt
+```
+
+**Exercise**
+
+Try to make a copy of the complete project1 directory on the same parent location with the name project2. What do you see?
+
+::: {.callout-note}
+
+## Note
+
+**Wildcards: friend and foe at the command prompt.**
+
+As we saw earlier some characters have special use in Unix command line. For example:
+
+-   the asterisk character **"\*"** represents 0 or more characters in a filename, or by itself, all files in a directory.
+-   the square brackets **\[...\]** can be used define a range of values e.g. \[0-9\], \[A-Z\], etc.
+-   the question mark **"?"** can represent any single character.
+
+These characters can be used as "Wildcards" to perform operations on multiple files at the same time. Lets see some examples.
+
+``` bash
+# Create a directory with the name wildcard_practice and, inside it, create some empty files.
+mkdir wildcard_practice
+cd wildcard_practice
+touch file1.txt file2.txt file10.txt
+touch image1.png image2.png imageA.png
+touch data_2022.csv data_2023.csv data_2024.csv
+# List all the .txt files
+ls *.txt
+# create a directory called data and move the .csv files into data/
+mkdir data
+mv *.csv data/
+```
+
+**Exercise**
+List only the .csv files with years 2022 or 2023
+
+:::
+
+## Delete (remove) files and directories
+
+::: {.callout-warning}
+## **WARNING!!**
+
+**Using the `rm` command permanently deletes files and directories without moving them to a trash or recycle bin. This action cannot be undone! Whenever you use the rm command, ALWAYS double-check your syntax.**
+
+:::
+
+``` bash
+# Lets remove some unwanted files and directories
+rm ~/Documents/projects/README.txt
+# the command rmdir can remove an empty directory, so it is safer!
+mkdir test_dir
+rmdir test_dir
+# The dangerous way. Use rm recursively "-r" to remove a non-empty directory. BE CAUTIOUS! YOU HAVE BEEN WARNED!
+rm -r ~/Documents/projects/project1
+# check the help page for rm command. Is there a safer way to do this? 
+```
+
+**Exercise**
+
+1.  Create a directory `data`.
+
+2.  Inside `data`, create three empty files: `sample1.txt`, `sample2.txt`, `sample3.txt`
+
+3.  Copy `sample1.txt` into a new directory called `backup`.
+
+4.  Rename `sample2.txt` to `s2.txt`.
+
+5.  Remove `sample3.txt`.
+
+## Viewing and inspecting Files
+
+Sometimes we want to quickly look at files, either to inspect their structure or to get some basic information about their contents. These are some commands we can use to do so.
+
+| Command    | Description                |
+|------------|----------------------------|
+| **`cat`**  | print entire file          |
+| **`less`** | scroll through file        |
+| **`head`** | show first n lines         |
+| **`tail`** | show last n lines          |
+| **`wc`**   | count (**w**ord **c**ount) |
+
+``` bash
+# Lets use the file "butterfly_ecology.csv" you previously used with R.
+# You can either navigate to the folder you saved the file copy it to a new directory.
+# You can use the "cat" command for viewing the contents of a file
+cat butterfly_ecology.csv
+# Another command for viewing the contents of a file is "less". This command allows to scroll through the document and view it line my line or page by page. We can even do some text searching. To exit less, press q (for quit).
+less butterfly_ecology.csv
+# However, most of the time we only need to see part of a file rather than the entire file. The commands "head" and "tail" come in handy. These commands print only the first (head) or the last (tail) lines of a file.
+head butterfly_ecology.csv
+tail butterfly_ecology.csv
+# or you can specify the number of lines to print (by default will print 10)
+head -n 2 butterfly_ecology.csv
+tail -n 3 butterfly_ecology.csv
+# The command wc (word count) is useful for counting how many lines, words, and characters there are in a file.
+wc butterfly_ecology.csv
+# Can you find an option for wc that will let us get only the number of lines of the file? 
+```
+
+::: {.callout-note}
+## Note
+
+The **`cat`** command can also be used to create new files or to concatenate existing files. Lets try:
+
+``` bash
+cat > file1
+Stefanos
+# Exit by pressing Ctrl + D
+cat > file2
+some random text
+# Exit by pressing Ctrl + D
+cat file1 file2 > file3
+```
+:::
+
+## A text editor for the terminal
+
+A simple text editor available on most systems is nano. To run it, simply specify a file name to edit. If the file doesn’t exist already, it will be created after saving. 
+
+``` bash
+nano NOTES.txt
+```
