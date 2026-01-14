@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Stefanos Siozios">
-<meta name="author" content="Michael Gerth">
 
-<title>Methods in evolutionary ecology WS25/26</title>
+<title>6&nbsp; Introduction to Linux Environment and Command Line. – Methods in evolutionary ecology WS25/26</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -67,7 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Rintro1.html" rel="next">
+<link href="./unixPart1.html" rel="next">
+<link href="./ggplot.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -106,8 +70,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 </head>
@@ -121,7 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">About</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unixIntro.html">UNIX</a></li><li class="breadcrumb-item"><a href="./unixIntro.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Linux Environment and Command Line.</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -152,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
@@ -208,7 +170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unixIntro.html" class="sidebar-item-text sidebar-link">
+  <a href="./unixIntro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Linux Environment and Command Line.</span></span></a>
   </div>
 </li>
@@ -250,33 +212,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a>
-  <ul class="collapse">
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
-  <li><a href="#how-to-find-your-way-around" id="toc-how-to-find-your-way-around" class="nav-link" data-scroll-target="#how-to-find-your-way-around">How to find your way around</a></li>
-  </ul></li>
+  <li><a href="#the-unix-linux-environment" id="toc-the-unix-linux-environment" class="nav-link active" data-scroll-target="#the-unix-linux-environment"><span class="header-section-number">6.1</span> The Unix / Linux environment</a></li>
+  <li><a href="#why-learn-unix-command-line" id="toc-why-learn-unix-command-line" class="nav-link" data-scroll-target="#why-learn-unix-command-line"><span class="header-section-number">6.2</span> Why learn Unix command line?</a></li>
+  <li><a href="#some-terminology" id="toc-some-terminology" class="nav-link" data-scroll-target="#some-terminology"><span class="header-section-number">6.3</span> Some terminology</a></li>
+  <li><a href="#some-important-rules" id="toc-some-important-rules" class="nav-link" data-scroll-target="#some-important-rules"><span class="header-section-number">6.4</span> Some important rules</a></li>
+  <li><a href="#accessing-your-terminal" id="toc-accessing-your-terminal" class="nav-link" data-scroll-target="#accessing-your-terminal"><span class="header-section-number">6.5</span> Accessing your Terminal</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unixIntro.html">UNIX</a></li><li class="breadcrumb-item"><a href="./unixIntro.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Linux Environment and Command Line.</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Methods in evolutionary ecology WS25/26</h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Linux Environment and Command Line.</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Authors</div>
-    <div class="quarto-title-meta-contents">
-             <p>Stefanos Siozios <a href="mailto:stefanos.siozios@zoologie.uni-halle.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-             <p>Michael Gerth <a href="mailto:michael.gerth@zoologie.uni-halle.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-          </div>
-  </div>
     
   
     
@@ -287,39 +242,136 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="about" class="level1 unnumbered">
-<h1 class="unnumbered">About</h1>
-<p>This script covers the computational and bioinformatics parts of the module “Methods in Evolutionary Ecology”. We will introduce you to <code>R</code> and <code>BASH</code>, two of the most widely used scripting languages, and make you familiar with navigating in a UNIX environment. These skills are important for any biologist, irrespective of the field you may want to specialise in in the future. Building upon your new knowledge, we will learn how to reconstruct phylogenies from sequencing data, how to work with genomic data, and how to characterise microbiomes. At the end of three weeks computational work, you will tackle a small computational group project, putting your new skills into practise.</p>
-<p>The script is designed to cover the entire course content. While we will go you through all of the material together in detail during the course, the script should also enable you to work through the content on your own, e.g., to recap after the course has finished and as a reference and starting point for future computational endeavours.</p>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>The text is formatted using <a href="https://quarto.org/" title="Link to Quarto webpage">Quarto</a>, which comes with a number of benefits. It allows us to provide explanations as structured and nicely formatted regular text, and to include code blocks for all computational steps. When compiling Quarto documents, all of the code is run, which means that you not only see the code, but also the outputs it creates.</p>
-<p>Here is an example:</p>
-<p>This little block of <code>R</code> code generates 100 random coordinates and plots them. The code is shown below, together with the output the code has produced (in this case, a plot).</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
+<section id="the-unix-linux-environment" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="the-unix-linux-environment"><span class="header-section-number">6.1</span> The Unix / Linux environment</h2>
+<p>Unix and Linux (a variant of Unix) are operating systems (like Windows or macOS). They belong to a “family” of operating systems that share a common ancestor, have been around since 1969 and it’s not likely to disappear any time soon.</p>
+<ul>
+<li><p>Commonly used among the scientific and technical community (e.g.&nbsp;servers and scientific clusters).</p></li>
+<li><p>macOS is Unix-based system.</p></li>
+<li><p>Most supercomputers are powered by Unix-like operating systems.</p></li>
+</ul>
+</section>
+<section id="why-learn-unix-command-line" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="why-learn-unix-command-line"><span class="header-section-number">6.2</span> Why learn Unix command line?</h2>
+<ul>
+<li>Is the foundation of scientific computing (e.g.&nbsp;bioinformatics and data analysis)</li>
+<li>Powerful for working on large datasets and files</li>
+<li>Helps automate repetitive tasks (e.g.&nbsp;imagine you need to need to rename or modify 1,000 files?)</li>
+<li>Enables use of higher-powered computers elsewhere (clusters and servers/cloud-computing)</li>
+</ul>
+</section>
+<section id="some-terminology" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="some-terminology"><span class="header-section-number">6.3</span> Some terminology</h2>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="./_resources/image1.png" class="img-fluid figure-img"></p>
+<figcaption>image1.png</figcaption>
 </figure>
 </div>
-</div>
-</div>
-<p>The code can conveniently be copied from the block into your own scripts.</p>
-<p>Quarto supports many formats, we here provide the script as a webpage and a printable pdf. Writing Quarto documents is very simple and can be done using RStudio as an editor. The entire script is available for you on <a href="https://gerthmicha.github.io/MEE-WS25-26/">github</a> – feel free to download it and modify it with your own comments, notes, and code. We will provide a short introduction to github and Quarto in the course.</p>
+<p>As a user you can “communicate” with your Linux system either by a <strong>G</strong>raphical <strong>U</strong>ser <strong>I</strong>nterface (<strong>GUI</strong>) or by typing instructions (commands) using a <strong>C</strong>ommand <strong>L</strong>ine <strong>I</strong>nterface (<strong>CLI</strong>). At first it might look quite complex and confusing but once you understand the concept and the basics then its quite simple and intuitive!</p>
+<p><strong>Command Line:</strong> is the written instructions we type.</p>
+<p><strong>Terminal:</strong> also known as terminal emulator is the text-based environment (software) capable of taking input and providing output.</p>
+<p><strong>Shell:</strong> a program that interprets command-line input and executes commands. There are different shells available e.g bash, zsh, sh, csh etc. Each of them offering unique features and functionalities. Some are more basic and some are more fancy but all serve the same purpose, to interpret the commands provided by the user and output the results. The most commonly used is the <strong>bash</strong> shell.</p>
 </section>
-<section id="how-to-find-your-way-around" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-find-your-way-around">How to find your way around</h2>
-<p>Simply use the navigation on the left to quickly access the different topics, or flip through the individual pages using the buttons at the bottom of the page. You may wish to download the pdf version of the script (click the pdf icon in the top left) which is ideal for printing. The script is organized by topics, rather than course days, because we will adapt the tempo according to your needs.</p>
-<blockquote class="blockquote">
-<p>Please note: The script will very likely only be complete at the end of the course. We will still be modifying and correcting it throughtout the three weeks you are with us. So make sure to check out the final version at the end of the course.</p>
-</blockquote>
+<section id="some-important-rules" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="some-important-rules"><span class="header-section-number">6.4</span> Some important rules</h2>
+<ol type="1">
+<li><strong>Be aware of the case!</strong> The command line is case sensitive so be careful when typing. For example, typing <code>Echo</code> is not the same as <code>echo</code>, nor are the directory names “<code>/Results</code>” and “<code>/results</code>”.</li>
+<li><strong>Spaces are having special use!</strong> The command line uses spaces as separators between arguments. Using spaces in filenames or directory names will certainly cause problems sooner or later. Avoid using names that contain spaces, but rather it’s better to use dashes (<strong><code>-</code></strong>) or underscores (<code>_</code>). e.g., “<code>results_2026.txt</code>” is preferred over “<code>results 2026.txt</code>”.</li>
+<li>Apart from spaces there are several other characters (special characters) that can be used to perform special operations. See some examples bellow.</li>
+</ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Character</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>/</td>
+<td>Directory separator, used to separate a string of directory names. <br>Example: /usr/src/linux</td>
+</tr>
+<tr class="even">
+<td>\</td>
+<td>Escape — (backslash) prevents the next character from being interpreted as a special character. This works outside of quoting, inside double quotes, and generally ignored in single quotes.</td>
+</tr>
+<tr class="odd">
+<td>.</td>
+<td>Current directory. Can also “hide” files when it is the first character in a filename.</td>
+</tr>
+<tr class="even">
+<td>..</td>
+<td>Parent directory</td>
+</tr>
+<tr class="odd">
+<td>~</td>
+<td>The tilde is a representation of the current user’s home directory.</td>
+</tr>
+<tr class="even">
+<td>*</td>
+<td>Represents 0 or more characters in a filename, or by itself, all files in a directory.</td>
+</tr>
+<tr class="odd">
+<td>?</td>
+<td>Represents a single character in a filename.</td>
+</tr>
+<tr class="even">
+<td>$</td>
+<td>Expansion — introduces various types of expansion: parameter expansion (e.g.&nbsp;$var or ${var}), command substitution (e.g.&nbsp;$(command)), or arithmetic expansion (e.g.&nbsp;$((expression))). More on expansions later.</td>
+</tr>
+<tr class="odd">
+<td>[ ]</td>
+<td>Can be used to represent a range of values, e.g.&nbsp;[0-9], [A-Z], etc. <br>Example: hello[0-2].txt represents the names hello0.txt, hello1.txt, and hello2.txt</td>
+</tr>
+<tr class="even">
+<td>|</td>
+<td>Pipe — send the output from one command to the input of another command. This is a method of chaining commands together. Example: echo&nbsp;“Hello&nbsp;beautiful.”&nbsp;|&nbsp;grep&nbsp;-o&nbsp;beautiful.</td>
+</tr>
+<tr class="odd">
+<td>&gt;</td>
+<td>Redirect output of a command into a new file. If the file already exists, over-write it. <br>Example: ls &gt; myfiles.txt</td>
+</tr>
+<tr class="even">
+<td>&gt;&gt;</td>
+<td>Redirect and appends the output of a command onto the end of an existing file.</td>
+</tr>
+<tr class="odd">
+<td>&lt;</td>
+<td>Redirect a file as input to a program.</td>
+</tr>
+<tr class="even">
+<td>;</td>
+<td>Command separator. Allows you to execute multiple commands on a single line. <br>Example: cd /var/log ; ls -l</td>
+</tr>
+<tr class="odd">
+<td>&amp;&amp;</td>
+<td>Command separator as above, but only runs the second command if the first one finished without errors.</td>
+</tr>
+<tr class="even">
+<td>&amp;</td>
+<td>Background – when used at the end of a command, run the command in the background (do not wait for it to complete).</td>
+</tr>
+<tr class="odd">
+<td>#</td>
+<td>Comment — the # character begins a commentary that extends to the end of the line. Comments are notes of explanation and are not processed by the shell.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="accessing-your-terminal" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="accessing-your-terminal"><span class="header-section-number">6.5</span> Accessing your Terminal</h2>
+<p>You are using a <strong>Kubuntu</strong> Linux system. In Kubuntu, the terminal emulator is called <strong>Konsole</strong>. You can start it in any of the following ways:</p>
+<p>1. Press <strong>Ctrl + Alt + T</strong> to open <strong>Konsole</strong> instantly.</p>
+<p>2. Open the <strong>Krunner</strong> by pressing <strong>Alt + Space</strong>, &nbsp;type <strong>Konsole</strong>, then press <strong>Enter</strong>.</p>
+<p>3. Open the <strong>Application Launcher → System → Konsole</strong>.</p>
+<p>Now you are ready to start typing your first commands!</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -725,10 +777,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./ggplot.html" class="pagination-link" aria-label="The `ggplot2` package">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The <code>ggplot2</code> package</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Rintro1.html" class="pagination-link" aria-label="First steps">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">First steps</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./unixPart1.html" class="pagination-link" aria-label="Part 1. Your first Unix commands - Navigating the Unix File-System Structure">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part 1. Your first Unix commands - Navigating the Unix File-System Structure</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

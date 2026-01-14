@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Stefanos Siozios">
-<meta name="author" content="Michael Gerth">
 
-<title>Methods in evolutionary ecology WS25/26</title>
+<title>7&nbsp; Part 1. Your first Unix commands - Navigating the Unix File-System Structure – Methods in evolutionary ecology WS25/26</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Rintro1.html" rel="next">
+<link href="./unixPart2.html" rel="next">
+<link href="./unixIntro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -106,8 +105,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 </head>
@@ -121,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">About</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unixIntro.html">UNIX</a></li><li class="breadcrumb-item"><a href="./unixPart1.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part 1. Your first Unix commands - Navigating the Unix File-System Structure</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -152,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
@@ -214,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unixPart1.html" class="sidebar-item-text sidebar-link">
+  <a href="./unixPart1.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part 1. Your first Unix commands - Navigating the Unix File-System Structure</span></span></a>
   </div>
 </li>
@@ -250,33 +247,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a>
-  <ul class="collapse">
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
-  <li><a href="#how-to-find-your-way-around" id="toc-how-to-find-your-way-around" class="nav-link" data-scroll-target="#how-to-find-your-way-around">How to find your way around</a></li>
-  </ul></li>
+  <li><a href="#finding-out-where-you-are" id="toc-finding-out-where-you-are" class="nav-link active" data-scroll-target="#finding-out-where-you-are"><span class="header-section-number">7.1</span> Finding out where you are</a></li>
+  <li><a href="#the-command-ls" id="toc-the-command-ls" class="nav-link" data-scroll-target="#the-command-ls"><span class="header-section-number">7.2</span> The command <code>ls</code></a></li>
+  <li><a href="#relative-vs-absolute-path-and-getting-help" id="toc-relative-vs-absolute-path-and-getting-help" class="nav-link" data-scroll-target="#relative-vs-absolute-path-and-getting-help"><span class="header-section-number">7.3</span> Relative vs absolute path and getting help</a></li>
+  <li><a href="#moving-around" id="toc-moving-around" class="nav-link" data-scroll-target="#moving-around"><span class="header-section-number">7.4</span> Moving around</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">7.5</span> Exercise</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unixIntro.html">UNIX</a></li><li class="breadcrumb-item"><a href="./unixPart1.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part 1. Your first Unix commands - Navigating the Unix File-System Structure</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Methods in evolutionary ecology WS25/26</h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part 1. Your first Unix commands - Navigating the Unix File-System Structure</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Authors</div>
-    <div class="quarto-title-meta-contents">
-             <p>Stefanos Siozios <a href="mailto:stefanos.siozios@zoologie.uni-halle.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-             <p>Michael Gerth <a href="mailto:michael.gerth@zoologie.uni-halle.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-          </div>
-  </div>
     
   
     
@@ -287,39 +277,138 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="about" class="level1 unnumbered">
-<h1 class="unnumbered">About</h1>
-<p>This script covers the computational and bioinformatics parts of the module “Methods in Evolutionary Ecology”. We will introduce you to <code>R</code> and <code>BASH</code>, two of the most widely used scripting languages, and make you familiar with navigating in a UNIX environment. These skills are important for any biologist, irrespective of the field you may want to specialise in in the future. Building upon your new knowledge, we will learn how to reconstruct phylogenies from sequencing data, how to work with genomic data, and how to characterise microbiomes. At the end of three weeks computational work, you will tackle a small computational group project, putting your new skills into practise.</p>
-<p>The script is designed to cover the entire course content. While we will go you through all of the material together in detail during the course, the script should also enable you to work through the content on your own, e.g., to recap after the course has finished and as a reference and starting point for future computational endeavours.</p>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>The text is formatted using <a href="https://quarto.org/" title="Link to Quarto webpage">Quarto</a>, which comes with a number of benefits. It allows us to provide explanations as structured and nicely formatted regular text, and to include code blocks for all computational steps. When compiling Quarto documents, all of the code is run, which means that you not only see the code, but also the outputs it creates.</p>
-<p>Here is an example:</p>
-<p>This little block of <code>R</code> code generates 100 random coordinates and plots them. The code is shown below, together with the output the code has produced (in this case, a plot).</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
+<blockquote class="blockquote">
+<p>What will be cover:</p>
+<ol type="1">
+<li>The Unix file-system structure and how to navigate</li>
+<li>Some general rules</li>
+<li>Relative vs absolute path</li>
+<li>Running some basic commands and general syntax</li>
+</ol>
+</blockquote>
+<p>Unix systems, like most operating systems, store file locations in a hierarchical structure. In the UNIX file-system each file and directory has its own “address”, and that address is called a “<strong>path</strong>”.</p>
+<p>There are two special locations in all Unix-based systems That you should be familiar. The “<strong>root</strong>” location is where the address system of the computer starts. The “<strong>home</strong>” location is where the current user’s location starts.</p>
+<p>By default every time you open a new terminal you start in your own “<strong>home</strong>” directory(containing files and directories that only you can modify). The path of home directory is usually represented by the “~” character.</p>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="./_resources/image2.png" class="img-fluid figure-img"></p>
+<figcaption>image2.png</figcaption>
 </figure>
 </div>
-</div>
-</div>
-<p>The code can conveniently be copied from the block into your own scripts.</p>
-<p>Quarto supports many formats, we here provide the script as a webpage and a printable pdf. Writing Quarto documents is very simple and can be done using RStudio as an editor. The entire script is available for you on <a href="https://gerthmicha.github.io/MEE-WS25-26/">github</a> – feel free to download it and modify it with your own comments, notes, and code. We will provide a short introduction to github and Quarto in the course.</p>
+<p><strong>Basic commands we will use</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pwd</code></td>
+<td>print working directory</td>
+</tr>
+<tr class="even">
+<td><code>ls</code></td>
+<td>list items in directory</td>
+</tr>
+<tr class="odd">
+<td><code>cd</code></td>
+<td>change directory</td>
+</tr>
+<tr class="even">
+<td><code>cd ..</code></td>
+<td>go one level up</td>
+</tr>
+<tr class="odd">
+<td><code>ls -l</code></td>
+<td>long format listing</td>
+</tr>
+<tr class="even">
+<td><code>ls -lh</code></td>
+<td>human readable sizes</td>
+</tr>
+</tbody>
+</table>
+<section id="finding-out-where-you-are" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="finding-out-where-you-are"><span class="header-section-number">7.1</span> Finding out where you are</h2>
+<p>The <code>pwd</code> command in Linux is short for <em><strong>p</strong>rint</em> <em><strong>w</strong>orking</em> <em><strong>d</strong>irectory</em>. It’s only function is to print the absolute path of the current directory. It’s handy when you’re not exactly sure what directory you’re in. So make it a good habit to get used to running the <strong><code>pwd</code></strong> command a lot.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example. Try running pwd. What do you see?</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># What do you see if you run PWD instead? </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">PWD</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Try now to run this "echo $PWD". The command echo just prints the parameters we give it. The $PWD is a environment variable and we will discuss about their use a bit later on.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$PWD</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="how-to-find-your-way-around" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-find-your-way-around">How to find your way around</h2>
-<p>Simply use the navigation on the left to quickly access the different topics, or flip through the individual pages using the buttons at the bottom of the page. You may wish to download the pdf version of the script (click the pdf icon in the top left) which is ideal for printing. The script is organized by topics, rather than course days, because we will adapt the tempo according to your needs.</p>
+<section id="the-command-ls" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="the-command-ls"><span class="header-section-number">7.2</span> The command <code>ls</code></h2>
+<p><strong><code>ls</code></strong> is short for <em>list</em>, and is used to list the files and sub-directories in your present working directory or some other directory if you specify one.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examples</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># List the files and directories in your current directory</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> .</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ls can accept several options. Try running the following commands and observe how their output differs from the previous one.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lh</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># You can use ls to list the contents of any directory. Try the following.</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> /etc </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>I. The anatomy of a command (or command syntax)</strong></p>
+<p>Each command is usually composed of three parts:</p>
+<ol type="1">
+<li><p><strong>The command</strong> itself</p></li>
+<li><p><strong>The options:</strong> These are optional parameters that can be used to customise the behavior of a command. (e.g.&nbsp;on the previous examples <code>ls -l</code> shows the list of files in a long format)</p></li>
+<li><p><strong>The arguments:</strong> specify the target of the command. (e.g.&nbsp;on the previous example <code>ls -l /etc</code> you instructed the command to list the contents of the <strong>/etc</strong> directory)</p></li>
+</ol>
+<p><strong>II. Getting help</strong></p>
+<p>Most Unix commands can accept several parameters. How do we know which ones to use and why? Luckily, most Unix commands have built-in help documentation that we can access by providing <em>–help</em> as the only argument.</p>
+<p>Try for example: <code>ls --help</code></p>
+<p>Another way to access the documentation for a command is by using the <code>man</code> command and providing the command’s name as an argument. For example:</p>
+<p><code>man ls</code></p>
+</div>
+</div>
+</section>
+<section id="relative-vs-absolute-path-and-getting-help" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="relative-vs-absolute-path-and-getting-help"><span class="header-section-number">7.3</span> Relative vs absolute path and getting help</h2>
+<p>There are two ways to specify the path (the file’s address on the computer):</p>
+<ul>
+<li>An <strong>absolute path</strong> starts from a fixed location, either the root directory (/) or the home directory (~/). Note: A “full path” usually refers to an absolute path that starts from the root (/).</li>
+<li>A <strong>relative path</strong> starts from your current directory.</li>
+</ul>
 <blockquote class="blockquote">
-<p>Please note: The script will very likely only be complete at the end of the course. We will still be modifying and correcting it throughtout the three weeks you are with us. So make sure to check out the final version at the end of the course.</p>
+<p>When working at the command line, it’s important to always be aware of your current location in the system. One of the most common mistakes is trying to operate on a file that isn’t where you think it is. To avoid this, it’s good practice to use absolute paths, which clearly specify a file’s exact location regardless of where you are.</p>
 </blockquote>
-
-
 </section>
+<section id="moving-around" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="moving-around"><span class="header-section-number">7.4</span> Moving around</h2>
+<p>One of the most commonly used commands in Linux is the <strong><em>change directory</em></strong> command, or <code>cd</code>. It allows you to change your working directory from the current location to another directory you want to navigate to. The <code>cd</code> command takes a positional argument: the path (address) of the directory you want to move into. This path can be either <strong>absolute</strong> or <strong>relative</strong>. Let’s try moving from our current directory to a directory present in your home directory called <em>Documents</em>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The relative way</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Documents</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The absolute way (~ stands for /home/&lt;user&gt;/). Can you see the change in your command prompt?</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Documents</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># But how do we go back “up” to the parent directory? We can use the ".." special characters that act as a relative path, telling the system to move up one directory from our current location.</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># When you need to navigate back to the previous working directory from the current working directory, you can use the "–" option.</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="at">-</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: running the cd command without any arguments will always bring you back to your home</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="exercise" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="exercise"><span class="header-section-number">7.5</span> Exercise</h2>
+<p>Practice moving around the filesystem with <code>cd</code> and listing directory contents with <code>ls</code>, including navigating by relative and absolute paths or using special characters “..” . Use <code>pwd</code> frequently to see your current working directory. Practice navigating home with <code>cd</code>.</p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -725,10 +814,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./unixIntro.html" class="pagination-link" aria-label="Introduction to Linux Environment and Command Line.">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Linux Environment and Command Line.</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Rintro1.html" class="pagination-link" aria-label="First steps">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">First steps</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./unixPart2.html" class="pagination-link" aria-label="Part 2. Working with Files and Directories">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Part 2. Working with Files and Directories</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

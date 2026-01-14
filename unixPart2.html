@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Stefanos Siozios">
-<meta name="author" content="Michael Gerth">
 
-<title>Methods in evolutionary ecology WS25/26</title>
+<title>8&nbsp; Part 2. Working with Files and Directories – Methods in evolutionary ecology WS25/26</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Rintro1.html" rel="next">
+<link href="./references.html" rel="next">
+<link href="./unixPart1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -106,8 +105,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 </head>
@@ -121,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">About</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unixIntro.html">UNIX</a></li><li class="breadcrumb-item"><a href="./unixPart2.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Part 2. Working with Files and Directories</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -152,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
@@ -220,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unixPart2.html" class="sidebar-item-text sidebar-link">
+  <a href="./unixPart2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Part 2. Working with Files and Directories</span></span></a>
   </div>
 </li>
@@ -250,33 +247,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a>
-  <ul class="collapse">
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
-  <li><a href="#how-to-find-your-way-around" id="toc-how-to-find-your-way-around" class="nav-link" data-scroll-target="#how-to-find-your-way-around">How to find your way around</a></li>
-  </ul></li>
+  <li><a href="#creating-new-directories-and-files" id="toc-creating-new-directories-and-files" class="nav-link active" data-scroll-target="#creating-new-directories-and-files"><span class="header-section-number">8.1</span> Creating new directories and files</a></li>
+  <li><a href="#move-or-rename-a-file-or-directory" id="toc-move-or-rename-a-file-or-directory" class="nav-link" data-scroll-target="#move-or-rename-a-file-or-directory"><span class="header-section-number">8.2</span> Move or Rename a File or Directory</a></li>
+  <li><a href="#delete-remove-files-and-directories" id="toc-delete-remove-files-and-directories" class="nav-link" data-scroll-target="#delete-remove-files-and-directories"><span class="header-section-number">8.3</span> Delete (remove) files and directories</a></li>
+  <li><a href="#viewing-and-inspecting-files" id="toc-viewing-and-inspecting-files" class="nav-link" data-scroll-target="#viewing-and-inspecting-files"><span class="header-section-number">8.4</span> Viewing and inspecting Files</a></li>
+  <li><a href="#a-text-editor-for-the-terminal" id="toc-a-text-editor-for-the-terminal" class="nav-link" data-scroll-target="#a-text-editor-for-the-terminal"><span class="header-section-number">8.5</span> A text editor for the terminal</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unixIntro.html">UNIX</a></li><li class="breadcrumb-item"><a href="./unixPart2.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Part 2. Working with Files and Directories</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Methods in evolutionary ecology WS25/26</h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Part 2. Working with Files and Directories</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Authors</div>
-    <div class="quarto-title-meta-contents">
-             <p>Stefanos Siozios <a href="mailto:stefanos.siozios@zoologie.uni-halle.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-             <p>Michael Gerth <a href="mailto:michael.gerth@zoologie.uni-halle.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-          </div>
-  </div>
     
   
     
@@ -287,39 +277,188 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="about" class="level1 unnumbered">
-<h1 class="unnumbered">About</h1>
-<p>This script covers the computational and bioinformatics parts of the module “Methods in Evolutionary Ecology”. We will introduce you to <code>R</code> and <code>BASH</code>, two of the most widely used scripting languages, and make you familiar with navigating in a UNIX environment. These skills are important for any biologist, irrespective of the field you may want to specialise in in the future. Building upon your new knowledge, we will learn how to reconstruct phylogenies from sequencing data, how to work with genomic data, and how to characterise microbiomes. At the end of three weeks computational work, you will tackle a small computational group project, putting your new skills into practise.</p>
-<p>The script is designed to cover the entire course content. While we will go you through all of the material together in detail during the course, the script should also enable you to work through the content on your own, e.g., to recap after the course has finished and as a reference and starting point for future computational endeavours.</p>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>The text is formatted using <a href="https://quarto.org/" title="Link to Quarto webpage">Quarto</a>, which comes with a number of benefits. It allows us to provide explanations as structured and nicely formatted regular text, and to include code blocks for all computational steps. When compiling Quarto documents, all of the code is run, which means that you not only see the code, but also the outputs it creates.</p>
-<p>Here is an example:</p>
-<p>This little block of <code>R</code> code generates 100 random coordinates and plots them. The code is shown below, together with the output the code has produced (in this case, a plot).</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The code can conveniently be copied from the block into your own scripts.</p>
-<p>Quarto supports many formats, we here provide the script as a webpage and a printable pdf. Writing Quarto documents is very simple and can be done using RStudio as an editor. The entire script is available for you on <a href="https://gerthmicha.github.io/MEE-WS25-26/">github</a> – feel free to download it and modify it with your own comments, notes, and code. We will provide a short introduction to github and Quarto in the course.</p>
-</section>
-<section id="how-to-find-your-way-around" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-find-your-way-around">How to find your way around</h2>
-<p>Simply use the navigation on the left to quickly access the different topics, or flip through the individual pages using the buttons at the bottom of the page. You may wish to download the pdf version of the script (click the pdf icon in the top left) which is ideal for printing. The script is organized by topics, rather than course days, because we will adapt the tempo according to your needs.</p>
 <blockquote class="blockquote">
-<p>Please note: The script will very likely only be complete at the end of the course. We will still be modifying and correcting it throughtout the three weeks you are with us. So make sure to check out the final version at the end of the course.</p>
+<p>What we will cover:</p>
+<ol type="1">
+<li>Working with simple text files</li>
+<li>Working with directories</li>
+<li>Intro to a command-line text editor</li>
+</ol>
 </blockquote>
-
-
+<section id="creating-new-directories-and-files" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="creating-new-directories-and-files"><span class="header-section-number">8.1</span> Creating new directories and files</h2>
+<p>You can create a new directory using the <strong><code>mkdir</code></strong> command. It takes as a parameter a relative or absolute path to the directory to create</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's try some examples. From your home directory navigate to Documents/ and create 2 new nested sub-directories with the names projects and project1</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Documents</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> projects</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> projects</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> projects1</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to create a new directory with the same name e.g. projects1. What do you see?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Exercise</strong></p>
+<p>In the previous example we created the two directories in two separate steps. Can we do it in one step instead? (check the help page for <strong>mkdir</strong> command).</p>
+<p>Now that we saw how to create a new directory lets see how we can create a new file. There are several ways to do this in Linux command line but we will start with the basic one. The command <strong><code>touch</code></strong> will create a new, empty file.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an Empty File within the new directory project1.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> notes.txt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># can you do it if you are outside the project1 directory?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
+<section id="move-or-rename-a-file-or-directory" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="move-or-rename-a-file-or-directory"><span class="header-section-number">8.2</span> Move or Rename a File or Directory</h2>
+<p>The <strong><code>mv</code></strong> command serves for both moving and renaming files and directories. Works by specifying a “source_path” and a “destination_path”, wheres “source_path” is the path (absolute or relative) of the file/directory to move or rename, and “destination_path” is the new name or location to give it.</p>
+<p>Copying files and directories is similar operation, except that the original file or directory is not removed! We will use the <strong><code>cp</code></strong> command for this.</p>
+<blockquote class="blockquote">
+<p>NOTE: copying, moving or renaming files at the command line will overwrite files if they have the same name!!</p>
+</blockquote>
+<p>Let’s try them both.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># move the notes.txt file one directory up assuming your current directory is project1</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> notes.txt ../notes.txt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># rename the notes.txt to README.txt</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> ../notes.txt ../README.txt</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># copy the README.txt file to project1 directory as README1.txt</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ../README.txt ./README1.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Exercise</strong></p>
+<p>Try to make a copy of the complete project1 directory on the same parent location with the name project2. What do you see?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Wildcards: friend and foe at the command prompt.</strong></p>
+<p>As we saw earlier some characters have special use in Unix command line. For example:</p>
+<ul>
+<li>the asterisk character <strong>“*”</strong> represents 0 or more characters in a filename, or by itself, all files in a directory.</li>
+<li>the square brackets <strong>[…]</strong> can be used define a range of values e.g.&nbsp;[0-9], [A-Z], etc.</li>
+<li>the question mark <strong>“?”</strong> can represent any single character.</li>
+</ul>
+<p>These characters can be used as “Wildcards” to perform operations on multiple files at the same time. Lets see some examples.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a directory with the name wildcard_practice and, inside it, create some empty files.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> wildcard_practice</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> wildcard_practice</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> file1.txt file2.txt file10.txt</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> image1.png image2.png imageA.png</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> data_2022.csv data_2023.csv data_2024.csv</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># List all the .txt files</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="pp">*</span>.txt</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># create a directory called data and move the .csv files into data/</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> data</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="pp">*</span>.csv data/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Exercise</strong> List only the .csv files with years 2022 or 2023</p>
+</div>
+</div>
+</section>
+<section id="delete-remove-files-and-directories" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="delete-remove-files-and-directories"><span class="header-section-number">8.3</span> Delete (remove) files and directories</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span><strong>WARNING!!</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Using the <code>rm</code> command permanently deletes files and directories without moving them to a trash or recycle bin. This action cannot be undone! Whenever you use the rm command, ALWAYS double-check your syntax.</strong></p>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets remove some unwanted files and directories</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> ~/Documents/projects/README.txt</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the command rmdir can remove an empty directory, so it is safer!</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> test_dir</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rmdir</span> test_dir</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The dangerous way. Use rm recursively "-r" to remove a non-empty directory. BE CAUTIOUS! YOU HAVE BEEN WARNED!</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> ~/Documents/projects/project1</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># check the help page for rm command. Is there a safer way to do this? </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Exercise</strong></p>
+<ol type="1">
+<li><p>Create a directory <code>data</code>.</p></li>
+<li><p>Inside <code>data</code>, create three empty files: <code>sample1.txt</code>, <code>sample2.txt</code>, <code>sample3.txt</code></p></li>
+<li><p>Copy <code>sample1.txt</code> into a new directory called <code>backup</code>.</p></li>
+<li><p>Rename <code>sample2.txt</code> to <code>s2.txt</code>.</p></li>
+<li><p>Remove <code>sample3.txt</code>.</p></li>
+</ol>
+</section>
+<section id="viewing-and-inspecting-files" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="viewing-and-inspecting-files"><span class="header-section-number">8.4</span> Viewing and inspecting Files</h2>
+<p>Sometimes we want to quickly look at files, either to inspect their structure or to get some basic information about their contents. These are some commands we can use to do so.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong><code>cat</code></strong></td>
+<td>print entire file</td>
+</tr>
+<tr class="even">
+<td><strong><code>less</code></strong></td>
+<td>scroll through file</td>
+</tr>
+<tr class="odd">
+<td><strong><code>head</code></strong></td>
+<td>show first n lines</td>
+</tr>
+<tr class="even">
+<td><strong><code>tail</code></strong></td>
+<td>show last n lines</td>
+</tr>
+<tr class="odd">
+<td><strong><code>wc</code></strong></td>
+<td>count (<strong>w</strong>ord <strong>c</strong>ount)</td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets use the file "butterfly_ecology.csv" you previously used with R.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># You can either navigate to the folder you saved the file copy it to a new directory.</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># You can use the "cat" command for viewing the contents of a file</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> butterfly_ecology.csv</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Another command for viewing the contents of a file is "less". This command allows to scroll through the document and view it line my line or page by page. We can even do some text searching. To exit less, press q (for quit).</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> butterfly_ecology.csv</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># However, most of the time we only need to see part of a file rather than the entire file. The commands "head" and "tail" come in handy. These commands print only the first (head) or the last (tail) lines of a file.</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> butterfly_ecology.csv</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> butterfly_ecology.csv</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># or you can specify the number of lines to print (by default will print 10)</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 2 butterfly_ecology.csv</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-n</span> 3 butterfly_ecology.csv</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># The command wc (word count) is useful for counting how many lines, words, and characters there are in a file.</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> butterfly_ecology.csv</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Can you find an option for wc that will let us get only the number of lines of the file? </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong><code>cat</code></strong> command can also be used to create new files or to concatenate existing files. Lets try:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> file1</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Stefanos</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Exit by pressing Ctrl + D</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> file2</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">some</span> random text</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Exit by pressing Ctrl + D</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> file1 file2 <span class="op">&gt;</span> file3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="a-text-editor-for-the-terminal" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="a-text-editor-for-the-terminal"><span class="header-section-number">8.5</span> A text editor for the terminal</h2>
+<p>A simple text editor available on most systems is nano. To run it, simply specify a file name to edit. If the file doesn’t exist already, it will be created after saving.&nbsp;</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> NOTES.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -725,10 +864,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./unixPart1.html" class="pagination-link" aria-label="Part 1. Your first Unix commands - Navigating the Unix File-System Structure">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part 1. Your first Unix commands - Navigating the Unix File-System Structure</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Rintro1.html" class="pagination-link" aria-label="First steps">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">First steps</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
