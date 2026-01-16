@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -39,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -251,9 +286,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="9.1" class="anchored" data-anchor-id="redirecting-and-piping"><span class="header-section-number">9.1</span> Redirecting and piping</h2>
 <p>Redirection and piping are fundamental features of the UNIX command line that allow us to create powerful workflows for automating tasks. By default, when we run a command, its output is printed to the screen (the terminal). In many situations, however, we may want to save this output to a file or pass it directly to another command.</p>
 <p>We have already seen how a command output can be redirected to a file. For example: <code>cat file1 file2 &gt; combined_file</code>. In this command, the redirection operator <code>&gt;</code> tells the shell to send the output of <code>cat</code> to a new file called combined_file instead of displaying it on the screen. Let look at another example.</p>
-<pre><code># list the files in the /etc directory and save the output to a file called etc_content.txt.
-ls /etc &gt; etc_content.txt
-less etc_content.txt</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list the files in the /etc directory and save the output to a file called etc_content.txt.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /etc <span class="op">&gt;</span> etc_content.txt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> etc_content.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -271,8 +306,8 @@ less etc_content.txt</code></pre>
 </div>
 </div>
 <p>While redirection allows us to save a command’s output to a file, UNIX also allows us to connect commands directly to one another. We can send the output of one command directly as input to another using the pipe (|) operator.</p>
-<pre><code>#list only the first 10 files of the /etc directory
-ls /etc | head -n 10</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#list only the first 10 files of the /etc directory</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /etc <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 10</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Exercise</strong></p>
 <ul>
 <li>Using the pipe operator, find a way to count all contents (files and directories) in the /etc directory.</li>
@@ -281,20 +316,20 @@ ls /etc | head -n 10</code></pre>
 <section id="cut-sort-and-uniq" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="cut-sort-and-uniq"><span class="header-section-number">9.2</span> cut, sort, and uniq</h2>
 <p>The <code>cut</code> command is used for extracting specific sections from lines of text in a file or piped data. It’s a great tools for or data manipulation. Lets try some examples:</p>
-<pre><code># Selecting fields separated by a delimiter
-echo "name,age,city,country" | cut -d ',' -f 3
-# lets manipulate some real data
-cat butterfly_ecology.csv | cut -d ',' -f 1,2 | head
-# you can even change the delimiter in the output
-cat butterfly_ecology.csv | cut -d ',' -f 1,2  --output-delimiter $'\t' | head
-# or
-cat butterfly_ecology.csv | cut -d ',' -f 1,2,5-7  --output-delimiter $'\t' | head</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting fields separated by a delimiter</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"name,age,city,country"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">','</span> <span class="at">-f</span> 3</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># lets manipulate some real data</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> butterfly_ecology.csv <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">','</span> <span class="at">-f</span> 1,2 <span class="kw">|</span> <span class="fu">head</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># you can even change the delimiter in the output</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> butterfly_ecology.csv <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">','</span> <span class="at">-f</span> 1,2  <span class="at">--output-delimiter</span> <span class="st">$'</span><span class="dt">\t</span><span class="st">'</span> <span class="kw">|</span> <span class="fu">head</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> butterfly_ecology.csv <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">','</span> <span class="at">-f</span> 1,2,5-7  <span class="at">--output-delimiter</span> <span class="st">$'</span><span class="dt">\t</span><span class="st">'</span> <span class="kw">|</span> <span class="fu">head</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The <code>sort</code> command is used to arrange the lines of text files in a specified order, such as alphabetically or numerically. It can also handle options for sorting in reverse order or by specific columns. NOTE: <code>sort</code> command will not modify your file, it will only print the reordered content on the terminal! However, you can specify redirect the output to a separate file.</p>
-<pre><code>cat butterfly_ecology.csv | cut -d ',' -f 1-3 | sort
-cat butterfly_ecology.csv | cut -d ',' -f 1-3 | sort -t ',' -k3 | less</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> butterfly_ecology.csv <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">','</span> <span class="at">-f</span> 1-3 <span class="kw">|</span> <span class="fu">sort</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> butterfly_ecology.csv <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">','</span> <span class="at">-f</span> 1-3 <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-t</span> <span class="st">','</span> <span class="at">-k3</span> <span class="kw">|</span> <span class="fu">less</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The <code>uniq</code> command in Linux is used to filter out repeated lines from a text file or standard input, displaying only unique entries or counting repetitions. It works best when the input is sorted, as it only removes adjacent duplicate lines.</p>
-<pre><code># families are represented in the butterfly_ecology.csv data?
-cat butterfly_ecology.csv | cut -d ',' -f 2 | sort | uniq</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># families are represented in the butterfly_ecology.csv data?</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> butterfly_ecology.csv <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">','</span> <span class="at">-f</span> 2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Exercise</strong></p>
 <ul>
 <li>Can you use <code>cut</code>, <code>sort</code> and <code>uniq</code> commands to count the number of species per family species per family?</li>
@@ -303,18 +338,18 @@ cat butterfly_ecology.csv | cut -d ',' -f 2 | sort | uniq</code></pre>
 <section id="grep-and-regular-expressions" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="grep-and-regular-expressions"><span class="header-section-number">9.3</span> grep and regular expressions</h2>
 <p>The<code>grep</code> (<strong>g</strong>lobal <strong>r</strong>egular <strong>e</strong>xpression) command in Linux is used to search for specific patterns or strings within files and display the matching lines. It is a powerful tool for text processing and can be customized with various options to refine search results. The basic usage is: <strong><em>grep “searchword” filename</em></strong></p>
-<pre><code># Let's say you wished to identify every line which contain the string "Papilionidae" from the butterfly_ecology.csv
-grep 'Papilionidae' butterfly_ecology.csv
-# We can find the number of lines that matches the given string/pattern instead
-grep -c 'Papilionidae' butterfly_ecology.csv
-# Use -f  option to read patterns from a file
-cat &gt; family.txt
-Papilionidae
-Hesperiidae
-# exit by pressing Ctrl + D
-grep -f family.txt butterfly_ecology.csv
-# We can search for patterns in multiple files (e.g. all the files in the directory)
-grep 'Papilionidae' *</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's say you wished to identify every line which contain the string "Papilionidae" from the butterfly_ecology.csv</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">'Papilionidae'</span> butterfly_ecology.csv</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We can find the number of lines that matches the given string/pattern instead</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">'Papilionidae'</span> butterfly_ecology.csv</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Use -f  option to read patterns from a file</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> family.txt</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Papilionidae</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Hesperiidae</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># exit by pressing Ctrl + D</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-f</span> family.txt butterfly_ecology.csv</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># We can search for patterns in multiple files (e.g. all the files in the directory)</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">'Papilionidae'</span> <span class="pp">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>grep</code> command is particularly powerful when used in combination with Regular Expressions. A regular expression (regex) in Linux is a sequence of characters that defines a search pattern, similar to the wildcards, and are commonly used for searching and manipulating text.</p>
 <p><strong>Exercises</strong></p>
 <ul>
@@ -325,27 +360,27 @@ grep 'Papilionidae' *</code></pre>
 <section id="awk" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="awk"><span class="header-section-number">9.4</span> awk</h2>
 <p><code>awk</code> is the Unix command to work with tabular data. The basic awk syntax is: awk [options] ‘pattern {action}’ input-file &gt; output-file</p>
-<pre><code>awk  -F ',' '{print $0}' butterfly_ecology.csv
-
-awk -F ',' '$3 &gt; 1000 &amp;&amp; $3 != "NA" {print $0}' butterfly_ecology.csv
-
-awk -F ',' '$3 &gt; 1000 &amp;&amp; $3 != "NA" {print $1, $3}' butterfly_ecology.csv
-
-awk -F ',' '{if($3 &gt; 1000 &amp;&amp; $3 != "NA") {print $1":::"$3}}' butterfly_ecology.csv</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span>  <span class="at">-F</span> <span class="st">','</span> <span class="st">'{print $0}'</span> butterfly_ecology.csv</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span> <span class="st">','</span> <span class="st">'$3 &gt; 1000 &amp;&amp; $3 != "NA" {print $0}'</span> butterfly_ecology.csv</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span> <span class="st">','</span> <span class="st">'$3 &gt; 1000 &amp;&amp; $3 != "NA" {print $1, $3}'</span> butterfly_ecology.csv</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span> <span class="st">','</span> <span class="st">'{if($3 &gt; 1000 &amp;&amp; $3 != "NA") {print $1":::"$3}}'</span> butterfly_ecology.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>A more complex example</strong></p>
 <p>Using only command line try calculate the average range.size for each family separately and store this information in a new file.</p>
-<pre><code>grep -v "^species" butterfly_ecology.csv | \
-awk -F ',' '
-$3 != "NA" {
-  sum[$2] += $3
-  count[$2]++
-}
-END {
-  for (family in sum) {
-    print family, sum[family] / count[family]
-  }
-}
-' OFS=',' &gt; average_range_by_family.csv</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">"^species"</span> butterfly_ecology.csv <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span> <span class="st">','</span> <span class="st">'</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">$3 != "NA" {</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">  sum[$2] += $3</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="st">  count[$2]++</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="st">END {</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">  for (family in sum) {</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="st">    print family, sum[family] / count[family]</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="st">'</span> OFS=<span class="st">','</span> <span class="op">&gt;</span> average_range_by_family.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
