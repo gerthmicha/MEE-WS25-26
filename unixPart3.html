@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>References – Methods in evolutionary ecology WS25/26</title>
+<title>9&nbsp; Part 3. Redirection, Pipes, and Text Processing in Unix – Methods in evolutionary ecology WS25/26</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,7 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./unixPart3.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./unixPart2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -101,7 +83,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unixIntro.html">UNIX</a></li><li class="breadcrumb-item"><a href="./unixPart3.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Part 3. Redirection, Pipes, and Text Processing in Unix</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -206,7 +188,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unixPart3.html" class="sidebar-item-text sidebar-link">
+  <a href="./unixPart3.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Part 3. Redirection, Pipes, and Text Processing in Unix</span></span></a>
   </div>
 </li>
@@ -222,7 +204,7 @@ div.csl-indent {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -231,15 +213,24 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#redirecting-and-piping" id="toc-redirecting-and-piping" class="nav-link active" data-scroll-target="#redirecting-and-piping"><span class="header-section-number">9.1</span> Redirecting and piping</a></li>
+  <li><a href="#cut-sort-and-uniq" id="toc-cut-sort-and-uniq" class="nav-link" data-scroll-target="#cut-sort-and-uniq"><span class="header-section-number">9.2</span> cut, sort, and uniq</a></li>
+  <li><a href="#grep-and-regular-expressions" id="toc-grep-and-regular-expressions" class="nav-link" data-scroll-target="#grep-and-regular-expressions"><span class="header-section-number">9.3</span> grep and regular expressions</a></li>
+  <li><a href="#awk" id="toc-awk" class="nav-link" data-scroll-target="#awk"><span class="header-section-number">9.4</span> awk</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unixIntro.html">UNIX</a></li><li class="breadcrumb-item"><a href="./unixPart3.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Part 3. Redirection, Pipes, and Text Processing in Unix</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Part 3. Redirection, Pipes, and Text Processing in Unix</span></h1>
 </div>
 
 
@@ -256,11 +247,108 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" role="list" style="display: none">
-
+<section id="redirecting-and-piping" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="redirecting-and-piping"><span class="header-section-number">9.1</span> Redirecting and piping</h2>
+<p>Redirection and piping are fundamental features of the UNIX command line that allow us to create powerful workflows for automating tasks. By default, when we run a command, its output is printed to the screen (the terminal). In many situations, however, we may want to save this output to a file or pass it directly to another command.</p>
+<p>We have already seen how a command output can be redirected to a file. For example: <code>cat file1 file2 &gt; combined_file</code>. In this command, the redirection operator <code>&gt;</code> tells the shell to send the output of <code>cat</code> to a new file called combined_file instead of displaying it on the screen. Let look at another example.</p>
+<pre><code># list the files in the /etc directory and save the output to a file called etc_content.txt.
+ls /etc &gt; etc_content.txt
+less etc_content.txt</code></pre>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span><strong>WARNING!!</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It’s important to remember that the <code>&gt;</code> operator will overwrite a file if it already exists. If you want to append an output to an existing file, rather than overwrite it, you can use instead <code>&gt;&gt;</code>.</p>
+<ul>
+<li>Try it out yourself!</li>
+</ul>
+</div>
+</div>
+<p>While redirection allows us to save a command’s output to a file, UNIX also allows us to connect commands directly to one another. We can send the output of one command directly as input to another using the pipe (|) operator.</p>
+<pre><code>#list only the first 10 files of the /etc directory
+ls /etc | head -n 10</code></pre>
+<p><strong>Exercise</strong></p>
+<ul>
+<li>Using the pipe operator, find a way to count all contents (files and directories) in the /etc directory.</li>
+</ul>
+</section>
+<section id="cut-sort-and-uniq" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="cut-sort-and-uniq"><span class="header-section-number">9.2</span> cut, sort, and uniq</h2>
+<p>The <code>cut</code> command is used for extracting specific sections from lines of text in a file or piped data. It’s a great tools for or data manipulation. Lets try some examples:</p>
+<pre><code># Selecting fields separated by a delimiter
+echo "name,age,city,country" | cut -d ',' -f 3
+# lets manipulate some real data
+cat butterfly_ecology.csv | cut -d ',' -f 1,2 | head
+# you can even change the delimiter in the output
+cat butterfly_ecology.csv | cut -d ',' -f 1,2  --output-delimiter $'\t' | head
+# or
+cat butterfly_ecology.csv | cut -d ',' -f 1,2,5-7  --output-delimiter $'\t' | head</code></pre>
+<p>The <code>sort</code> command is used to arrange the lines of text files in a specified order, such as alphabetically or numerically. It can also handle options for sorting in reverse order or by specific columns. NOTE: <code>sort</code> command will not modify your file, it will only print the reordered content on the terminal! However, you can specify redirect the output to a separate file.</p>
+<pre><code>cat butterfly_ecology.csv | cut -d ',' -f 1-3 | sort
+cat butterfly_ecology.csv | cut -d ',' -f 1-3 | sort -t ',' -k3 | less</code></pre>
+<p>The <code>uniq</code> command in Linux is used to filter out repeated lines from a text file or standard input, displaying only unique entries or counting repetitions. It works best when the input is sorted, as it only removes adjacent duplicate lines.</p>
+<pre><code># families are represented in the butterfly_ecology.csv data?
+cat butterfly_ecology.csv | cut -d ',' -f 2 | sort | uniq</code></pre>
+<p><strong>Exercise</strong></p>
+<ul>
+<li>Can you use <code>cut</code>, <code>sort</code> and <code>uniq</code> commands to count the number of species per family species per family?</li>
+</ul>
+</section>
+<section id="grep-and-regular-expressions" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="grep-and-regular-expressions"><span class="header-section-number">9.3</span> grep and regular expressions</h2>
+<p>The<code>grep</code> (<strong>g</strong>lobal <strong>r</strong>egular <strong>e</strong>xpression) command in Linux is used to search for specific patterns or strings within files and display the matching lines. It is a powerful tool for text processing and can be customized with various options to refine search results. The basic usage is: <strong><em>grep “searchword” filename</em></strong></p>
+<pre><code># Let's say you wished to identify every line which contain the string "Papilionidae" from the butterfly_ecology.csv
+grep 'Papilionidae' butterfly_ecology.csv
+# We can find the number of lines that matches the given string/pattern instead
+grep -c 'Papilionidae' butterfly_ecology.csv
+# Use -f  option to read patterns from a file
+cat &gt; family.txt
+Papilionidae
+Hesperiidae
+# exit by pressing Ctrl + D
+grep -f family.txt butterfly_ecology.csv
+# We can search for patterns in multiple files (e.g. all the files in the directory)
+grep 'Papilionidae' *</code></pre>
+<p><code>grep</code> command is particularly powerful when used in combination with Regular Expressions. A regular expression (regex) in Linux is a sequence of characters that defines a search pattern, similar to the wildcards, and are commonly used for searching and manipulating text.</p>
+<p><strong>Exercises</strong></p>
+<ul>
+<li><p>In the butterfly_ecology.csv file find all “Aglais” species and save the fields species, family, range.size in a new file.</p></li>
+<li><p>The shell keeps a record of the commands you have previously run. You can display this list using the <code>history</code> command. Using this information, determine how many times you have used the ls command in your shell history. Hint: You may need to combine <code>history</code> with other command-line tools such as <code>grep</code>.</p></li>
+</ul>
+</section>
+<section id="awk" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="awk"><span class="header-section-number">9.4</span> awk</h2>
+<p><code>awk</code> is the Unix command to work with tabular data. The basic awk syntax is: awk [options] ‘pattern {action}’ input-file &gt; output-file</p>
+<pre><code>awk  -F ',' '{print $0}' butterfly_ecology.csv
+
+awk -F ',' '$3 &gt; 1000 &amp;&amp; $3 != "NA" {print $0}' butterfly_ecology.csv
+
+awk -F ',' '$3 &gt; 1000 &amp;&amp; $3 != "NA" {print $1, $3}' butterfly_ecology.csv
+
+awk -F ',' '{if($3 &gt; 1000 &amp;&amp; $3 != "NA") {print $1":::"$3}}' butterfly_ecology.csv</code></pre>
+<p><strong>A more complex example</strong></p>
+<p>Using only command line try calculate the average range.size for each family separately and store this information in a new file.</p>
+<pre><code>grep -v "^species" butterfly_ecology.csv | \
+awk -F ',' '
+$3 != "NA" {
+  sum[$2] += $3
+  count[$2]++
+}
+END {
+  for (family in sum) {
+    print family, sum[family] / count[family]
+  }
+}
+' OFS=',' &gt; average_range_by_family.csv</code></pre>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -665,11 +753,14 @@ div.csl-indent {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./unixPart3.html" class="pagination-link" aria-label="Part 3. Redirection, Pipes, and Text Processing in Unix">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Part 3. Redirection, Pipes, and Text Processing in Unix</span></span>
+      <a href="./unixPart2.html" class="pagination-link" aria-label="Part 2. Working with Files and Directories">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Part 2. Working with Files and Directories</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
