@@ -1,0 +1,130 @@
+# Part 3. Redirection, Pipes, and Text Processing in Unix
+
+## Redirecting and piping
+
+Redirection and piping are fundamental features of the UNIX command line that allow us to create powerful workflows for automating tasks. By default, when we run a command, its output is printed to the screen (the terminal). In many situations, however, we may want to save this output to a file or pass it directly to another command.
+
+We have already seen how a command output can be redirected to a file. For example: `cat file1 file2 > combined_file`. In this command, the redirection operator `>` tells the shell to send the output of `cat` to a new file called combined_file instead of displaying it on the screen. Let look at another example.
+
+```
+# list the files in the /etc directory and save the output to a file called etc_content.txt.
+ls /etc > etc_content.txt
+less etc_content.txt
+```
+
+::: callout-warning
+## **WARNING!!**
+
+It’s important to remember that the `>` operator will overwrite a file if it already exists. If you want to append an output to an existing file, rather than overwrite it, you can use instead `>>`.
+
+-   Try it out yourself!
+:::
+
+While redirection allows us to save a command's output to a file, UNIX also allows us to connect commands directly to one another. We can send the output of one command directly as input to another using the pipe (\|) operator.
+
+```         
+#list only the first 10 files of the /etc directory
+ls /etc | head -n 10
+```
+
+**Exercise**
+
+-   Using the pipe operator, find a way to count all contents (files and directories) in the /etc directory.
+
+## cut, sort, and uniq
+
+The `cut` command is used for extracting specific sections from lines of text in a file or piped data. It's a great tools for or data manipulation. Lets try some examples:
+
+```
+# Selecting fields separated by a delimiter
+echo "name,age,city,country" | cut -d ',' -f 3
+# lets manipulate some real data
+cat butterfly_ecology.csv | cut -d ',' -f 1,2 | head
+# you can even change the delimiter in the output
+cat butterfly_ecology.csv | cut -d ',' -f 1,2  --output-delimiter $'\t' | head
+# or
+cat butterfly_ecology.csv | cut -d ',' -f 1,2,5-7  --output-delimiter $'\t' | head
+```
+
+The `sort` command is used to arrange the lines of text files in a specified order, such as alphabetically or numerically. It can also handle options for sorting in reverse order or by specific columns. NOTE: `sort` command will not modify your file, it will only print the reordered content on the terminal! However, you can specify redirect the output to a separate file.
+
+```
+cat butterfly_ecology.csv | cut -d ',' -f 1-3 | sort
+cat butterfly_ecology.csv | cut -d ',' -f 1-3 | sort -t ',' -k3 | less
+```
+
+The `uniq` command in Linux is used to filter out repeated lines from a text file or standard input, displaying only unique entries or counting repetitions. It works best when the input is sorted, as it only removes adjacent duplicate lines.
+
+```
+# families are represented in the butterfly_ecology.csv data?
+cat butterfly_ecology.csv | cut -d ',' -f 2 | sort | uniq
+```
+
+**Exercise**
+
+-   Can you use `cut`, `sort` and `uniq` commands to count the number of species per family species per family?
+
+## grep and regular expressions
+
+The`grep` (**g**lobal **r**egular **e**xpression) command in Linux is used to search for specific patterns or strings within files and display the matching lines. It is a powerful tool for text processing and can be customized with various options to refine search results. The basic usage is: ***grep “searchword” filename***
+
+```
+# Let's say you wished to identify every line which contain the string "Papilionidae" from the butterfly_ecology.csv
+grep 'Papilionidae' butterfly_ecology.csv
+# We can find the number of lines that matches the given string/pattern instead
+grep -c 'Papilionidae' butterfly_ecology.csv
+# Use -f  option to read patterns from a file
+cat > family.txt
+Papilionidae
+Hesperiidae
+# exit by pressing Ctrl + D
+grep -f family.txt butterfly_ecology.csv
+# We can search for patterns in multiple files (e.g. all the files in the directory)
+grep 'Papilionidae' *
+```
+
+`grep` command is particularly powerful when used in combination with Regular Expressions. A regular expression (regex) in Linux is a sequence of characters that defines a search pattern, similar to the wildcards, and are commonly used for searching and manipulating text.
+
+
+
+**Exercises**
+
+-   In the butterfly_ecology.csv file find all "Aglais" species and save the fields species, family, range.size in a new file.
+
+-   The shell keeps a record of the commands you have previously run. You can display this list using the `history` command. Using this information, determine how many times you have used the ls command in your shell history. Hint: You may need to combine `history` with other command-line tools such as `grep`.
+
+## awk
+
+`awk` is the Unix command to work with tabular data.
+The basic awk syntax is: awk [options] 'pattern {action}' input-file > output-file
+
+```
+awk  -F ',' '{print $0}' butterfly_ecology.csv
+
+awk -F ',' '$3 > 1000 && $3 != "NA" {print $0}' butterfly_ecology.csv
+
+awk -F ',' '$3 > 1000 && $3 != "NA" {print $1, $3}' butterfly_ecology.csv
+
+awk -F ',' '{if($3 > 1000 && $3 != "NA") {print $1":::"$3}}' butterfly_ecology.csv
+```
+
+
+**A more complex example**
+
+Using only command line try calculate the average range.size for each family separately and store this information in a new file.
+
+```
+grep -v "^species" butterfly_ecology.csv | \
+awk -F ',' '
+$3 != "NA" {
+  sum[$2] += $3
+  count[$2]++
+}
+END {
+  for (family in sum) {
+    print family, sum[family] / count[family]
+  }
+}
+' OFS=',' > average_range_by_family.csv
+```
+
