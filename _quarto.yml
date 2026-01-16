@@ -26,6 +26,7 @@ book:
         - unixIntro.qmd
         - unixPart1.qmd
         - unixPart2.qmd
+        - unixPart3.qmd
     - part: "Phylogenetics" 
     - part: "Microbiome"
     - references.qmd
