@@ -189,6 +189,19 @@ mat3[c("Class", "Species"), ]
 
 a) create a matrix using with 20 rows & 5 columns, using 100 randomly generated numbers  between 0 and 1000.
 
+```{r}
+
+
+random_numbers <- runif(100, 0, 1000)
+
+
+matrix(data = runif(100, 0, 1000), nrow = 20)
+
+
+
+```
+
+
 b) replace all values in the 3rd column of this matrix that are larger than 500 with `NA`.
 
 ::: callout-tip
@@ -231,7 +244,24 @@ df1[df1$dbh > 15, ]
 
 a) Using `df1`, select only entries corresponding to ash and maple with an age over 50 and a diameter less than 30.
 
+
+
 b) Add a new column to the dataframe called "year". Generate data for this column so that there are 10 different years and the same number of entries for each tree species per year. 
+
+```{r}
+
+df1
+
+year <- rep(2015:2024, 20)
+
+df1[,4] <- year
+
+colnames(df1)[4] <- "year"
+
+
+df1
+```
+
 
 ::: callout-tip
 ## Tip

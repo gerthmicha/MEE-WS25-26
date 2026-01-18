@@ -39,7 +39,7 @@ log10(100)  # logarithm to base 10
 In order to "save" a value for use later on, you have to assign it to a variable! `<-` is the assignment operator you need to use for this (handy shortcut in RStudio is `ALT` + `-`).
 
 ```{r}
-x <- 3 + 4
+x <- 3 + 4 
 ```
 
 Calling the variable will then print the result to the R console, and can be used in other calculations.
@@ -54,7 +54,6 @@ You can call your variables whatever you want, but be careful: `R` will overwrit
 
 ```{r}
 my_favourite_variable <- 100
-my_favourite_variable <- 50
 my_favourite_variable
 ```
 
@@ -69,7 +68,7 @@ You need to be familiar with at least three important data types in `R`: `logica
 `logical` simply means true or false. `R` also understands the abbreviations T and F. To determine which types you data is in, you can use `mode` or `class`.
 
 ```{r}
-var1 <- TRUE 
+var1 <- FALSE 
 mode(var1)
 ```
 
@@ -112,12 +111,34 @@ class(var6)
  
 a)  Sum the values of 1 to 5
 
+```{r}
+sum(1:5)
+
+1 + 2 + 3 + 4 + 5
+```
+
+
 b)  Create a variable v1 and assign it a character value
+
+```{r}
+v1 <- "text"
+```
+
 
 c)  Copy variable v1 to v2
 
+```{r}
+v2 <- v1
+```
+
+
+
 d)  Compare the value of v1 against v2
 
+```{r}
+v1 == v2
+identical(v1, v2)
+```
 
 
 ::: callout-tip

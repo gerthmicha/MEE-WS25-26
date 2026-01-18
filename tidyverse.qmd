@@ -92,7 +92,7 @@ The "pipe" `%>%` (keyboard shortcut: `Ctrl+Shift+M`) simply passes the result of
 filter(be, OWS_egg == 1)
 
 # same command, this time using the pipe
-be %>% 
+be %>%  
   filter(OWS_egg == 1)
 ```
 
@@ -167,9 +167,34 @@ be %>%
 
 ## Exercise
 
-a) From our dataset, filter out all butterflies with average wingspans larger than 60mm and smaller than 30mm. Only keep the species that have a conservation classification on the EU level. Only keep the species names and all variables associated with adult feeding, and store this in a new data frame. How many rows and columns does the new data frame have?
+a) From our dataset, remove all butterflies with average wingspans larger than 60mm and smaller than 30mm. Only keep the species that have a conservation classification on the EU level. Only keep the species names and all variables associated with adult feeding, and store this in a new data frame. How many rows and columns does the new data frame have?
+
+```{r}
+new_be <- be %>% 
+  filter(WSP_Female_average < 60) %>% # filter1 
+  filter(WSP_Female_average > 30) %>% 
+  drop_na(conserv.eu) %>% 
+  select(species, starts_with("AFB")) 
+
+new_be
+
+```
+
 
 b) Re-calculate the generation range from the provided minima and maxima. Check if your calculations match the original range values given in the data. 
+
+```{r}
+be %>% 
+  mutate(GEN_Range2 = GEN_Max - GEN_Min) %>% 
+  select(species, GEN_Max, GEN_Min, GEN_Range2, GEN_Range) %>% 
+  mutate(GEN_compare = GEN_Range2 - GEN_Range) %>% 
+  identical(GEN_Range2, GEN_Range)
+  
+  mutate(genidentical = GEN_Range2 == GEN_Range) %>% 
+  filter(genidentical == FALSE)
+  
+```
+
 
 
 ## `group_by()` and `summarise()` as powerful data exploration tools
@@ -197,6 +222,10 @@ be %>%
             sd = sd(WSP_Female_average),
             group_size=n())
 
+be %>% 
+  mutate(alt_bins = case_when(ALT_Min > 500 ~ "high",
+                              ALT_Min <= 500 ~ "low"))
+
 ```
 
 ## More exercises
@@ -205,10 +234,55 @@ Using `dplyr` functions, determine
 
 a) If butterflies overwintering as pupae have higher level of legal protection
 
-b) If butterflies occuring at higher altitudes on average have a higher level of protection 
+```{r}
+be %>% 
+  drop_na() %>% 
+  group_by(OWS_pupae) %>% 
+  summarise(mean_conserve = mean(conserv.eu))
+```
+
+
+
+
+b) If butterflies occurring at higher altitudes on average have a higher level of protection 
+
+```{r}
+be %>% 
+  drop_na() %>% 
+  mutate(ALT_cat = case_when(ALT_Min < 200 ~ "niedrig",
+                            ALT_Min > 1000 ~ "hoch",
+                            ALT_Min <= 1000 & ALT_Min >= 200 ~ "mittel" )) %>% 
+  group_by(ALT_cat) %>% 
+  summarise(mean_conserv = mean(conserv.eu))
+
+be %>% 
+  drop_na() %>% 
+  group_by(conserv.eu) %>% 
+  summarise(mean_ALT = mean(ALT_Min))
+
+```
+
+
 
 c) If feeding on honeydew is more common in larger butterflies. 
 
+```{r}
+be %>% 
+  drop_na() %>% 
+  group_by(AFB_honeydew) %>% 
+  summarise(size = mean(WSP_Female_average))
+```
+
+
+
 d) How many butterfly species are there per family?
+
+```{r}
+be %>% 
+  drop_na() %>% 
+  group_by(family) %>% 
+  tally()
+```
+
 
 For a–c also determine how many species belong to each group.

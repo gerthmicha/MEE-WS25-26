@@ -176,3 +176,10 @@ Try to find appropriate plot types for this, use the help pages to find plot typ
 Explore other variables that may explain some trends in the data. Find a theme that you like!
 Remember, start with the **data**, add **aesthetics (what do you want to plot)**, and then think about **geometric objects (how do you want to plot the data)**. How can colour help in your visualisations? Does faceting make sense?
 
+```{r}
+be %>% 
+  mutate(OWS_egg = as.factor(OWS_egg)) %>% 
+  ggplot(aes(x = conserv.europe, group = OWS_egg, fill = OWS_egg)) +
+  geom_bar(position = position_dodge()) 
+```
+
