@@ -45,7 +45,7 @@ format:
     documentclass: scrreprt
     df-print: kable
     execute:
-      eval: 1-10
+      eval: false
     
 editor: visual
 
