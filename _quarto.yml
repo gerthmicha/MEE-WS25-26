@@ -39,7 +39,9 @@ format:
     df-print: paged
   pdf:
     documentclass: scrreprt
-    df-print: paged
+    df-print: kable
+    execute:
+      eval: 1-10
     
 editor: visual
 

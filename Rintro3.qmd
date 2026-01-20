@@ -6,7 +6,7 @@ Usually when working in `R`, you want to look at your own data, and not generate
 
 
 ```{r, eval = FALSE}
-setwd("/home/of22haqi/Documents/TEACHING/MEE-WS25-26/")
+setwd("/home/of22haqi/Documents/TEACHING/MEE-WS25-26/data/")
 ```
 
 The path will look different on your machine of course. 
