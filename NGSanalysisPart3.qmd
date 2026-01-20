@@ -89,7 +89,7 @@ The demultiplexed reads can be found in the directory `\~/ONT_metabarcoding/data
 
 Inspect the demultiplexed files. How many reads are there per sample? What is the average read size? Why we removed the primers?
 
-```{bash, eval = false}
+``` bash
 seqkit stats ./16S/full/*.fastq
 
 # Or you can save the summary in a file
