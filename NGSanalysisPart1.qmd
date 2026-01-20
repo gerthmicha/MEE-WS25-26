@@ -1,0 +1,84 @@
+# Part 1. Installing Bioinformating tools and the Conda Package Manager
+
+Analysis of Next-Generation Sequencing (NGS) data relies on specialized bioinformatics tools (e.g., FastQC, BWA, SAMtools).
+
+These tools are often developed by different people, in different programming languages, and with different software dependencies, and installing them is not always straightforward (or at least it used to be).
+
+## What is Conda and why is needed
+
+Conda is a cross-platform package/tool and environment managing system that runs on Windows, macOS, and Linux.
+
+It allows to:
+
+-   Install bioinformatics tools and not only - *No need to compile software from source, after all we all have other things to worry about!*
+
+-   Automatically resolve dependencies - *No need to worry about your missing library!*
+
+-   Create isolated software environments - *Less chances to mess up with the rest of the software or the system itself!*
+
+### Installing and setting-up a conda environment in your linux system
+
+Fo the purpose of this course we will use the [miniforge](https://github.com/conda-forge/miniforge) minimal installer. Use your terminal window (konsole) to download the miniforge installer by running the following command. Yes! you can use your terminal to download files from the web. For this we will use the UNIX command `wget`. Feel free to copy paste the command to avoid typos.
+
+``` bash
+wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+```
+
+and run the script like this:
+
+``` bash
+bash Miniforge3-$(uname)-$(uname -m).sh
+```
+
+Now follow the instructions and accept the license terms. When prompt confirm the installation location "/home/idiv/miniforge3".
+
+Reply **yes** to "*Proceed with initialaization?*"
+
+Congratulations! You have installed conda. But in order for the installation to take effect you should re-load (restart) your terminal or run the following command:
+
+``` bash
+source .bashrc
+```
+
+Run the following command to prevent the activation of the base conda environment on startup. This saves you from having problems later!
+
+``` bash
+conda config --set auto_activate_base false
+```
+
+Now it is time to configure some settings, such as adding the necessary channels. Software packages are stored in locations called channels. Most bioinformatics packages are available through the **bioconda** channel.
+
+``` bash
+conda config --add channels bioconda
+conda config --add channels conda-forge
+conda config --set channel_priority strict
+conda config --show channels
+```
+
+Create a conda environment for installing the necessary packages/tools. You can use **either** conda or mamba command. Mamba is a faster implementation of conda designed to improve the speed of package installation and environment management.
+
+For simplicity, we will create our conda environment using an environment.yaml file, which contains a list of the packages required for this course. You will need to download the environment.yaml file from STUDIP and place it in your home directory.
+
+``` bash
+# Create the environment and install required packages. It might take a few minutes!
+conda env create -f environment.yaml
+# Inspect the environment is there
+conda info -e
+# Activate the environment. You can deactivate the environment using the comand "conda deactivate"
+conda activate mlu2026
+```
+
+Alternatively, you can create an empty conda environment and then install the required packages/tools. You can search for bioconda packages [here](https://anaconda.org/bioconda/repo).
+
+``` bash
+# using mamba
+mamba create -n mlu2026 # This command will create an empty environment with the name "mlu2026". You can use any name for your environment, just avoid using the space character or any other special character!
+# similarly using conda
+conda create -n mlu2026
+# You can now activate your environment using one of the following commands.
+mamba activate mlu2026
+# or
+conda activate mlu2026
+```
+
+[Here](./_resources/conda-cheatsheet.pdf) you can find a conda-cheatsheet that you can use as a quick reference for managing your Conda environments.
