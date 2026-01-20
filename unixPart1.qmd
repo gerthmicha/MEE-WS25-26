@@ -1,4 +1,4 @@
-# Part 1. Your first Unix commands - Navigating the Unix File-System Structure
+# Your first Unix commands - Navigating the Unix File-System Structure
 
 > What will be cover:
 >
@@ -7,11 +7,11 @@
 > 3.  Relative vs absolute path
 > 4.  Running some basic commands and general syntax
 
-Unix systems, like most operating systems, store file locations in a hierarchical structure. In the UNIX file-system each file and directory has its own “address”, and that address is called a “**path**”.
+Unix systems, like most operating systems, store file locations in a hierarchical structure. In the UNIX file-system each file and directory has its own "address", and that address is called a "**path**".
 
-There are two special locations in all Unix-based systems That you should be familiar. The “**root**” location is where the address system of the computer starts. The “**home**” location is where the current user’s location starts.
+There are two special locations in all Unix-based systems That you should be familiar. The "**root**" location is where the address system of the computer starts. The "**home**" location is where the current user's location starts.
 
-By default every time you open a new terminal you start in your own “**home**” directory(containing files and directories that only you can modify). The path of home directory is usually represented by the "\~" character.
+By default every time you open a new terminal you start in your own "**home**" directory(containing files and directories that only you can modify). The path of home directory is usually represented by the "\~" character.
 
 ![image2.png](./_resources/image2.png)
 
@@ -28,7 +28,7 @@ By default every time you open a new terminal you start in your own “**home**�
 
 ## Finding out where you are
 
-The `pwd` command in Linux is short for ***p**rint* ***w**orking* ***d**irectory*. It’s only function is to print the absolute path of the current directory. It's handy when you’re not exactly sure what directory you’re in. So make it a good habit to get used to running the **`pwd`** command a lot.
+The `pwd` command in Linux is short for ***p**rint* ***w**orking* ***d**irectory*. It's only function is to print the absolute path of the current directory. It's handy when you're not exactly sure what directory you're in. So make it a good habit to get used to running the **`pwd`** command a lot.
 
 ``` bash
 # Example. Try running pwd. What do you see?
@@ -76,23 +76,23 @@ Most Unix commands can accept several parameters. How do we know which ones to u
 
 Try for example: `ls --help`
 
-Another way to access the documentation for a command is by using the `man` command and providing the command’s name as an argument. For example:
+Another way to access the documentation for a command is by using the `man` command and providing the command's name as an argument. For example:
 
 `man ls`
 :::
 
 ## Relative vs absolute path and getting help
 
-There are two ways to specify the path (the file’s address on the computer):
+There are two ways to specify the path (the file's address on the computer):
 
--   An **absolute path** starts from a fixed location, either the root directory (/) or the home directory (\~/). Note: A “full path” usually refers to an absolute path that starts from the root (/).
+-   An **absolute path** starts from a fixed location, either the root directory (/) or the home directory (\~/). Note: A "full path" usually refers to an absolute path that starts from the root (/).
 -   A **relative path** starts from your current directory.
 
-> When working at the command line, it’s important to always be aware of your current location in the system. One of the most common mistakes is trying to operate on a file that isn’t where you think it is. To avoid this, it’s good practice to use absolute paths, which clearly specify a file’s exact location regardless of where you are.
+> When working at the command line, it's important to always be aware of your current location in the system. One of the most common mistakes is trying to operate on a file that isn't where you think it is. To avoid this, it's good practice to use absolute paths, which clearly specify a file's exact location regardless of where you are.
 
 ## Moving around
 
-One of the most commonly used commands in Linux is the ***change directory*** command, or `cd`. It allows you to change your working directory from the current location to another directory you want to navigate to. The `cd` command takes a positional argument: the path (address) of the directory you want to move into. This path can be either **absolute** or **relative**. Let’s try moving from our current directory to a directory present in your home directory called *Documents*.
+One of the most commonly used commands in Linux is the ***change directory*** command, or `cd`. It allows you to change your working directory from the current location to another directory you want to navigate to. The `cd` command takes a positional argument: the path (address) of the directory you want to move into. This path can be either **absolute** or **relative**. Let's try moving from our current directory to a directory present in your home directory called *Documents*.
 
 ``` bash
 # The relative way

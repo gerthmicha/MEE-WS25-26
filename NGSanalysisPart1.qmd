@@ -1,4 +1,4 @@
-# Part 1. Installing Bioinformating tools and the Conda Package Manager
+# Installing bioinformatics tools and the conda package manager
 
 Analysis of Next-Generation Sequencing (NGS) data relies on specialized bioinformatics tools (e.g., FastQC, BWA, SAMtools).
 
