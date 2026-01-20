@@ -212,19 +212,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./unixPart1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part 1. Your first Unix commands - Navigating the Unix File-System Structure</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Your first Unix commands - Navigating the Unix File-System Structure</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./unixPart2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Part 2. Working with Files and Directories</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Working with Files and Directories</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./unixPart3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Part 3. Redirection, Pipes, and Text Processing in Unix</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Redirection, Pipes, and Text Processing in Unix</span></span></a>
   </div>
 </li>
       </ul>
@@ -241,13 +241,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NGSanalysisPart1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Part 1. Installing Bioinformating tools and the Conda Package Manager</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Installing bioinformatics tools and the conda package manager</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NGSanalysisPart2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Part 2. NGS data Quality Control</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">NGS data quality control</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -282,32 +282,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#prepare-the-materials-for-the-practical" id="toc-prepare-the-materials-for-the-practical" class="nav-link active" data-scroll-target="#prepare-the-materials-for-the-practical"><span class="header-section-number">12.1</span> Prepare the materials for the practical</a>
-  <ul class="collapse">
-  <li><a href="#download-the-materials-ont_metabarcoding.tar.gz-using-the-link-bellow." id="toc-download-the-materials-ont_metabarcoding.tar.gz-using-the-link-bellow." class="nav-link" data-scroll-target="#download-the-materials-ont_metabarcoding.tar.gz-using-the-link-bellow."><span class="header-section-number">12.1.1</span> Download the materials (ONT_metabarcoding.tar.gz) using the link bellow.</a></li>
-  <li><a href="#decompress-the-folder-with-the-material-using-the-command" id="toc-decompress-the-folder-with-the-material-using-the-command" class="nav-link" data-scroll-target="#decompress-the-folder-with-the-material-using-the-command"><span class="header-section-number">12.1.2</span> decompress the folder with the material using the command</a></li>
-  <li><a href="#navigate-to-the-follder-using-the-cd-command" id="toc-navigate-to-the-follder-using-the-cd-command" class="nav-link" data-scroll-target="#navigate-to-the-follder-using-the-cd-command"><span class="header-section-number">12.1.3</span> Navigate to the follder using the <code>cd</code> command</a></li>
-  </ul></li>
-  <li><a href="#quality-filtering-and-inspection.-before-beginning-any-analyses-is-a-good-practice-to-perform-a-qc-assessment-and-qualitylength-filtering-of-the-data." id="toc-quality-filtering-and-inspection.-before-beginning-any-analyses-is-a-good-practice-to-perform-a-qc-assessment-and-qualitylength-filtering-of-the-data." class="nav-link" data-scroll-target="#quality-filtering-and-inspection.-before-beginning-any-analyses-is-a-good-practice-to-perform-a-qc-assessment-and-qualitylength-filtering-of-the-data."><span class="header-section-number">12.2</span> Quality filtering and inspection. Before beginning any analyses is a good practice to perform a QC assessment and quality/length filtering of the data.</a>
-  <ul class="collapse">
-  <li><a href="#first-create-a-directory-for-the-filtered-reads" id="toc-first-create-a-directory-for-the-filtered-reads" class="nav-link" data-scroll-target="#first-create-a-directory-for-the-filtered-reads"><span class="header-section-number">12.2.1</span> First create a directory for the filtered reads</a></li>
-  <li><a href="#perform-quality-and-length-filtering-using-seqkit.-length-filtering-is-optional-as-it-will-also-be-performed-during-the-demultiplexing-step." id="toc-perform-quality-and-length-filtering-using-seqkit.-length-filtering-is-optional-as-it-will-also-be-performed-during-the-demultiplexing-step." class="nav-link" data-scroll-target="#perform-quality-and-length-filtering-using-seqkit.-length-filtering-is-optional-as-it-will-also-be-performed-during-the-demultiplexing-step."><span class="header-section-number">12.2.2</span> Perform quality and length filtering using SeqKit. (Length filtering is optional, as it will also be performed during the demultiplexing step.)</a></li>
-  <li><a href="#inspect-and-compare-the-reads-before-and-after-filtering.-how-many-reads-were-retained-what-is-the-average-read-length-how-do-the-quality-scores-look-mean-quality" id="toc-inspect-and-compare-the-reads-before-and-after-filtering.-how-many-reads-were-retained-what-is-the-average-read-length-how-do-the-quality-scores-look-mean-quality" class="nav-link" data-scroll-target="#inspect-and-compare-the-reads-before-and-after-filtering.-how-many-reads-were-retained-what-is-the-average-read-length-how-do-the-quality-scores-look-mean-quality"><span class="header-section-number">12.2.3</span> Inspect and compare the reads before and after filtering. How many reads were retained? What is the average read length? How do the quality scores look (mean quality)?</a></li>
-  </ul></li>
-  <li><a href="#now-we-are-ready-to-demultiplex-your-data-split-the-reads-by-sample.-to-do-this-we-need-some-demuliplexing-information-that-usually-comes-in-a-form-of-a-table-depending-on-the-specific-tool.-this-table-contains-information-on-the-sample-ids-the-primers-used-for-amplification-and-the-unique-dual-indices-used-for-each-sample.-we-will-use-the-tool-speimux-httpsgithub.comjoshuaowalkerspecimux." id="toc-now-we-are-ready-to-demultiplex-your-data-split-the-reads-by-sample.-to-do-this-we-need-some-demuliplexing-information-that-usually-comes-in-a-form-of-a-table-depending-on-the-specific-tool.-this-table-contains-information-on-the-sample-ids-the-primers-used-for-amplification-and-the-unique-dual-indices-used-for-each-sample.-we-will-use-the-tool-speimux-httpsgithub.comjoshuaowalkerspecimux." class="nav-link" data-scroll-target="#now-we-are-ready-to-demultiplex-your-data-split-the-reads-by-sample.-to-do-this-we-need-some-demuliplexing-information-that-usually-comes-in-a-form-of-a-table-depending-on-the-specific-tool.-this-table-contains-information-on-the-sample-ids-the-primers-used-for-amplification-and-the-unique-dual-indices-used-for-each-sample.-we-will-use-the-tool-speimux-httpsgithub.comjoshuaowalkerspecimux."><span class="header-section-number">12.3</span> Now we are ready to demultiplex your data (split the reads by sample). To do this we need some demuliplexing information that usually comes in a form of a table (depending on the specific tool). This table contains information on the sample IDs, the primers used for amplification and the unique dual indices used for each sample. We will use the tool speimux (https://github.com/joshuaowalker/specimux).</a></li>
-  <li><a href="#inspect-the-demultiplexing-files-in-the-directory." id="toc-inspect-the-demultiplexing-files-in-the-directory." class="nav-link" data-scroll-target="#inspect-the-demultiplexing-files-in-the-directory."><span class="header-section-number">12.4</span> Inspect the demultiplexing files in the directory.</a>
-  <ul class="collapse">
-  <li><a href="#run-specimux-command-for-demultiplexing-the-ont-reads." id="toc-run-specimux-command-for-demultiplexing-the-ont-reads." class="nav-link" data-scroll-target="#run-specimux-command-for-demultiplexing-the-ont-reads."><span class="header-section-number">12.4.1</span> Run specimux command for demultiplexing the ONT reads.</a></li>
-  <li><a href="#inspect-the-demultiplexed-files.-how-many-reads-per-sample-what-is-the-average-read-size-why-we-removed-the-primers" id="toc-inspect-the-demultiplexed-files.-how-many-reads-per-sample-what-is-the-average-read-size-why-we-removed-the-primers" class="nav-link" data-scroll-target="#inspect-the-demultiplexed-files.-how-many-reads-per-sample-what-is-the-average-read-size-why-we-removed-the-primers"><span class="header-section-number">12.4.2</span> Inspect the demultiplexed files. How many reads per sample? What is the average read size? Why we removed the primers?</a></li>
-  </ul></li>
-  <li><a href="#the-next-goal-is-to-generate-taxonomic-abundance-profiles-from-our-demultiplexed-ont-data.-this-can-be-done-using-two-different-methodologies-depending-on-the-approach-used-for-taxonomic-assignment.-the-first-methodology-assigns-taxonomy-directly-to-the-individual-reads-while-the-second-performs-clustering-of-the-reads-and-builds-consensus-sequences-before-proceeding-with-taxonomic-assignment." id="toc-the-next-goal-is-to-generate-taxonomic-abundance-profiles-from-our-demultiplexed-ont-data.-this-can-be-done-using-two-different-methodologies-depending-on-the-approach-used-for-taxonomic-assignment.-the-first-methodology-assigns-taxonomy-directly-to-the-individual-reads-while-the-second-performs-clustering-of-the-reads-and-builds-consensus-sequences-before-proceeding-with-taxonomic-assignment." class="nav-link" data-scroll-target="#the-next-goal-is-to-generate-taxonomic-abundance-profiles-from-our-demultiplexed-ont-data.-this-can-be-done-using-two-different-methodologies-depending-on-the-approach-used-for-taxonomic-assignment.-the-first-methodology-assigns-taxonomy-directly-to-the-individual-reads-while-the-second-performs-clustering-of-the-reads-and-builds-consensus-sequences-before-proceeding-with-taxonomic-assignment."><span class="header-section-number">12.5</span> The next goal is to generate taxonomic abundance profiles from our demultiplexed ONT data. This can be done using two different methodologies depending on the approach used for taxonomic assignment. The first methodology assigns taxonomy directly to the individual reads while the second performs clustering of the reads and builds consensus sequences before proceeding with taxonomic assignment.</a>
-  <ul class="collapse">
-  <li><a href="#create-a-directory-for-the-results" id="toc-create-a-directory-for-the-results" class="nav-link" data-scroll-target="#create-a-directory-for-the-results"><span class="header-section-number">12.5.1</span> Create a directory for the results</a></li>
-  <li><a href="#assign-taxonomy-and-calculate-relative-abundances-using-the-emu-abundance-command." id="toc-assign-taxonomy-and-calculate-relative-abundances-using-the-emu-abundance-command." class="nav-link" data-scroll-target="#assign-taxonomy-and-calculate-relative-abundances-using-the-emu-abundance-command."><span class="header-section-number">12.5.2</span> Assign taxonomy and calculate relative abundances using the emu abundance command.</a></li>
-  <li><a href="#move-the-full-abundance-reports-in-a-separate-directory." id="toc-move-the-full-abundance-reports-in-a-separate-directory." class="nav-link" data-scroll-target="#move-the-full-abundance-reports-in-a-separate-directory."><span class="header-section-number">12.5.3</span> Move the full abundance reports in a separate directory.</a></li>
-  <li><a href="#combine-the-outputs-to-create-a-single-table-containing-all-the-emu-output-relative-abundances-using-the-combine-outputs-function-at-the-desired-taxonomic-rank-e.g.-genus-or-species.-accepted-ranks-species-genus-family-order-class-phylum-superkingdom.-note-this-function-will-select-all-the-.tsv-files-in-the-provided-directory-that-contain-rel-abundance-in-the-filename." id="toc-combine-the-outputs-to-create-a-single-table-containing-all-the-emu-output-relative-abundances-using-the-combine-outputs-function-at-the-desired-taxonomic-rank-e.g.-genus-or-species.-accepted-ranks-species-genus-family-order-class-phylum-superkingdom.-note-this-function-will-select-all-the-.tsv-files-in-the-provided-directory-that-contain-rel-abundance-in-the-filename." class="nav-link" data-scroll-target="#combine-the-outputs-to-create-a-single-table-containing-all-the-emu-output-relative-abundances-using-the-combine-outputs-function-at-the-desired-taxonomic-rank-e.g.-genus-or-species.-accepted-ranks-species-genus-family-order-class-phylum-superkingdom.-note-this-function-will-select-all-the-.tsv-files-in-the-provided-directory-that-contain-rel-abundance-in-the-filename."><span class="header-section-number">12.5.4</span> Combine the outputs to create a single table containing all the emu output relative abundances using the combine-outputs function at the desired taxonomic rank (e.g.&nbsp;genus or species). Accepted ranks: [‘species’, ‘genus’, ‘family’, ‘order’, ‘class’, ‘phylum’, ‘superkingdom’]. Note this function will select all the .tsv files in the provided directory that contain ‘rel-abundance’ in the filename.</a></li>
-  <li><a href="#now-we-are-ready-to-use-the-combined-abundance-tables-for-downstream-diversity-analysis-and-plotting-in-r-using-the-phyloseq-package.-follow-the-instructions-in-the-emu-r-analysis.r-file." id="toc-now-we-are-ready-to-use-the-combined-abundance-tables-for-downstream-diversity-analysis-and-plotting-in-r-using-the-phyloseq-package.-follow-the-instructions-in-the-emu-r-analysis.r-file." class="nav-link" data-scroll-target="#now-we-are-ready-to-use-the-combined-abundance-tables-for-downstream-diversity-analysis-and-plotting-in-r-using-the-phyloseq-package.-follow-the-instructions-in-the-emu-r-analysis.r-file."><span class="header-section-number">12.5.5</span> Now we are ready to use the combined abundance table(s) for downstream diversity analysis and plotting in R using the phyloseq package. Follow the instructions in the emu-R-analysis.R file.</a></li>
-  </ul></li>
+  <li><a href="#prepare-the-materials-for-the-practical" id="toc-prepare-the-materials-for-the-practical" class="nav-link active" data-scroll-target="#prepare-the-materials-for-the-practical"><span class="header-section-number">12.1</span> Prepare the materials for the practical</a></li>
+  <li><a href="#quality-filtering-and-inspection." id="toc-quality-filtering-and-inspection." class="nav-link" data-scroll-target="#quality-filtering-and-inspection."><span class="header-section-number">12.2</span> Quality filtering and inspection.</a></li>
+  <li><a href="#demultiplexing" id="toc-demultiplexing" class="nav-link" data-scroll-target="#demultiplexing"><span class="header-section-number">12.3</span> Demultiplexing</a></li>
+  <li><a href="#taxonomic-profiling" id="toc-taxonomic-profiling" class="nav-link" data-scroll-target="#taxonomic-profiling"><span class="header-section-number">12.4</span> Taxonomic profiling</a></li>
   </ul>
 </nav>
     </div>
@@ -336,46 +314,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This tutorial provides hands-on experience with a typical metabarcoding workflow for analyzing microbial communities using full-length 16S rRNA ONT sequencing. We will begin with pre-basecalled data, and after performing initial quality control and demultiplexing of the reads, we will assign taxonomy directly to the reads and generate taxon abundance tables for subsequent diversity analysis. The dataset originates from 16S rRNA amplicon sequencing of multiple samples from two tick species: Dermacentor marginatus and Dermacentor reticulatus.</p>
 <section id="prepare-the-materials-for-the-practical" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="prepare-the-materials-for-the-practical"><span class="header-section-number">12.1</span> Prepare the materials for the practical</h2>
-<section id="download-the-materials-ont_metabarcoding.tar.gz-using-the-link-bellow." class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="download-the-materials-ont_metabarcoding.tar.gz-using-the-link-bellow."><span class="header-section-number">12.1.1</span> Download the materials (ONT_metabarcoding.tar.gz) using the link bellow.</h3>
+<p>Download the materials (ONT_metabarcoding.tar.gz) using the link below.</p>
 <p><a href="https://cloud.idiv.de/index.php/s/w6C6rRnA58EXGre">link</a></p>
-</section>
-<section id="decompress-the-folder-with-the-material-using-the-command" class="level3" data-number="12.1.2">
-<h3 data-number="12.1.2" class="anchored" data-anchor-id="decompress-the-folder-with-the-material-using-the-command"><span class="header-section-number">12.1.2</span> decompress the folder with the material using the command</h3>
+<p>Ddecompress the folder with the material using the command</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xvzf</span> ONT_metabarcoding.tar.gz  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="navigate-to-the-follder-using-the-cd-command" class="level3" data-number="12.1.3">
-<h3 data-number="12.1.3" class="anchored" data-anchor-id="navigate-to-the-follder-using-the-cd-command"><span class="header-section-number">12.1.3</span> Navigate to the follder using the <code>cd</code> command</h3>
+<p>Navigate to the extracted follder using the <code>cd</code> command</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ONT_metabarcoding</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="quality-filtering-and-inspection.-before-beginning-any-analyses-is-a-good-practice-to-perform-a-qc-assessment-and-qualitylength-filtering-of-the-data." class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="quality-filtering-and-inspection.-before-beginning-any-analyses-is-a-good-practice-to-perform-a-qc-assessment-and-qualitylength-filtering-of-the-data."><span class="header-section-number">12.2</span> Quality filtering and inspection. Before beginning any analyses is a good practice to perform a QC assessment and quality/length filtering of the data.</h2>
-<section id="first-create-a-directory-for-the-filtered-reads" class="level3" data-number="12.2.1">
-<h3 data-number="12.2.1" class="anchored" data-anchor-id="first-create-a-directory-for-the-filtered-reads"><span class="header-section-number">12.2.1</span> First create a directory for the filtered reads</h3>
+<section id="quality-filtering-and-inspection." class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="quality-filtering-and-inspection."><span class="header-section-number">12.2</span> Quality filtering and inspection.</h2>
+<p>Before beginning any analyses is a good practice to perform a QC assessment and quality/length filtering of the data.</p>
+<p>First create a directory for the filtered reads</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> filtered_reads  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="perform-quality-and-length-filtering-using-seqkit.-length-filtering-is-optional-as-it-will-also-be-performed-during-the-demultiplexing-step." class="level3" data-number="12.2.2">
-<h3 data-number="12.2.2" class="anchored" data-anchor-id="perform-quality-and-length-filtering-using-seqkit.-length-filtering-is-optional-as-it-will-also-be-performed-during-the-demultiplexing-step."><span class="header-section-number">12.2.2</span> Perform quality and length filtering using SeqKit. (Length filtering is optional, as it will also be performed during the demultiplexing step.)</h3>
+<p>Perform quality and length filtering using SeqKit. (Length filtering is optional, as it will also be performed during the demultiplexing step.)</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> seq <span class="at">--min-qual</span> 10 <span class="at">--max-len</span> 1800 <span class="at">--min-len</span> 1200 calls_sup_ticks_16S.fastq <span class="op">&gt;</span> filtered_reads/calls_sup_ticks_16S_Q10_1200-1800.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="inspect-and-compare-the-reads-before-and-after-filtering.-how-many-reads-were-retained-what-is-the-average-read-length-how-do-the-quality-scores-look-mean-quality" class="level3" data-number="12.2.3">
-<h3 data-number="12.2.3" class="anchored" data-anchor-id="inspect-and-compare-the-reads-before-and-after-filtering.-how-many-reads-were-retained-what-is-the-average-read-length-how-do-the-quality-scores-look-mean-quality"><span class="header-section-number">12.2.3</span> Inspect and compare the reads before and after filtering. How many reads were retained? What is the average read length? How do the quality scores look (mean quality)?</h3>
+<p>Inspect and compare the reads before and after filtering. How many reads were retained? What is the average read length? How do the quality scores look (mean quality)?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> stats calls_sup_ticks_16S.fastq filtered_reads/calls_sup_ticks_16S_Q10_1200-1800.fastq</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> calls_sup_ticks_16S.fastq filtered_reads/calls_sup_ticks_16S_Q10_1200-1800.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="now-we-are-ready-to-demultiplex-your-data-split-the-reads-by-sample.-to-do-this-we-need-some-demuliplexing-information-that-usually-comes-in-a-form-of-a-table-depending-on-the-specific-tool.-this-table-contains-information-on-the-sample-ids-the-primers-used-for-amplification-and-the-unique-dual-indices-used-for-each-sample.-we-will-use-the-tool-speimux-httpsgithub.comjoshuaowalkerspecimux." class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="now-we-are-ready-to-demultiplex-your-data-split-the-reads-by-sample.-to-do-this-we-need-some-demuliplexing-information-that-usually-comes-in-a-form-of-a-table-depending-on-the-specific-tool.-this-table-contains-information-on-the-sample-ids-the-primers-used-for-amplification-and-the-unique-dual-indices-used-for-each-sample.-we-will-use-the-tool-speimux-httpsgithub.comjoshuaowalkerspecimux."><span class="header-section-number">12.3</span> Now we are ready to demultiplex your data (split the reads by sample). To do this we need some demuliplexing information that usually comes in a form of a table (depending on the specific tool). This table contains information on the sample IDs, the primers used for amplification and the unique dual indices used for each sample. We will use the tool speimux (https://github.com/joshuaowalker/specimux).</h2>
-</section>
-<section id="inspect-the-demultiplexing-files-in-the-directory." class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="inspect-the-demultiplexing-files-in-the-directory."><span class="header-section-number">12.4</span> Inspect the demultiplexing files in the directory.</h2>
+<section id="demultiplexing" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="demultiplexing"><span class="header-section-number">12.3</span> Demultiplexing</h2>
+<p>Now we are ready to demultiplex your data (split the reads by sample). To do this we need some demuliplexing information that usually comes in a form of a table (depending on the specific tool). This table contains information on the sample IDs, the primers used for amplification and the unique dual indices used for each sample. We will use the tool speimux (https://github.com/joshuaowalker/specimux).</p>
+<p>Inspect the demultiplexing files in the directory.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> 16S_specimens.txt</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># press q to exit</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> 16S_primers.fasta</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># press q to exit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="run-specimux-command-for-demultiplexing-the-ont-reads." class="level3" data-number="12.4.1">
-<h3 data-number="12.4.1" class="anchored" data-anchor-id="run-specimux-command-for-demultiplexing-the-ont-reads."><span class="header-section-number">12.4.1</span> Run specimux command for demultiplexing the ONT reads.</h3>
+<p>Run specimux command for demultiplexing the ONT reads.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> specimux.py 16S_primers.fasta 16S_specimens.txt calls_sup_ticks_16S_Q10_1200-1800.fastq<span class="dt">\</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>--output-to-files<span class="dt">\</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>--trim primers<span class="dt">\</span></span>
@@ -392,10 +357,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>--primer-edit-distance</code>: The maximum allowed edit distance when matching primers. How many mismatches (or differences) are permitted</p>
 <p><code>--min-length</code>: Minimum sequence length. Shorter sequences will be skipped</p>
 <p><code>--max-length</code>: Maximum sequence length. Longer sequences will be skipped</p>
-<p>NOTE:The demultiplexed reads can be found in the directory ~/ONT_metabarcoding/data/intermediate/tutorial_2/specimux_16S_demuliplexed/full. There should be X .fastq files corresponding to the X samples.</p>
-</section>
-<section id="inspect-the-demultiplexed-files.-how-many-reads-per-sample-what-is-the-average-read-size-why-we-removed-the-primers" class="level3" data-number="12.4.2">
-<h3 data-number="12.4.2" class="anchored" data-anchor-id="inspect-the-demultiplexed-files.-how-many-reads-per-sample-what-is-the-average-read-size-why-we-removed-the-primers"><span class="header-section-number">12.4.2</span> Inspect the demultiplexed files. How many reads per sample? What is the average read size? Why we removed the primers?</h3>
+<p>The demultiplexed reads can be found in the directory <code>\~/ONT_metabarcoding/data/intermediate/tutorial_2/specimux_16S_demuliplexed/full</code>. There should be X .fastq files corresponding to the X samples.</p>
+<p>Inspect the demultiplexed files. How many reads are there per sample? What is the average read size? Why we removed the primers?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> stats ./16S/full/<span class="pp">*</span>.fastq</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Or you can save the summary in a file</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> stats ./16S/full/<span class="pp">*</span>.fastq <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/,//g'</span> <span class="op">&gt;</span> summary.txt </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -421,16 +384,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-</section>
-<section id="the-next-goal-is-to-generate-taxonomic-abundance-profiles-from-our-demultiplexed-ont-data.-this-can-be-done-using-two-different-methodologies-depending-on-the-approach-used-for-taxonomic-assignment.-the-first-methodology-assigns-taxonomy-directly-to-the-individual-reads-while-the-second-performs-clustering-of-the-reads-and-builds-consensus-sequences-before-proceeding-with-taxonomic-assignment." class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="the-next-goal-is-to-generate-taxonomic-abundance-profiles-from-our-demultiplexed-ont-data.-this-can-be-done-using-two-different-methodologies-depending-on-the-approach-used-for-taxonomic-assignment.-the-first-methodology-assigns-taxonomy-directly-to-the-individual-reads-while-the-second-performs-clustering-of-the-reads-and-builds-consensus-sequences-before-proceeding-with-taxonomic-assignment."><span class="header-section-number">12.5</span> The next goal is to generate taxonomic abundance profiles from our demultiplexed ONT data. This can be done using two different methodologies depending on the approach used for taxonomic assignment. The first methodology assigns taxonomy directly to the individual reads while the second performs clustering of the reads and builds consensus sequences before proceeding with taxonomic assignment.</h2>
+<section id="taxonomic-profiling" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="taxonomic-profiling"><span class="header-section-number">12.4</span> Taxonomic profiling</h2>
+<p>The next goal is to generate taxonomic abundance profiles from our demultiplexed ONT data. This can be done using two different methodologies depending on the approach used for taxonomic assignment. The first methodology assigns taxonomy directly to the individual reads while the second performs clustering of the reads and builds consensus sequences before proceeding with taxonomic assignment.</p>
 <p>Perform taxonomic classification of the reads and estimate taxonomic abundance in each sample using the <a href="https://github.com/treangenlab/emu">Emu software</a>. For additional details on the method see the original article (Curry, K.D., Wang, Q., Nute, M.G. et al.&nbsp;Emu: species-level microbial community profiling of full-length 16S rRNA Oxford Nanopore sequencing data. Nat Methods 19, 845–853 (2022). https://doi.org/10.1038/s41592-022-01520-4).</p>
-<section id="create-a-directory-for-the-results" class="level3" data-number="12.5.1">
-<h3 data-number="12.5.1" class="anchored" data-anchor-id="create-a-directory-for-the-results"><span class="header-section-number">12.5.1</span> Create a directory for the results</h3>
+<p>Create a directory for the results</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> emu_results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="assign-taxonomy-and-calculate-relative-abundances-using-the-emu-abundance-command." class="level3" data-number="12.5.2">
-<h3 data-number="12.5.2" class="anchored" data-anchor-id="assign-taxonomy-and-calculate-relative-abundances-using-the-emu-abundance-command."><span class="header-section-number">12.5.2</span> Assign taxonomy and calculate relative abundances using the emu abundance command.</h3>
+<p>Assign taxonomy and calculate relative abundances using the emu abundance command.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> 16S/full/<span class="pp">*</span>.fastq<span class="kw">;</span> <span class="cf">do</span> <span class="ex">emu</span> abundance <span class="va">${i}</span><span class="dt">\</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>--db ~/ONTworkshop_10_06_2025/db/gtdb_ssu_emu<span class="dt">\</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>--min-abundance 0.01<span class="dt">\</span></span>
@@ -439,8 +399,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>--db</code>: path to emu database; directory must include the following files, species_taxid.fasta, taxonomy.tsv</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 31%">
-<col style="width: 68%">
+<col style="width: 32%">
+<col style="width: 67%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -460,20 +420,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p><code>--min-abundance</code>: By default emu will report abundances equal or above 0.01% (0.0001). You can adjust this using this option. This will generates results with species relative abundance above this value in addition to full results; e.g.&nbsp;0.01 = 1%.</p>
-</section>
-<section id="move-the-full-abundance-reports-in-a-separate-directory." class="level3" data-number="12.5.3">
-<h3 data-number="12.5.3" class="anchored" data-anchor-id="move-the-full-abundance-reports-in-a-separate-directory."><span class="header-section-number">12.5.3</span> Move the full abundance reports in a separate directory.</h3>
+<p>Move the full abundance reports in a separate directory.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> emu_results/full_abundance mv emu_results/\*-abundance.tsv emu_results /full_abundance/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="combine-the-outputs-to-create-a-single-table-containing-all-the-emu-output-relative-abundances-using-the-combine-outputs-function-at-the-desired-taxonomic-rank-e.g.-genus-or-species.-accepted-ranks-species-genus-family-order-class-phylum-superkingdom.-note-this-function-will-select-all-the-.tsv-files-in-the-provided-directory-that-contain-rel-abundance-in-the-filename." class="level3" data-number="12.5.4">
-<h3 data-number="12.5.4" class="anchored" data-anchor-id="combine-the-outputs-to-create-a-single-table-containing-all-the-emu-output-relative-abundances-using-the-combine-outputs-function-at-the-desired-taxonomic-rank-e.g.-genus-or-species.-accepted-ranks-species-genus-family-order-class-phylum-superkingdom.-note-this-function-will-select-all-the-.tsv-files-in-the-provided-directory-that-contain-rel-abundance-in-the-filename."><span class="header-section-number">12.5.4</span> Combine the outputs to create a single table containing all the emu output relative abundances using the combine-outputs function at the desired taxonomic rank (e.g.&nbsp;genus or species). Accepted ranks: [‘species’, ‘genus’, ‘family’, ‘order’, ‘class’, ‘phylum’, ‘superkingdom’]. Note this function will select all the .tsv files in the provided directory that contain ‘rel-abundance’ in the filename.</h3>
+<p>Combine the outputs to create a single table containing all the emu output relative abundances using the combine-outputs function at the desired taxonomic rank (e.g.&nbsp;genus or species). Accepted ranks: [‘species’, ‘genus’, ‘family’, ‘order’, ‘class’, ‘phylum’, ‘superkingdom’]. Note this function will select all the .tsv files in the provided directory that contain ‘rel-abundance’ in the filename.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">emu</span> combine-outputs emu_results/ genus</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="now-we-are-ready-to-use-the-combined-abundance-tables-for-downstream-diversity-analysis-and-plotting-in-r-using-the-phyloseq-package.-follow-the-instructions-in-the-emu-r-analysis.r-file." class="level3" data-number="12.5.5">
-<h3 data-number="12.5.5" class="anchored" data-anchor-id="now-we-are-ready-to-use-the-combined-abundance-tables-for-downstream-diversity-analysis-and-plotting-in-r-using-the-phyloseq-package.-follow-the-instructions-in-the-emu-r-analysis.r-file."><span class="header-section-number">12.5.5</span> Now we are ready to use the combined abundance table(s) for downstream diversity analysis and plotting in R using the phyloseq package. Follow the instructions in the emu-R-analysis.R file.</h3>
+<p>Now we are ready to use the combined abundance table(s) for downstream diversity analysis and plotting in R using the phyloseq package. Follow the instructions in the emu-R-analysis.R file.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -879,8 +832,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./NGSanalysisPart2.html" class="pagination-link" aria-label="Part 2. NGS data Quality Control">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Part 2. NGS data Quality Control</span></span>
+      <a href="./NGSanalysisPart2.html" class="pagination-link" aria-label="NGS data quality control">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">NGS data quality control</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
