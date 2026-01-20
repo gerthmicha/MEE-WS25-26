@@ -31,6 +31,7 @@ book:
       chapters:
         - NGSanalysisPart1.qmd
         - NGSanalysisPart2.qmd
+        - NGSanalysisPart3.qmd
     - part: "Phylogenetics" 
     - part: "Microbiome"
     - references.qmd

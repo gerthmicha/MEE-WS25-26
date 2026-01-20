@@ -10,7 +10,7 @@ We will only be looking at a couple of functions from a 2 packages (`dplyr` & `g
 
 You can install all tidyverse packages by running
 
-```{r Installing the tidyverse packages, message=FALSE, warning=FALSE}
+```{r Installing the tidyverse packages, message=FALSE, eval=FALSE}
 install.packages("tidyverse", dependencies = TRUE)
 ```
 

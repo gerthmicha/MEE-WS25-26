@@ -1,0 +1,153 @@
+# Microbial community profiling of full-length 16S rRNA ONT sequencing reads.
+
+This tutorial provides hands-on experience with a typical metabarcoding workflow for analyzing microbial communities using full-length 16S rRNA ONT sequencing. We will begin with pre-basecalled data, and after performing initial quality control and demultiplexing of the reads, we will assign taxonomy directly to the reads and generate taxon abundance tables for subsequent diversity analysis. The dataset originates from 16S rRNA amplicon sequencing of multiple samples from two tick species: Dermacentor marginatus and Dermacentor reticulatus.
+
+## Prepare the materials for the practical
+
+### Download the materials (ONT_metabarcoding.tar.gz) using the link bellow.
+
+[link](https://cloud.idiv.de/index.php/s/w6C6rRnA58EXGre)
+
+### decompress the folder with the material using the command
+
+``` bash
+tar -xvzf ONT_metabarcoding.tar.gz  
+```
+
+### Navigate to the follder using the `cd` command
+
+``` bash
+cd ONT_metabarcoding
+```
+
+## Quality filtering and inspection. Before beginning any analyses is a good practice to perform a QC assessment and quality/length filtering of the data.
+
+### First create a directory for the filtered reads
+
+``` bash
+mkdir filtered_reads  
+```
+
+### Perform quality and length filtering using SeqKit. (Length filtering is optional, as it will also be performed during the demultiplexing step.)
+
+``` bash
+seqkit seq --min-qual 10 --max-len 1800 --min-len 1200 calls_sup_ticks_16S.fastq > filtered_reads/calls_sup_ticks_16S_Q10_1200-1800.fastq
+```
+
+### Inspect and compare the reads before and after filtering. How many reads were retained? What is the average read length? How do the quality scores look (mean quality)?
+
+``` bash
+seqkit stats calls_sup_ticks_16S.fastq filtered_reads/calls_sup_ticks_16S_Q10_1200-1800.fastq
+fastqc calls_sup_ticks_16S.fastq filtered_reads/calls_sup_ticks_16S_Q10_1200-1800.fastq
+```
+
+## Now we are ready to demultiplex your data (split the reads by sample). To do this we need some demuliplexing information that usually comes in a form of a table (depending on the specific tool). This table contains information on the sample IDs, the primers used for amplification and the unique dual indices used for each sample. We will use the tool speimux (https://github.com/joshuaowalker/specimux).
+
+## Inspect the demultiplexing files in the directory.
+
+``` bash
+less 16S_specimens.txt
+# press q to exit
+less 16S_primers.fasta
+# press q to exit
+```
+
+### Run specimux command for demultiplexing the ONT reads.
+
+``` bash
+python specimux.py 16S_primers.fasta 16S_specimens.txt calls_sup_ticks_16S_Q10_1200-1800.fastq\
+--output-to-files\
+--trim primers\
+--search-len 100\
+--index-edit-distance 2\
+--primer-edit-distance 10\
+--min-length 1300\
+--max-length 1700
+```
+
+The option meanings are:
+
+`--output-to-files`: Create individual sample files for sequences
+
+`--trim primers`: Remove the primer and the adapters from the read sequence
+
+`--search-len`: Length to search for index and primer at start and end of sequence
+
+`--index-edit-distance`: The maximum allowed edit distance when matching indices during the demultiplexing process. How many mismatches (or differences) are permitted
+
+`--primer-edit-distance`: The maximum allowed edit distance when matching primers. How many mismatches (or differences) are permitted
+
+`--min-length`: Minimum sequence length. Shorter sequences will be skipped
+
+`--max-length`: Maximum sequence length. Longer sequences will be skipped
+
+NOTE:The demultiplexed reads can be found in the directory \~/ONT_metabarcoding/data/intermediate/tutorial_2/specimux_16S_demuliplexed/full. There should be X .fastq files corresponding to the X samples.
+
+### Inspect the demultiplexed files. How many reads per sample? What is the average read size? Why we removed the primers?
+
+``` bash
+seqkit stats ./16S/full/*.fastq
+# Or you can save the summary in a file
+seqkit stats ./16S/full/*.fastq | sed 's/,//g' > summary.txt 
+```
+
+::: callout-note
+## Note
+
+Among our samples, we have included negative controls (PN.fastq) to monitor for contamination during the PCR amplifications. As indicated in your summary, some of the samples did not generate enough reads, similar to the negative controls. It is always good practice to remove such samples from further analysis, as they may be affected by contamination. What would be an appropriate cutoff for the number of reads to use when identifying and removing failed samples?
+
+``` bash
+# Create a directory to store the files that have few reads
+mkdir failed
+# Identify the files with not enougth reads and create a list with their names
+cat summary.txt | sed 's/,//g' | awk '{ if ($4 < 250) { print } }' | cut -f1 -d " " > remove.txt
+# Now you can move the failed files to the faild/ directory using a for loop
+for i in $(cat remove.txt); do mv $i failed/; done
+# Or using another unix command `xargs`
+xargs -a remove.txt -I {} mv {} failed/
+```
+:::
+
+## The next goal is to generate taxonomic abundance profiles from our demultiplexed ONT data. This can be done using two different methodologies depending on the approach used for taxonomic assignment. The first methodology assigns taxonomy directly to the individual reads while the second performs clustering of the reads and builds consensus sequences before proceeding with taxonomic assignment.
+
+Perform taxonomic classification of the reads and estimate taxonomic abundance in each sample using the [Emu software](https://github.com/treangenlab/emu). For additional details on the method see the original article (Curry, K.D., Wang, Q., Nute, M.G. et al. Emu: species-level microbial community profiling of full-length 16S rRNA Oxford Nanopore sequencing data. Nat Methods 19, 845–853 (2022). https://doi.org/10.1038/s41592-022-01520-4).
+
+### Create a directory for the results
+
+``` bash
+mkdir emu_results
+```
+
+### Assign taxonomy and calculate relative abundances using the emu abundance command.
+
+``` bash
+for i in 16S/full/*.fastq; do emu abundance ${i}\
+--db ~/ONTworkshop_10_06_2025/db/gtdb_ssu_emu\
+--min-abundance 0.01\
+--output-dir emu_results; done
+```
+
+The option meanings are:
+
+`--db`: path to emu database; directory must include the following files, species_taxid.fasta, taxonomy.tsv
+
+| **Filename** | **Description** |
+|-----------------------|-------------------------------------------------|
+| taxonomy.tsv | tab separated datasheet of database taxonomy lineages containing at columns: 'tax_id' and any taxonomic ranks (i.e. species, genus, etc) |
+| species_taxid.fasta | database sequences where each sequence header starts with the respective species-level tax id (or lowest level above species-level if missing) preceeding a colon \[<species_taxid>:<remainder of header>\] |
+
+`--min-abundance`: By default emu will report abundances equal or above 0.01% (0.0001). You can adjust this using this option. This will generates results with species relative abundance above this value in addition to full results; e.g. 0.01 = 1%.
+
+### Move the full abundance reports in a separate directory.
+
+``` bash
+mkdir emu_results/full_abundance mv emu_results/\*-abundance.tsv emu_results /full_abundance/
+```
+
+### Combine the outputs to create a single table containing all the emu output relative abundances using the combine-outputs function at the desired taxonomic rank (e.g. genus or species). Accepted ranks: \['species', 'genus', 'family', 'order', 'class', 'phylum', 'superkingdom'\]. Note this function will select all the .tsv files in the provided directory that contain 'rel-abundance' in the filename.
+
+``` bash
+emu combine-outputs emu_results/ genus
+```
+
+### Now we are ready to use the combined abundance table(s) for downstream diversity analysis and plotting in R using the phyloseq package. Follow the instructions in the emu-R-analysis.R file.
