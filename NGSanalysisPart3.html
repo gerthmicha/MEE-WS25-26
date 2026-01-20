@@ -315,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="prepare-the-materials-for-the-practical" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="prepare-the-materials-for-the-practical"><span class="header-section-number">12.1</span> Prepare the materials for the practical</h2>
 <p>Download the materials (ONT_metabarcoding.tar.gz) using the link below.</p>
-<p><a href="https://cloud.idiv.de/index.php/s/w6C6rRnA58EXGre">link</a></p>
+<p><a href="https://cloud.uni-halle.de/s/ZxYIlI4wHbiTNVi/download">link</a></p>
 <p>Ddecompress the folder with the material using the command</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xvzf</span> ONT_metabarcoding.tar.gz  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Navigate to the extracted follder using the <code>cd</code> command</p>
@@ -341,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> 16S_primers.fasta</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># press q to exit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Run specimux command for demultiplexing the ONT reads.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> specimux.py 16S_primers.fasta 16S_specimens.txt calls_sup_ticks_16S_Q10_1200-1800.fastq<span class="dt">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">specimux.py</span> 16S_primers.fasta 16S_specimens.txt calls_sup_ticks_16S_Q10_1200-1800.fastq<span class="dt">\</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>--output-to-files<span class="dt">\</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>--trim primers<span class="dt">\</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>--search-len 100<span class="dt">\</span></span>
@@ -360,8 +360,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The demultiplexed reads can be found in the directory <code>\~/ONT_metabarcoding/data/intermediate/tutorial_2/specimux_16S_demuliplexed/full</code>. There should be X .fastq files corresponding to the X samples.</p>
 <p>Inspect the demultiplexed files. How many reads are there per sample? What is the average read size? Why we removed the primers?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> stats ./16S/full/<span class="pp">*</span>.fastq</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Or you can save the summary in a file</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> stats ./16S/full/<span class="pp">*</span>.fastq <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/,//g'</span> <span class="op">&gt;</span> summary.txt </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Or you can save the summary in a file</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> stats ./16S/full/<span class="pp">*</span>.fastq <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/,//g'</span> <span class="op">&gt;</span> summary.txt </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
