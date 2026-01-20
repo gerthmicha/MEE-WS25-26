@@ -1,4 +1,4 @@
-# Part 2. Working with Files and Directories
+# Working with Files and Directories
 
 > What we will cover:
 >
@@ -56,8 +56,7 @@ cp ../README.txt ./README1.txt
 
 Try to make a copy of the complete project1 directory on the same parent location with the name project2. What do you see?
 
-::: {.callout-note}
-
+::: callout-note
 ## Note
 
 **Wildcards: friend and foe at the command prompt.**
@@ -84,18 +83,15 @@ mkdir data
 mv *.csv data/
 ```
 
-**Exercise**
-List only the .csv files with years 2022 or 2023
-
+**Exercise** List only the .csv files with years 2022 or 2023
 :::
 
 ## Delete (remove) files and directories
 
-::: {.callout-warning}
+::: callout-warning
 ## **WARNING!!**
 
 **Using the `rm` command permanently deletes files and directories without moving them to a trash or recycle bin. This action cannot be undone! Whenever you use the rm command, ALWAYS double-check your syntax.**
-
 :::
 
 ``` bash
@@ -151,7 +147,7 @@ wc butterfly_ecology.csv
 # Can you find an option for wc that will let us get only the number of lines of the file? 
 ```
 
-::: {.callout-note}
+::: callout-note
 ## Note
 
 The **`cat`** command can also be used to create new files or to concatenate existing files. Lets try:
@@ -169,7 +165,7 @@ cat file1 file2 > file3
 
 ## A text editor for the terminal
 
-A simple text editor available on most systems is nano. To run it, simply specify a file name to edit. If the file doesn’t exist already, it will be created after saving. 
+A simple text editor available on most systems is nano. To run it, simply specify a file name to edit. If the file doesn't exist already, it will be created after saving. 
 
 ``` bash
 nano NOTES.txt

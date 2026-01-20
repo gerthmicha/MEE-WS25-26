@@ -1,4 +1,4 @@
-# Part 2. NGS data Quality Control
+# NGS data quality control
 
 This practical will provide hands-on experience with quality control of high-throughput sequencing data. You will learn how to:
 
