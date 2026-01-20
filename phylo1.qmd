@@ -38,7 +38,7 @@ library(knitr)
 knitr::include_graphics("_resources/ncbi2.png")
 ```
 
-# Aligning sequences
+## Aligning sequences
 
 We will use the [Mafft online server](https://mafft.cbrc.jp/alignment/server/) to align our sequences. Upload your fasta file, and let Mafft decide on the optimal alignment strategy (this is the default behaviour; Fig. 3). For more specific applications you may want to check out the other alignment options. 
 
@@ -54,7 +54,7 @@ library(knitr)
 knitr::include_graphics("_resources/Mafft2.png")
 ```
 
-# Using an alignment editor
+## Using an alignment editor
 
 You should always visually check your alignments to make sure that everything looks as expected. Remember, your hypothesis for any aligned position is that all of the characters are homologous. Alignment viewers make it easy to view and manipulate your alignment files. We will use [Aliview](https://ormbunkar.se/aliview/), a fast and versatile alignment viewer (Fig. 5). It can be started by double-clicking the corresponding file. 
 
@@ -63,14 +63,14 @@ library(knitr)
 knitr::include_graphics("_resources/Aliview.gif")
 ```
 
-# Automated alignment trimming
+## Automated alignment trimming
 
 In many cases, you will want to trim your alignment to exclude positions that you consider unreliably aligned or positions that contain mostly gaps. This can be done manually in Aliview as we have seen above. However, for a more reproducible workflow it is recommendable to automate this task using clearly defined criteria. We will use [trimAl](http://trimal.cgenomics.org/) for automated alignment trimming. This programme (as most phylogenetics software) does not have a graphical user interface (GUI), so most be used via the command line. No worries, this is not as difficult as it may seem. 
 
 To run trimAl, navigate to your trimAl executable and type 
 
 ```{bash eval=FALSE}
-trimal -in /home/gerth/Documents/PCC/data/bioA_edit.fas -out /home/gerth/Documents/PCC/data/bioA_trim.fas -htmlout /home/gerth/Documents/PCC/data/bioA_trim.html -gt .5
+trimal -in data/bioA.fas -out data/bioA_ali.fas -htmlout /home/gerth/Documents/PCC/data/bioA_trim.html -gt .5
 ```
 
 Let's go through this command step by step: `trimal` is our executable. `-in` specifies the input file. Note that we have to specify the entire path of the file *unless* the file is in the same directory as the executable. `-out` is the name of the output file. Again, we are using the entire path here. `-htmlout` soecifies the path to a useful html file that displays the trimmed characters. `-gt .5` specifies how trimming should be performed: we are asking to remove any position in the alignment that has a gap in more than 50% of all sequences. This is only one of multiple trimming criteria trimAl can employ, make sure to have a look at the other ones as well.
