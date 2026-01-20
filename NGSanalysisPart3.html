@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>12&nbsp; Microbial community profiling of full-length 16S rRNA ONT sequencing reads. – Methods in evolutionary ecology WS25/26</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./NGSanalysisPart2.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./NGSanalysisPart1.html">NGSanalysis</a></li><li class="breadcrumb-item"><a href="./NGSanalysisPart3.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Microbial community profiling of full-length 16S rRNA ONT sequencing reads.</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Methods in evolutionary ecology WS25/26</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/gerthmicha/MEE-WS25-26" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Methods-in-evolutionary-ecology-WS25-26.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text"><code>R</code></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Rintro1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">First steps</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Rintro2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data structures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Rintro3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data, packages, and some more functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tidyverse</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The <code>ggplot2</code> package</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">UNIX</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unixIntro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Linux Environment and Command Line.</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unixPart1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part 1. Your first Unix commands - Navigating the Unix File-System Structure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unixPart2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Part 2. Working with Files and Directories</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unixPart3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Part 3. Redirection, Pipes, and Text Processing in Unix</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">NGSanalysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./NGSanalysisPart1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Part 1. Installing Bioinformating tools and the Conda Package Manager</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./NGSanalysisPart2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Part 2. NGS data Quality Control</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./NGSanalysisPart3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Microbial community profiling of full-length 16S rRNA ONT sequencing reads.</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Phylogenetics</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Microbiome</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#prepare-the-materials-for-the-practical" id="toc-prepare-the-materials-for-the-practical" class="nav-link active" data-scroll-target="#prepare-the-materials-for-the-practical"><span class="header-section-number">12.1</span> Prepare the materials for the practical</a>
+  <ul class="collapse">
+  <li><a href="#download-the-materials-ont_metabarcoding.tar.gz-using-the-link-bellow." id="toc-download-the-materials-ont_metabarcoding.tar.gz-using-the-link-bellow." class="nav-link" data-scroll-target="#download-the-materials-ont_metabarcoding.tar.gz-using-the-link-bellow."><span class="header-section-number">12.1.1</span> Download the materials (ONT_metabarcoding.tar.gz) using the link bellow.</a></li>
+  <li><a href="#decompress-the-folder-with-the-material-using-the-command" id="toc-decompress-the-folder-with-the-material-using-the-command" class="nav-link" data-scroll-target="#decompress-the-folder-with-the-material-using-the-command"><span class="header-section-number">12.1.2</span> decompress the folder with the material using the command</a></li>
+  <li><a href="#navigate-to-the-follder-using-the-cd-command" id="toc-navigate-to-the-follder-using-the-cd-command" class="nav-link" data-scroll-target="#navigate-to-the-follder-using-the-cd-command"><span class="header-section-number">12.1.3</span> Navigate to the follder using the <code>cd</code> command</a></li>
+  </ul></li>
+  <li><a href="#quality-filtering-and-inspection.-before-beginning-any-analyses-is-a-good-practice-to-perform-a-qc-assessment-and-qualitylength-filtering-of-the-data." id="toc-quality-filtering-and-inspection.-before-beginning-any-analyses-is-a-good-practice-to-perform-a-qc-assessment-and-qualitylength-filtering-of-the-data." class="nav-link" data-scroll-target="#quality-filtering-and-inspection.-before-beginning-any-analyses-is-a-good-practice-to-perform-a-qc-assessment-and-qualitylength-filtering-of-the-data."><span class="header-section-number">12.2</span> Quality filtering and inspection. Before beginning any analyses is a good practice to perform a QC assessment and quality/length filtering of the data.</a>
+  <ul class="collapse">
+  <li><a href="#first-create-a-directory-for-the-filtered-reads" id="toc-first-create-a-directory-for-the-filtered-reads" class="nav-link" data-scroll-target="#first-create-a-directory-for-the-filtered-reads"><span class="header-section-number">12.2.1</span> First create a directory for the filtered reads</a></li>
+  <li><a href="#perform-quality-and-length-filtering-using-seqkit.-length-filtering-is-optional-as-it-will-also-be-performed-during-the-demultiplexing-step." id="toc-perform-quality-and-length-filtering-using-seqkit.-length-filtering-is-optional-as-it-will-also-be-performed-during-the-demultiplexing-step." class="nav-link" data-scroll-target="#perform-quality-and-length-filtering-using-seqkit.-length-filtering-is-optional-as-it-will-also-be-performed-during-the-demultiplexing-step."><span class="header-section-number">12.2.2</span> Perform quality and length filtering using SeqKit. (Length filtering is optional, as it will also be performed during the demultiplexing step.)</a></li>
+  <li><a href="#inspect-and-compare-the-reads-before-and-after-filtering.-how-many-reads-were-retained-what-is-the-average-read-length-how-do-the-quality-scores-look-mean-quality" id="toc-inspect-and-compare-the-reads-before-and-after-filtering.-how-many-reads-were-retained-what-is-the-average-read-length-how-do-the-quality-scores-look-mean-quality" class="nav-link" data-scroll-target="#inspect-and-compare-the-reads-before-and-after-filtering.-how-many-reads-were-retained-what-is-the-average-read-length-how-do-the-quality-scores-look-mean-quality"><span class="header-section-number">12.2.3</span> Inspect and compare the reads before and after filtering. How many reads were retained? What is the average read length? How do the quality scores look (mean quality)?</a></li>
+  </ul></li>
+  <li><a href="#now-we-are-ready-to-demultiplex-your-data-split-the-reads-by-sample.-to-do-this-we-need-some-demuliplexing-information-that-usually-comes-in-a-form-of-a-table-depending-on-the-specific-tool.-this-table-contains-information-on-the-sample-ids-the-primers-used-for-amplification-and-the-unique-dual-indices-used-for-each-sample.-we-will-use-the-tool-speimux-httpsgithub.comjoshuaowalkerspecimux." id="toc-now-we-are-ready-to-demultiplex-your-data-split-the-reads-by-sample.-to-do-this-we-need-some-demuliplexing-information-that-usually-comes-in-a-form-of-a-table-depending-on-the-specific-tool.-this-table-contains-information-on-the-sample-ids-the-primers-used-for-amplification-and-the-unique-dual-indices-used-for-each-sample.-we-will-use-the-tool-speimux-httpsgithub.comjoshuaowalkerspecimux." class="nav-link" data-scroll-target="#now-we-are-ready-to-demultiplex-your-data-split-the-reads-by-sample.-to-do-this-we-need-some-demuliplexing-information-that-usually-comes-in-a-form-of-a-table-depending-on-the-specific-tool.-this-table-contains-information-on-the-sample-ids-the-primers-used-for-amplification-and-the-unique-dual-indices-used-for-each-sample.-we-will-use-the-tool-speimux-httpsgithub.comjoshuaowalkerspecimux."><span class="header-section-number">12.3</span> Now we are ready to demultiplex your data (split the reads by sample). To do this we need some demuliplexing information that usually comes in a form of a table (depending on the specific tool). This table contains information on the sample IDs, the primers used for amplification and the unique dual indices used for each sample. We will use the tool speimux (https://github.com/joshuaowalker/specimux).</a></li>
+  <li><a href="#inspect-the-demultiplexing-files-in-the-directory." id="toc-inspect-the-demultiplexing-files-in-the-directory." class="nav-link" data-scroll-target="#inspect-the-demultiplexing-files-in-the-directory."><span class="header-section-number">12.4</span> Inspect the demultiplexing files in the directory.</a>
+  <ul class="collapse">
+  <li><a href="#run-specimux-command-for-demultiplexing-the-ont-reads." id="toc-run-specimux-command-for-demultiplexing-the-ont-reads." class="nav-link" data-scroll-target="#run-specimux-command-for-demultiplexing-the-ont-reads."><span class="header-section-number">12.4.1</span> Run specimux command for demultiplexing the ONT reads.</a></li>
+  <li><a href="#inspect-the-demultiplexed-files.-how-many-reads-per-sample-what-is-the-average-read-size-why-we-removed-the-primers" id="toc-inspect-the-demultiplexed-files.-how-many-reads-per-sample-what-is-the-average-read-size-why-we-removed-the-primers" class="nav-link" data-scroll-target="#inspect-the-demultiplexed-files.-how-many-reads-per-sample-what-is-the-average-read-size-why-we-removed-the-primers"><span class="header-section-number">12.4.2</span> Inspect the demultiplexed files. How many reads per sample? What is the average read size? Why we removed the primers?</a></li>
+  </ul></li>
+  <li><a href="#the-next-goal-is-to-generate-taxonomic-abundance-profiles-from-our-demultiplexed-ont-data.-this-can-be-done-using-two-different-methodologies-depending-on-the-approach-used-for-taxonomic-assignment.-the-first-methodology-assigns-taxonomy-directly-to-the-individual-reads-while-the-second-performs-clustering-of-the-reads-and-builds-consensus-sequences-before-proceeding-with-taxonomic-assignment." id="toc-the-next-goal-is-to-generate-taxonomic-abundance-profiles-from-our-demultiplexed-ont-data.-this-can-be-done-using-two-different-methodologies-depending-on-the-approach-used-for-taxonomic-assignment.-the-first-methodology-assigns-taxonomy-directly-to-the-individual-reads-while-the-second-performs-clustering-of-the-reads-and-builds-consensus-sequences-before-proceeding-with-taxonomic-assignment." class="nav-link" data-scroll-target="#the-next-goal-is-to-generate-taxonomic-abundance-profiles-from-our-demultiplexed-ont-data.-this-can-be-done-using-two-different-methodologies-depending-on-the-approach-used-for-taxonomic-assignment.-the-first-methodology-assigns-taxonomy-directly-to-the-individual-reads-while-the-second-performs-clustering-of-the-reads-and-builds-consensus-sequences-before-proceeding-with-taxonomic-assignment."><span class="header-section-number">12.5</span> The next goal is to generate taxonomic abundance profiles from our demultiplexed ONT data. This can be done using two different methodologies depending on the approach used for taxonomic assignment. The first methodology assigns taxonomy directly to the individual reads while the second performs clustering of the reads and builds consensus sequences before proceeding with taxonomic assignment.</a>
+  <ul class="collapse">
+  <li><a href="#create-a-directory-for-the-results" id="toc-create-a-directory-for-the-results" class="nav-link" data-scroll-target="#create-a-directory-for-the-results"><span class="header-section-number">12.5.1</span> Create a directory for the results</a></li>
+  <li><a href="#assign-taxonomy-and-calculate-relative-abundances-using-the-emu-abundance-command." id="toc-assign-taxonomy-and-calculate-relative-abundances-using-the-emu-abundance-command." class="nav-link" data-scroll-target="#assign-taxonomy-and-calculate-relative-abundances-using-the-emu-abundance-command."><span class="header-section-number">12.5.2</span> Assign taxonomy and calculate relative abundances using the emu abundance command.</a></li>
+  <li><a href="#move-the-full-abundance-reports-in-a-separate-directory." id="toc-move-the-full-abundance-reports-in-a-separate-directory." class="nav-link" data-scroll-target="#move-the-full-abundance-reports-in-a-separate-directory."><span class="header-section-number">12.5.3</span> Move the full abundance reports in a separate directory.</a></li>
+  <li><a href="#combine-the-outputs-to-create-a-single-table-containing-all-the-emu-output-relative-abundances-using-the-combine-outputs-function-at-the-desired-taxonomic-rank-e.g.-genus-or-species.-accepted-ranks-species-genus-family-order-class-phylum-superkingdom.-note-this-function-will-select-all-the-.tsv-files-in-the-provided-directory-that-contain-rel-abundance-in-the-filename." id="toc-combine-the-outputs-to-create-a-single-table-containing-all-the-emu-output-relative-abundances-using-the-combine-outputs-function-at-the-desired-taxonomic-rank-e.g.-genus-or-species.-accepted-ranks-species-genus-family-order-class-phylum-superkingdom.-note-this-function-will-select-all-the-.tsv-files-in-the-provided-directory-that-contain-rel-abundance-in-the-filename." class="nav-link" data-scroll-target="#combine-the-outputs-to-create-a-single-table-containing-all-the-emu-output-relative-abundances-using-the-combine-outputs-function-at-the-desired-taxonomic-rank-e.g.-genus-or-species.-accepted-ranks-species-genus-family-order-class-phylum-superkingdom.-note-this-function-will-select-all-the-.tsv-files-in-the-provided-directory-that-contain-rel-abundance-in-the-filename."><span class="header-section-number">12.5.4</span> Combine the outputs to create a single table containing all the emu output relative abundances using the combine-outputs function at the desired taxonomic rank (e.g.&nbsp;genus or species). Accepted ranks: [‘species’, ‘genus’, ‘family’, ‘order’, ‘class’, ‘phylum’, ‘superkingdom’]. Note this function will select all the .tsv files in the provided directory that contain ‘rel-abundance’ in the filename.</a></li>
+  <li><a href="#now-we-are-ready-to-use-the-combined-abundance-tables-for-downstream-diversity-analysis-and-plotting-in-r-using-the-phyloseq-package.-follow-the-instructions-in-the-emu-r-analysis.r-file." id="toc-now-we-are-ready-to-use-the-combined-abundance-tables-for-downstream-diversity-analysis-and-plotting-in-r-using-the-phyloseq-package.-follow-the-instructions-in-the-emu-r-analysis.r-file." class="nav-link" data-scroll-target="#now-we-are-ready-to-use-the-combined-abundance-tables-for-downstream-diversity-analysis-and-plotting-in-r-using-the-phyloseq-package.-follow-the-instructions-in-the-emu-r-analysis.r-file."><span class="header-section-number">12.5.5</span> Now we are ready to use the combined abundance table(s) for downstream diversity analysis and plotting in R using the phyloseq package. Follow the instructions in the emu-R-analysis.R file.</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./NGSanalysisPart1.html">NGSanalysis</a></li><li class="breadcrumb-item"><a href="./NGSanalysisPart3.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Microbial community profiling of full-length 16S rRNA ONT sequencing reads.</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Microbial community profiling of full-length 16S rRNA ONT sequencing reads.</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This tutorial provides hands-on experience with a typical metabarcoding workflow for analyzing microbial communities using full-length 16S rRNA ONT sequencing. We will begin with pre-basecalled data, and after performing initial quality control and demultiplexing of the reads, we will assign taxonomy directly to the reads and generate taxon abundance tables for subsequent diversity analysis. The dataset originates from 16S rRNA amplicon sequencing of multiple samples from two tick species: Dermacentor marginatus and Dermacentor reticulatus.</p>
+<section id="prepare-the-materials-for-the-practical" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="prepare-the-materials-for-the-practical"><span class="header-section-number">12.1</span> Prepare the materials for the practical</h2>
+<section id="download-the-materials-ont_metabarcoding.tar.gz-using-the-link-bellow." class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="download-the-materials-ont_metabarcoding.tar.gz-using-the-link-bellow."><span class="header-section-number">12.1.1</span> Download the materials (ONT_metabarcoding.tar.gz) using the link bellow.</h3>
+<p><a href="https://cloud.idiv.de/index.php/s/w6C6rRnA58EXGre">link</a></p>
+</section>
+<section id="decompress-the-folder-with-the-material-using-the-command" class="level3" data-number="12.1.2">
+<h3 data-number="12.1.2" class="anchored" data-anchor-id="decompress-the-folder-with-the-material-using-the-command"><span class="header-section-number">12.1.2</span> decompress the folder with the material using the command</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xvzf</span> ONT_metabarcoding.tar.gz  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="navigate-to-the-follder-using-the-cd-command" class="level3" data-number="12.1.3">
+<h3 data-number="12.1.3" class="anchored" data-anchor-id="navigate-to-the-follder-using-the-cd-command"><span class="header-section-number">12.1.3</span> Navigate to the follder using the <code>cd</code> command</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ONT_metabarcoding</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="quality-filtering-and-inspection.-before-beginning-any-analyses-is-a-good-practice-to-perform-a-qc-assessment-and-qualitylength-filtering-of-the-data." class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="quality-filtering-and-inspection.-before-beginning-any-analyses-is-a-good-practice-to-perform-a-qc-assessment-and-qualitylength-filtering-of-the-data."><span class="header-section-number">12.2</span> Quality filtering and inspection. Before beginning any analyses is a good practice to perform a QC assessment and quality/length filtering of the data.</h2>
+<section id="first-create-a-directory-for-the-filtered-reads" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="first-create-a-directory-for-the-filtered-reads"><span class="header-section-number">12.2.1</span> First create a directory for the filtered reads</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> filtered_reads  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="perform-quality-and-length-filtering-using-seqkit.-length-filtering-is-optional-as-it-will-also-be-performed-during-the-demultiplexing-step." class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="perform-quality-and-length-filtering-using-seqkit.-length-filtering-is-optional-as-it-will-also-be-performed-during-the-demultiplexing-step."><span class="header-section-number">12.2.2</span> Perform quality and length filtering using SeqKit. (Length filtering is optional, as it will also be performed during the demultiplexing step.)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> seq <span class="at">--min-qual</span> 10 <span class="at">--max-len</span> 1800 <span class="at">--min-len</span> 1200 calls_sup_ticks_16S.fastq <span class="op">&gt;</span> filtered_reads/calls_sup_ticks_16S_Q10_1200-1800.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="inspect-and-compare-the-reads-before-and-after-filtering.-how-many-reads-were-retained-what-is-the-average-read-length-how-do-the-quality-scores-look-mean-quality" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="inspect-and-compare-the-reads-before-and-after-filtering.-how-many-reads-were-retained-what-is-the-average-read-length-how-do-the-quality-scores-look-mean-quality"><span class="header-section-number">12.2.3</span> Inspect and compare the reads before and after filtering. How many reads were retained? What is the average read length? How do the quality scores look (mean quality)?</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> stats calls_sup_ticks_16S.fastq filtered_reads/calls_sup_ticks_16S_Q10_1200-1800.fastq</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> calls_sup_ticks_16S.fastq filtered_reads/calls_sup_ticks_16S_Q10_1200-1800.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="now-we-are-ready-to-demultiplex-your-data-split-the-reads-by-sample.-to-do-this-we-need-some-demuliplexing-information-that-usually-comes-in-a-form-of-a-table-depending-on-the-specific-tool.-this-table-contains-information-on-the-sample-ids-the-primers-used-for-amplification-and-the-unique-dual-indices-used-for-each-sample.-we-will-use-the-tool-speimux-httpsgithub.comjoshuaowalkerspecimux." class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="now-we-are-ready-to-demultiplex-your-data-split-the-reads-by-sample.-to-do-this-we-need-some-demuliplexing-information-that-usually-comes-in-a-form-of-a-table-depending-on-the-specific-tool.-this-table-contains-information-on-the-sample-ids-the-primers-used-for-amplification-and-the-unique-dual-indices-used-for-each-sample.-we-will-use-the-tool-speimux-httpsgithub.comjoshuaowalkerspecimux."><span class="header-section-number">12.3</span> Now we are ready to demultiplex your data (split the reads by sample). To do this we need some demuliplexing information that usually comes in a form of a table (depending on the specific tool). This table contains information on the sample IDs, the primers used for amplification and the unique dual indices used for each sample. We will use the tool speimux (https://github.com/joshuaowalker/specimux).</h2>
+</section>
+<section id="inspect-the-demultiplexing-files-in-the-directory." class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="inspect-the-demultiplexing-files-in-the-directory."><span class="header-section-number">12.4</span> Inspect the demultiplexing files in the directory.</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> 16S_specimens.txt</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># press q to exit</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> 16S_primers.fasta</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># press q to exit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="run-specimux-command-for-demultiplexing-the-ont-reads." class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="run-specimux-command-for-demultiplexing-the-ont-reads."><span class="header-section-number">12.4.1</span> Run specimux command for demultiplexing the ONT reads.</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> specimux.py 16S_primers.fasta 16S_specimens.txt calls_sup_ticks_16S_Q10_1200-1800.fastq<span class="dt">\</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>--output-to-files<span class="dt">\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>--trim primers<span class="dt">\</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>--search-len 100<span class="dt">\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>--index-edit-distance 2<span class="dt">\</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>--primer-edit-distance 10<span class="dt">\</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>--min-length 1300<span class="dt">\</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>--max-length 1700</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The option meanings are:</p>
+<p><code>--output-to-files</code>: Create individual sample files for sequences</p>
+<p><code>--trim primers</code>: Remove the primer and the adapters from the read sequence</p>
+<p><code>--search-len</code>: Length to search for index and primer at start and end of sequence</p>
+<p><code>--index-edit-distance</code>: The maximum allowed edit distance when matching indices during the demultiplexing process. How many mismatches (or differences) are permitted</p>
+<p><code>--primer-edit-distance</code>: The maximum allowed edit distance when matching primers. How many mismatches (or differences) are permitted</p>
+<p><code>--min-length</code>: Minimum sequence length. Shorter sequences will be skipped</p>
+<p><code>--max-length</code>: Maximum sequence length. Longer sequences will be skipped</p>
+<p>NOTE:The demultiplexed reads can be found in the directory ~/ONT_metabarcoding/data/intermediate/tutorial_2/specimux_16S_demuliplexed/full. There should be X .fastq files corresponding to the X samples.</p>
+</section>
+<section id="inspect-the-demultiplexed-files.-how-many-reads-per-sample-what-is-the-average-read-size-why-we-removed-the-primers" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="inspect-the-demultiplexed-files.-how-many-reads-per-sample-what-is-the-average-read-size-why-we-removed-the-primers"><span class="header-section-number">12.4.2</span> Inspect the demultiplexed files. How many reads per sample? What is the average read size? Why we removed the primers?</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> stats ./16S/full/<span class="pp">*</span>.fastq</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Or you can save the summary in a file</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> stats ./16S/full/<span class="pp">*</span>.fastq <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/,//g'</span> <span class="op">&gt;</span> summary.txt </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Among our samples, we have included negative controls (PN.fastq) to monitor for contamination during the PCR amplifications. As indicated in your summary, some of the samples did not generate enough reads, similar to the negative controls. It is always good practice to remove such samples from further analysis, as they may be affected by contamination. What would be an appropriate cutoff for the number of reads to use when identifying and removing failed samples?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a directory to store the files that have few reads</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> failed</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify the files with not enougth reads and create a list with their names</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> summary.txt <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/,//g'</span> <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'{ if ($4 &lt; 250) { print } }'</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f1</span> <span class="at">-d</span> <span class="st">" "</span> <span class="op">&gt;</span> remove.txt</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Now you can move the failed files to the faild/ directory using a for loop</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="va">$(</span><span class="fu">cat</span> remove.txt<span class="va">)</span><span class="kw">;</span> <span class="cf">do</span> <span class="fu">mv</span> <span class="va">$i</span> failed/<span class="kw">;</span> <span class="cf">done</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Or using another unix command `xargs`</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">xargs</span> <span class="at">-a</span> remove.txt <span class="at">-I</span> {} mv {} failed/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+</section>
+<section id="the-next-goal-is-to-generate-taxonomic-abundance-profiles-from-our-demultiplexed-ont-data.-this-can-be-done-using-two-different-methodologies-depending-on-the-approach-used-for-taxonomic-assignment.-the-first-methodology-assigns-taxonomy-directly-to-the-individual-reads-while-the-second-performs-clustering-of-the-reads-and-builds-consensus-sequences-before-proceeding-with-taxonomic-assignment." class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="the-next-goal-is-to-generate-taxonomic-abundance-profiles-from-our-demultiplexed-ont-data.-this-can-be-done-using-two-different-methodologies-depending-on-the-approach-used-for-taxonomic-assignment.-the-first-methodology-assigns-taxonomy-directly-to-the-individual-reads-while-the-second-performs-clustering-of-the-reads-and-builds-consensus-sequences-before-proceeding-with-taxonomic-assignment."><span class="header-section-number">12.5</span> The next goal is to generate taxonomic abundance profiles from our demultiplexed ONT data. This can be done using two different methodologies depending on the approach used for taxonomic assignment. The first methodology assigns taxonomy directly to the individual reads while the second performs clustering of the reads and builds consensus sequences before proceeding with taxonomic assignment.</h2>
+<p>Perform taxonomic classification of the reads and estimate taxonomic abundance in each sample using the <a href="https://github.com/treangenlab/emu">Emu software</a>. For additional details on the method see the original article (Curry, K.D., Wang, Q., Nute, M.G. et al.&nbsp;Emu: species-level microbial community profiling of full-length 16S rRNA Oxford Nanopore sequencing data. Nat Methods 19, 845–853 (2022). https://doi.org/10.1038/s41592-022-01520-4).</p>
+<section id="create-a-directory-for-the-results" class="level3" data-number="12.5.1">
+<h3 data-number="12.5.1" class="anchored" data-anchor-id="create-a-directory-for-the-results"><span class="header-section-number">12.5.1</span> Create a directory for the results</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> emu_results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="assign-taxonomy-and-calculate-relative-abundances-using-the-emu-abundance-command." class="level3" data-number="12.5.2">
+<h3 data-number="12.5.2" class="anchored" data-anchor-id="assign-taxonomy-and-calculate-relative-abundances-using-the-emu-abundance-command."><span class="header-section-number">12.5.2</span> Assign taxonomy and calculate relative abundances using the emu abundance command.</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> 16S/full/<span class="pp">*</span>.fastq<span class="kw">;</span> <span class="cf">do</span> <span class="ex">emu</span> abundance <span class="va">${i}</span><span class="dt">\</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>--db ~/ONTworkshop_10_06_2025/db/gtdb_ssu_emu<span class="dt">\</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>--min-abundance 0.01<span class="dt">\</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>--output-dir emu_results<span class="kw">;</span> <span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The option meanings are:</p>
+<p><code>--db</code>: path to emu database; directory must include the following files, species_taxid.fasta, taxonomy.tsv</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Filename</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>taxonomy.tsv</td>
+<td>tab separated datasheet of database taxonomy lineages containing at columns: ‘tax_id’ and any taxonomic ranks (i.e.&nbsp;species, genus, etc)</td>
+</tr>
+<tr class="even">
+<td>species_taxid.fasta</td>
+<td>database sequences where each sequence header starts with the respective species-level tax id (or lowest level above species-level if missing) preceeding a colon [<species_taxid>:<remainder of="" header="">]</remainder></species_taxid></td>
+</tr>
+</tbody>
+</table>
+<p><code>--min-abundance</code>: By default emu will report abundances equal or above 0.01% (0.0001). You can adjust this using this option. This will generates results with species relative abundance above this value in addition to full results; e.g.&nbsp;0.01 = 1%.</p>
+</section>
+<section id="move-the-full-abundance-reports-in-a-separate-directory." class="level3" data-number="12.5.3">
+<h3 data-number="12.5.3" class="anchored" data-anchor-id="move-the-full-abundance-reports-in-a-separate-directory."><span class="header-section-number">12.5.3</span> Move the full abundance reports in a separate directory.</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> emu_results/full_abundance mv emu_results/\*-abundance.tsv emu_results /full_abundance/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="combine-the-outputs-to-create-a-single-table-containing-all-the-emu-output-relative-abundances-using-the-combine-outputs-function-at-the-desired-taxonomic-rank-e.g.-genus-or-species.-accepted-ranks-species-genus-family-order-class-phylum-superkingdom.-note-this-function-will-select-all-the-.tsv-files-in-the-provided-directory-that-contain-rel-abundance-in-the-filename." class="level3" data-number="12.5.4">
+<h3 data-number="12.5.4" class="anchored" data-anchor-id="combine-the-outputs-to-create-a-single-table-containing-all-the-emu-output-relative-abundances-using-the-combine-outputs-function-at-the-desired-taxonomic-rank-e.g.-genus-or-species.-accepted-ranks-species-genus-family-order-class-phylum-superkingdom.-note-this-function-will-select-all-the-.tsv-files-in-the-provided-directory-that-contain-rel-abundance-in-the-filename."><span class="header-section-number">12.5.4</span> Combine the outputs to create a single table containing all the emu output relative abundances using the combine-outputs function at the desired taxonomic rank (e.g.&nbsp;genus or species). Accepted ranks: [‘species’, ‘genus’, ‘family’, ‘order’, ‘class’, ‘phylum’, ‘superkingdom’]. Note this function will select all the .tsv files in the provided directory that contain ‘rel-abundance’ in the filename.</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">emu</span> combine-outputs emu_results/ genus</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="now-we-are-ready-to-use-the-combined-abundance-tables-for-downstream-diversity-analysis-and-plotting-in-r-using-the-phyloseq-package.-follow-the-instructions-in-the-emu-r-analysis.r-file." class="level3" data-number="12.5.5">
+<h3 data-number="12.5.5" class="anchored" data-anchor-id="now-we-are-ready-to-use-the-combined-abundance-tables-for-downstream-diversity-analysis-and-plotting-in-r-using-the-phyloseq-package.-follow-the-instructions-in-the-emu-r-analysis.r-file."><span class="header-section-number">12.5.5</span> Now we are ready to use the combined abundance table(s) for downstream diversity analysis and plotting in R using the phyloseq package. Follow the instructions in the emu-R-analysis.R file.</h3>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./NGSanalysisPart2.html" class="pagination-link" aria-label="Part 2. NGS data Quality Control">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Part 2. NGS data Quality Control</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
