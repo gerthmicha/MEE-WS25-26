@@ -50,7 +50,7 @@ x
 x + 10
 ```
 
-You can call your variables whatever you want, but be careful: `R` will overwrite any variable if you tell it to, without a warning! You should also avoid giving your variables names that are already assigned to functions. 
+You can call your variables whatever you want, but be careful: `R` will overwrite any variable if you tell it to, without a warning! You should also avoid giving your variables names that are already assigned to functions.
 
 ```{r}
 my_favourite_variable <- 100
@@ -106,9 +106,8 @@ var6
 class(var6)
 ```
 
+## Exercises {.unnumbered}
 
-## Exercises
- 
 a)  Sum the values of 1 to 5
 
 ```{r}
@@ -117,21 +116,17 @@ sum(1:5)
 1 + 2 + 3 + 4 + 5
 ```
 
-
 b)  Create a variable v1 and assign it a character value
 
 ```{r}
 v1 <- "text"
 ```
 
-
 c)  Copy variable v1 to v2
 
 ```{r}
 v2 <- v1
 ```
-
-
 
 d)  Compare the value of v1 against v2
 
@@ -140,21 +135,19 @@ v1 == v2
 identical(v1, v2)
 ```
 
-
 ::: callout-tip
 ## Tip
 
 Compare values and variables using the following operators
 
-|     |                          |
-|-----|--------------------------|
-| `<` | less than                |
-| `<=`| less than or equal to    |
-| `>` | greater than             |
-| `>=`| greater than or equal to |
-| `==`| equals                   |
-| `!=`| not equal                |
+|      |                          |
+|------|--------------------------|
+| `<`  | less than                |
+| `<=` | less than or equal to    |
+| `>`  | greater than             |
+| `>=` | greater than or equal to |
+| `==` | equals                   |
+| `!=` | not equal                |
 
 Please note, `=` and `==` do very different things! Don't mix them up.
-
 :::

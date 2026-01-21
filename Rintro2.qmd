@@ -1,6 +1,6 @@
 # Data structures
 
-So far we've only looked at simple variables consisting of a single value or character. Typically, your data will be more complex. In `R`, there are three  structures relevant for the data you will be working with.
+So far we've only looked at simple variables consisting of a single value or character. Typically, your data will be more complex. In `R`, there are three structures relevant for the data you will be working with.
 
 ## Vectors
 
@@ -85,7 +85,6 @@ x
 
 Which elements of a vector have certain characteristics? This is important for filtering/selecting in your dataset. You can combine different queries using logical operators.
 
-
 ```{r}
 x >= 5
 x[x >= 5]
@@ -102,17 +101,18 @@ Logical operators in `R`
 
 |     |     |
 |-----|-----|
-| `|` |  OR |
+| `|` | OR  |
 | `&` | AND |
 | `!` | NOT |
 
-Conveniently, the elements of a vector can be named and accessed using the names. Let's first create a vector…
+Conveniently, the elements of a vector can be named and accessed using the names. Let's first create a vector...
 
 ```{r}
 dmel <- c("Hexapoda", "Diptera", "Drosophilidae", "Drosophila", "Drosophila melanogaster")
 dmel
 ```
-… and then add names for each element
+
+... and then add names for each element
 
 ```{r}
 names(dmel) <- c("Class", "Order", "Family", "Genus", "Species")
@@ -127,17 +127,16 @@ dmel[c("Class", "Species")]
 dmel[names(dmel) == "Order"]
 ```
 
-### Exercises
+### Exercise {.unnumbered}
 
-a) Create a vector consecutively numbering all days of the year 2026. Assign the correct weekday names for all elements of the vector.  
+a)  Create a vector consecutively numbering all days of the year 2026. Assign the correct weekday names for all elements of the vector.
 
-b) Use the vector to determine how many days in 2026 are weekend days.
+b)  Use the vector to determine how many days in 2026 are weekend days.
 
 ::: callout-tip
 ## Tip
 
 If you struggle to assign the correct names, have a look at the help for `rep`.
-
 :::
 
 ## Matrices
@@ -167,8 +166,9 @@ mat3
 mat4 <- rbind(dmel, dhyd)
 mat4
 ```
- Just like vectors, matrix elements can have names
- 
+
+Just like vectors, matrix elements can have names
+
 ```{r}
 mat3
 colnames(mat3)
@@ -185,9 +185,9 @@ mat3[1:3, ]
 mat3[c("Class", "Species"), ]
 ```
 
-### Exercise
+### Exercise {.unnumbered}
 
-a) create a matrix using with 20 rows & 5 columns, using 100 randomly generated numbers  between 0 and 1000.
+a)  create a matrix using with 20 rows & 5 columns, using 100 randomly generated numbers between 0 and 1000.
 
 ```{r}
 
@@ -201,8 +201,7 @@ matrix(data = runif(100, 0, 1000), nrow = 20)
 
 ```
 
-
-b) replace all values in the 3rd column of this matrix that are larger than 500 with `NA`.
+b)  replace all values in the 3rd column of this matrix that are larger than 500 with `NA`.
 
 ::: callout-tip
 ## Tip
@@ -212,9 +211,9 @@ use the function `runif` to create random values
 
 ## Data frames
 
-**Data frames** are the `R` equivalent of spread sheets. Like matrices, they are two-dimensional, however they may combine different data types. Most biological data sets you will encounter will be data frames. 
+**Data frames** are the `R` equivalent of spread sheets. Like matrices, they are two-dimensional, however they may combine different data types. Most biological data sets you will encounter will be data frames.
 
-Lets create a data frame 
+Lets create a data frame
 
 ```{r}
 # create some data
@@ -233,6 +232,7 @@ To access values, we can use the same approaches as for matrices:
 ```{r}
 df1[1:12, 1:2]
 ```
+
 but can also access and filter the columns directly using their names like this:
 
 ```{r}
@@ -240,13 +240,11 @@ df1$species
 df1[df1$dbh > 15, ]
 ```
 
-### Exercise
+### Exercise {.unnumbered}
 
-a) Using `df1`, select only entries corresponding to ash and maple with an age over 50 and a diameter less than 30.
+a)  Using `df1`, select only entries corresponding to ash and maple with an age over 50 and a diameter less than 30.
 
-
-
-b) Add a new column to the dataframe called "year". Generate data for this column so that there are 10 different years and the same number of entries for each tree species per year. 
+b)  Add a new column to the dataframe called "year". Generate data for this column so that there are 10 different years and the same number of entries for each tree species per year.
 
 ```{r}
 
@@ -262,13 +260,8 @@ colnames(df1)[4] <- "year"
 df1
 ```
 
-
 ::: callout-tip
 ## Tip
 
-Use the function `rep` for this exercise 
+Use the function `rep` for this exercise
 :::
-
-
-
-

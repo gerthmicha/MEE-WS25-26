@@ -37,7 +37,7 @@ head(be)
 Each of the rows contains data for 1 European species, and the columns contain the following information:
 
 | Trait abbreviation | Meaning                 | States                                                           | Notes             |
-|---------------|---------------|---------------------------|---------------|
+|----------------|----------------|------------------------|----------------|
 | OWS                | Overwintering stage     | egg, larvae, pupae, adult                                        |                   |
 | GEN                | Generations             | average, min, max, range                                         |                   |
 | WSP                | Wingspan                | average, range                                                   | Measured in mm    |
@@ -163,7 +163,7 @@ be %>%
 
 ```
 
-## Exercise
+## Exercise {.unnumbered}
 
 a)  From our dataset, remove all butterflies with average wingspans larger than 60mm and smaller than 30mm. Only keep the species that have a conservation classification on the EU level. Only keep the species names and all variables associated with adult feeding, and store this in a new data frame. How many rows and columns does the new data frame have?
 
@@ -219,7 +219,7 @@ be %>%
 
 ```
 
-## More exercises
+## More exercises {.unnumbered}
 
 Using `dplyr` functions, determine
 

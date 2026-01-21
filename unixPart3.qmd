@@ -27,9 +27,9 @@ While redirection allows us to save a command's output to a file, UNIX also allo
 ls /etc | head -n 10
 ```
 
-**Exercise**
+## Exercise {.unnumbered}
 
--   Using the pipe operator, find a way to count all contents (files and directories) in the /etc directory.
+Using the pipe operator, find a way to count all contents (files and directories) in the /etc directory.
 
 ## cut, sort, and uniq
 
@@ -60,9 +60,9 @@ The `uniq` command in Linux is used to filter out repeated lines from a text fil
 cat butterfly_ecology.csv | cut -d ',' -f 2 | sort | uniq
 ```
 
-**Exercise**
+## Exercise {.unnumbered}
 
--   Can you use `cut`, `sort` and `uniq` commands to count the number of species per family species per family?
+Can you use `cut`, `sort` and `uniq` commands to count the number of species per family species per family?
 
 ## grep and regular expressions
 
@@ -85,11 +85,11 @@ grep 'Papilionidae' *
 
 `grep` command is particularly powerful when used in combination with Regular Expressions. A regular expression (regex) in Linux is a sequence of characters that defines a search pattern, similar to the wildcards, and are commonly used for searching and manipulating text.
 
-**Exercises**
+## Exercise {.unnumbered}
 
--   In the butterfly_ecology.csv file find all "Aglais" species and save the fields species, family, range.size in a new file.
+a)   In the butterfly_ecology.csv file find all "Aglais" species and save the fields species, family, range.size in a new file.
 
--   The shell keeps a record of the commands you have previously run. You can display this list using the `history` command. Using this information, determine how many times you have used the ls command in your shell history. Hint: You may need to combine `history` with other command-line tools such as `grep`.
+b)   The shell keeps a record of the commands you have previously run. You can display this list using the `history` command. Using this information, determine how many times you have used the ls command in your shell history. Hint: You may need to combine `history` with other command-line tools such as `grep`.
 
 ## awk
 

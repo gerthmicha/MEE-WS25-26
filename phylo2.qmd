@@ -104,7 +104,7 @@ write.tree(coi.nj.tree, "data/COI_NJ.tre")
 > cat data/COI_NJ.tre
 > ```
 
-## Exercises
+## Exercises {.unnumbered}
 
 a) Change the model in the `dist.dna` command. Determine if specifying a model increases or decreases the average nucleotide distances.
 

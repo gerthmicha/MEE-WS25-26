@@ -21,7 +21,7 @@ pwd
 # Try to create a new directory with the same name e.g. projects1. What do you see?
 ```
 
-**Exercise**
+## Exercise {.unnumbered}
 
 In the previous example we created the two directories in two separate steps. Can we do it in one step instead? (check the help page for **mkdir** command).
 
@@ -52,7 +52,7 @@ mv ../notes.txt ../README.txt
 cp ../README.txt ./README1.txt
 ```
 
-**Exercise**
+## Exercise {.unnumbered}
 
 Try to make a copy of the complete project1 directory on the same parent location with the name project2. What do you see?
 
@@ -83,8 +83,9 @@ mkdir data
 mv *.csv data/
 ```
 
-**Exercise** List only the .csv files with years 2022 or 2023
-:::
+## Exercise {.unnumbered} 
+
+List only the .csv files with years 2022 or 2023
 
 ## Delete (remove) files and directories
 
@@ -105,7 +106,7 @@ rm -r ~/Documents/projects/project1
 # check the help page for rm command. Is there a safer way to do this? 
 ```
 
-**Exercise**
+## Exercise {.unnumbered}
 
 1.  Create a directory `data`.
 

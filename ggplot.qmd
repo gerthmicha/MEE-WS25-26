@@ -4,18 +4,18 @@
 
 `ggplot2` is a graphing library, i.e., a tool to make graphs in `R`. Compared with base graphs and other graphics packages, it comes with a number of advantages:
 
-* Beautiful!
-* Highly customizable (which is not always necessary though) 
-* Easiest way to create very complex plots
-* Tightly integrated into the `tidyverse`
+-   Beautiful!
+-   Highly customizable (which is not always necessary though)
+-   Easiest way to create very complex plots
+-   Tightly integrated into the `tidyverse`
 
 Compared with other packages the major drawbacks would be that it comes with a steep(ish) learning curve and is probably less intuitive for beginners. The reason is that `ggplot2` doesn't have fixed commands for scatterplots, boxplots, barplots, etc, but rather creates the plot in layers. The most important elements (or layers) of a plot in `ggplot2` are:
 
-* *Data*: as we are still in the `tidyverse`, this is always a data frame
-* *Aesthetics*: i.e., **what** you want to plot. Often, this will correpond to variables (columns) in your dataframe
-* *Geometric objects*: i.e., **how** you want to plot the data. This can be points, bars, boxplots, lines, etc..
-* *Facets*: more about this later
-* *Additional (optional) adjustments*: this includes themes that specify the overall design
+-   *Data*: as we are still in the `tidyverse`, this is always a data frame
+-   *Aesthetics*: i.e., **what** you want to plot. Often, this will correpond to variables (columns) in your dataframe
+-   *Geometric objects*: i.e., **how** you want to plot the data. This can be points, bars, boxplots, lines, etc..
+-   *Facets*: more about this later
+-   *Additional (optional) adjustments*: this includes themes that specify the overall design
 
 ## Building up the plot
 
@@ -42,7 +42,7 @@ be %>%                               # DATA
   geom_point()                       # Geometric object
 ```
 
-The geometric object, i.e., **how** we want to plot our aesthetics. Notice that elements in `ggplot2` are added with the `+` symbol (this is specific to `ggplot2`). We can add more geometric objects that will use the same aesthetics: 
+The geometric object, i.e., **how** we want to plot our aesthetics. Notice that elements in `ggplot2` are added with the `+` symbol (this is specific to `ggplot2`). We can add more geometric objects that will use the same aesthetics:
 
 ```{r Geometric objects can be exchanged or added, warning=FALSE}
 # lets add another geom (a regression line), and also change the theme
@@ -55,9 +55,9 @@ be %>%                               # DATA
 
 ```
 
-Changing the theme changes many layout options. For different applications, different themes might be appropriate. There are many additional themes available through packages such as [`ggthemr`](https://github.com/cttobin/ggthemr) or [`ggthemes`](https://github.com/jrnold/ggthemes). 
+Changing the theme changes many layout options. For different applications, different themes might be appropriate. There are many additional themes available through packages such as [`ggthemr`](https://github.com/cttobin/ggthemr) or [`ggthemes`](https://github.com/jrnold/ggthemes).
 
-A bit more on aesthetics: have you noticed that you only specify x and y once, and all geoms know **what** you want to plot. You can also specify additional aesthetics for each geom. 
+A bit more on aesthetics: have you noticed that you only specify x and y once, and all geoms know **what** you want to plot. You can also specify additional aesthetics for each geom.
 
 ```{r More aesthetics, warning=FALSE}
 # Add additional aesthetics, here: we want to plot the sonservation status. How? With colour! 
@@ -75,13 +75,11 @@ be %>%                                   # DATA
 
 ```
 
->
 > Aesthetics can be added through colors or shapes
->
 
 ## Faceting
 
-So far, we have cramped as much information as possible into the plot. This was useful to illustrate the functionality of `ggplot2`, but did not create very readable plots. Often, faceting is a better solution. The implementation in `ggplot2` is very straightforward. 
+So far, we have cramped as much information as possible into the plot. This was useful to illustrate the functionality of `ggplot2`, but did not create very readable plots. Often, faceting is a better solution. The implementation in `ggplot2` is very straightforward.
 
 ```{r A plot with facets, warning=FALSE}
 # Same example as before, faceted over family
@@ -109,7 +107,7 @@ be %>%
   facet_grid(OWS_egg ~ family, scales = "free") # faceting
 ```
 
->The above plot would need a little 'cleaning up'. How would you do that?
+> The above plot would need a little 'cleaning up'. How would you do that?
 
 ## Some common plot types
 
@@ -169,12 +167,9 @@ be %>%
 
 ```
 
-## Exercise
+## Exercise {.unnumbered}
 
-Using `ggplot2`, explore how range size differs between butterfly families and plot check if butterflies with smaller ranges have higher protection status. 
-Try to find appropriate plot types for this, use the help pages to find plot types that were not introduced to you yet.
-Explore other variables that may explain some trends in the data. Find a theme that you like!
-Remember, start with the **data**, add **aesthetics (what do you want to plot)**, and then think about **geometric objects (how do you want to plot the data)**. How can colour help in your visualisations? Does faceting make sense?
+Using `ggplot2`, explore how range size differs between butterfly families and plot check if butterflies with smaller ranges have higher protection status. Try to find appropriate plot types for this, use the help pages to find plot types that were not introduced to you yet. Explore other variables that may explain some trends in the data. Find a theme that you like! Remember, start with the **data**, add **aesthetics (what do you want to plot)**, and then think about **geometric objects (how do you want to plot the data)**. How can colour help in your visualisations? Does faceting make sense?
 
 ```{r}
 be %>% 
@@ -182,4 +177,3 @@ be %>%
   ggplot(aes(x = conserv.europe, group = OWS_egg, fill = OWS_egg)) +
   geom_bar(position = position_dodge()) 
 ```
-

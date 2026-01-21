@@ -36,10 +36,10 @@ book:
       chapters:
         - phylo1.qmd
         - phylo2.qmd
-    - part: "Microbiome"
-    - references.qmd
-
-bibliography: references.bib
+        - phylo3.qmd
+        - phylo4.qmd
+        - phylo5.qmd
+        - phylo6.qmd
 
 format:
   html:

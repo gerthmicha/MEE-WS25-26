@@ -115,5 +115,5 @@ library(knitr)
 knitr::include_graphics("_resources/trimal.png")
 ```
 
-# Excercise
+## Exercise {.unnumbered}
 Repeat all of the steps for the second locus of our data set! Use the accession numbers of `accessions_lwr.txt` to start.

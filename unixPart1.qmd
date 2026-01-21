@@ -107,6 +107,6 @@ cd -
 cd
 ```
 
-## Exercise
+## Exercise {.unnumbered}
 
 Practice moving around the filesystem with `cd` and listing directory contents with `ls`, including navigating by relative and absolute paths or using special characters ".." . Use `pwd` frequently to see your current working directory. Practice navigating home with `cd`.

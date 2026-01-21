@@ -1,0 +1,59 @@
+# Comparing trees 
+
+You will have noticed that different approaches may lead to different tree topologies. You can use a tree viewer and describe the differences, but for larger trees this may be cumbersome. Robinson-Foulds distances are an objective measurement of how much two trees differ. For two trees, the Robinson-Foulds distance is the number of splits in tree 1 that are missing in tree 2, PLUS the the number of splits in tree 2 that are missing in tree 1. 
+
+## Measuring differences
+
+You will have noticed that different approaches may lead to different tree topologies. You can use a tree viewer and describe the differences, but for larger trees this may be cumbersome. Robinson-Foulds distances are an objective measurement of how much two trees differ. For two trees, the Robinson-Foulds distance is the number of splits in tree 1 that are missing in tree 2, PLUS the the number of splits in tree 2 that are missing in tree 1. 
+
+Let's compare the differences for our COI trees obtained by different methodologies: Neighbor Joining (NJ), Maximum Likelihood (ML), Bayesian Inference (BI).
+
+We require all tree files in Newick format, however MrBayes provided a tree in Nexus format. Open the tree in FigTree, and save it as a Newick tree.
+
+Next, merge the 3 tree files together in a single file (but do keep track of the order you do this in!) 
+
+Using the terminal in MacOS, you can combine the trees like this: 
+
+```{bash, eval = FALSE}
+cat COI_NJ.tre COI_ML.treefile COI_BI.tre > COI_combined.tre
+```
+
+
+To calculate Robinson-Foulds (RF) distances between these trees, run IQ-TREE using the `-rf_all` option:
+
+```{bash, eval = FALSE}
+iqtree -rf_all COI_combined.tre 
+```
+
+Have a look at the resulting file: 
+
+```{bash, echo = FALSE}
+less data/COI_combined.tre.rfdist
+```
+
+The distances are displayed in a distance matrix which makes comparison straightforward.
+
+## Hypothesis testing
+
+In some cases it may be sufficient to obtain a single reasonable phylogeny, but for many applications you may want to know how well your topology is supported compared with other topologies – for example, if you have 2 competing hypotheses on the evolutionary history of a protein, you not only want to obtain the most likely phylogeny, but also want to know if the alternative topology can be rejected with confidence. This can be done by hypothesis testing, and the most common tests used are the Shimodaira-Hasegawa (SH) test and the approximately unbiased (AU) test. IQ-TREE supports these tests. 
+
+As a very simple example, let us check if the COI trees tree recovered from our NJ, ML, and BI analyses differ significantly. 
+
+```{bash eval = FALSE}
+iqtree -z COI_combined.tre -m GTR+F+I+G4 -s COI_aligned.fas -au -zb 10000 -n 0 -pre COI.hypo.test
+```
+
+We are providing our file containing the 3 trees via `-z` and provide the best model determined earlier. We also need to supply a path to the alignment file via `-s`. `-au` specifies that we want an AU test, and `-zb` specifies the number of replicates for significance testing. `-n 0` simply means that we do not want IQ-TREE to determine a maximum likelihood tree. 
+
+The output of the tests can be found in the file ending with .iqtree (Fig. 11)
+
+```{r Fig. 11, echo=FALSE, fig.align='center', fig.cap="**Fig. 11 |** Results of SH and AU tests (highlighted). IQ-TREE also does other topology tests, which we will ignore for now. As can be seen from the p-values, the SH test does not reject any of the three topologies, whereas the AU test rejects the NJ topology.", out.width="90%"}
+library(knitr)
+knitr::include_graphics("_resources/hypotest.png")
+```
+
+The little `+` and `-` symbols in the table help in the interpretation. In the example provided here, the AU test rejects the NJ topology with a barely significant p-value whereas the SH test does not reject any of the topologies. So, although our trees are quite different, we can not confidently reject any of the alternative topologies. 
+
+## Exercise {.unnumbered}
+
+Using the trees created in the earlier steps, try to compare the topologies between different loci, models, and phylogenetic approaches. 

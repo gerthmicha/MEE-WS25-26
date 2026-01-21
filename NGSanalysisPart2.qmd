@@ -98,7 +98,7 @@ multiqc ~/data/illumina/fastqc_output ~/data/illumina/sickle_fastqc_output
 
 ## Long-read data QC (Oxford Nanopore)
 
-**Exercise**
+## Exercise {.unnumbered}
 
 Check the quality of the Nanopore dataset. How does it differ from the Illumina reads?
 

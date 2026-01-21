@@ -32,7 +32,7 @@ knitr::include_graphics("_resources/Modelfinder.png")
 Now that we have determined the best model, we can run IQ-TREE to reconstruct a phylogeny:
 
 ```{bash eval = F}
-iqtree -s COI_aligned.fas -pre COI_ML -m GTR+F+I+G4 -bb 1000
+iqtree -s COI_ali.fas -pre COI_ML -m GTR+F+I+G4 -bb 1000
 ```
 
 We have used the following options: 
@@ -65,7 +65,7 @@ Note how we don't need to specify a model here - the default behavior is to dete
 IQ-TREE will have generated a `.treefile`, which can now be opened in FigTree or a different tree viewer. 
 
 
-## Exercises
+## Exercises {.unnumbered}
 
 a) Repeat the model selection and ML analysis for the lwr alignment. 
 
