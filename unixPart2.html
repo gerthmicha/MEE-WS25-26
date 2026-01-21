@@ -279,18 +279,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Phylogenetic reconstruction using distance methods.</span></span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Microbiome</span></span>
-  </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./phylo3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Models and Maximum Likelihood</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylo4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Displaying phylogenetic trees</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylo5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bayesian phylogenetic reconstruction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylo6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Comparing trees</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -302,10 +316,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#creating-new-directories-and-files" id="toc-creating-new-directories-and-files" class="nav-link active" data-scroll-target="#creating-new-directories-and-files"><span class="header-section-number">8.1</span> Creating new directories and files</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
   <li><a href="#move-or-rename-a-file-or-directory" id="toc-move-or-rename-a-file-or-directory" class="nav-link" data-scroll-target="#move-or-rename-a-file-or-directory"><span class="header-section-number">8.2</span> Move or Rename a File or Directory</a></li>
-  <li><a href="#delete-remove-files-and-directories" id="toc-delete-remove-files-and-directories" class="nav-link" data-scroll-target="#delete-remove-files-and-directories"><span class="header-section-number">8.3</span> Delete (remove) files and directories</a></li>
-  <li><a href="#viewing-and-inspecting-files" id="toc-viewing-and-inspecting-files" class="nav-link" data-scroll-target="#viewing-and-inspecting-files"><span class="header-section-number">8.4</span> Viewing and inspecting Files</a></li>
-  <li><a href="#a-text-editor-for-the-terminal" id="toc-a-text-editor-for-the-terminal" class="nav-link" data-scroll-target="#a-text-editor-for-the-terminal"><span class="header-section-number">8.5</span> A text editor for the terminal</a></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise</a></li>
   </ul>
 </nav>
     </div>
@@ -350,7 +363,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> projects1</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to create a new directory with the same name e.g. projects1. What do you see?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Exercise</strong></p>
+</section>
+<section id="exercise" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercise">Exercise</h2>
 <p>In the previous example we created the two directories in two separate steps. Can we do it in one step instead? (check the help page for <strong>mkdir</strong> command).</p>
 <p>Now that we saw how to create a new directory lets see how we can create a new file. There are several ways to do this in Linux command line but we will start with the basic one. The command <strong><code>touch</code></strong> will create a new, empty file.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an Empty File within the new directory project1.</span></span>
@@ -371,7 +386,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> ../notes.txt ../README.txt</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># copy the README.txt file to project1 directory as README1.txt</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ../README.txt ./README1.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Exercise</strong></p>
+</section>
+<section id="exercise-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise</h2>
 <p>Try to make a copy of the complete project1 directory on the same parent location with the name project2. What do you see?</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -402,9 +419,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># create a directory called data and move the .csv files into data/</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> data</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="pp">*</span>.csv data/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Exercise</strong> List only the .csv files with years 2022 or 2023</p>
-</div>
-</div>
+<section id="exercise-2" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise</h2>
+<p>List only the .csv files with years 2022 or 2023</p>
 </section>
 <section id="delete-remove-files-and-directories" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="delete-remove-files-and-directories"><span class="header-section-number">8.3</span> Delete (remove) files and directories</h2>
@@ -429,7 +446,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The dangerous way. Use rm recursively "-r" to remove a non-empty directory. BE CAUTIOUS! YOU HAVE BEEN WARNED!</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> ~/Documents/projects/project1</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># check the help page for rm command. Is there a safer way to do this? </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Exercise</strong></p>
+</section>
+<section id="exercise-3" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise</h2>
 <ol type="1">
 <li><p>Create a directory <code>data</code>.</p></li>
 <li><p>Inside <code>data</code>, create three empty files: <code>sample1.txt</code>, <code>sample2.txt</code>, <code>sample3.txt</code></p></li>
@@ -513,6 +532,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> NOTES.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
+</section>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

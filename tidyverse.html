@@ -281,18 +281,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Phylogenetic reconstruction using distance methods.</span></span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Microbiome</span></span>
-  </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./phylo3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Models and Maximum Likelihood</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylo4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Displaying phylogenetic trees</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylo5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bayesian phylogenetic reconstruction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylo6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Comparing trees</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -310,9 +324,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sort-by-column-with-arrange" id="toc-sort-by-column-with-arrange" class="nav-link" data-scroll-target="#sort-by-column-with-arrange"><span class="header-section-number">4.5</span> Sort by column with <code>arrange()</code></a></li>
   <li><a href="#select-columns-with-select" id="toc-select-columns-with-select" class="nav-link" data-scroll-target="#select-columns-with-select"><span class="header-section-number">4.6</span> Select columns with <code>select()</code></a></li>
   <li><a href="#create-new-variables-with-mutate" id="toc-create-new-variables-with-mutate" class="nav-link" data-scroll-target="#create-new-variables-with-mutate"><span class="header-section-number">4.7</span> Create new variables with <code>mutate()</code></a></li>
-  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">4.8</span> Exercise</a></li>
-  <li><a href="#group_by-and-summarise-as-powerful-data-exploration-tools" id="toc-group_by-and-summarise-as-powerful-data-exploration-tools" class="nav-link" data-scroll-target="#group_by-and-summarise-as-powerful-data-exploration-tools"><span class="header-section-number">4.9</span> <code>group_by()</code> and <code>summarise()</code> as powerful data exploration tools</a></li>
-  <li><a href="#more-exercises" id="toc-more-exercises" class="nav-link" data-scroll-target="#more-exercises"><span class="header-section-number">4.10</span> More exercises</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
+  <li><a href="#group_by-and-summarise-as-powerful-data-exploration-tools" id="toc-group_by-and-summarise-as-powerful-data-exploration-tools" class="nav-link" data-scroll-target="#group_by-and-summarise-as-powerful-data-exploration-tools"><span class="header-section-number">4.8</span> <code>group_by()</code> and <code>summarise()</code> as powerful data exploration tools</a></li>
+  <li><a href="#more-exercises" id="toc-more-exercises" class="nav-link" data-scroll-target="#more-exercises">More exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -379,10 +393,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Each of the rows contains data for 1 European species, and the columns contain the following information:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 37%">
-<col style="width: 20%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 33%">
+<col style="width: 22%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -625,8 +639,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="exercise" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="exercise"><span class="header-section-number">4.8</span> Exercise</h2>
+<section id="exercise" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercise">Exercise</h2>
 <ol type="a">
 <li>From our dataset, remove all butterflies with average wingspans larger than 60mm and smaller than 30mm. Only keep the species that have a conservation classification on the EU level. Only keep the species names and all variables associated with adult feeding, and store this in a new data frame. How many rows and columns does the new data frame have?</li>
 </ol>
@@ -663,8 +677,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="group_by-and-summarise-as-powerful-data-exploration-tools" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="group_by-and-summarise-as-powerful-data-exploration-tools"><span class="header-section-number">4.9</span> <code>group_by()</code> and <code>summarise()</code> as powerful data exploration tools</h2>
+<section id="group_by-and-summarise-as-powerful-data-exploration-tools" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="group_by-and-summarise-as-powerful-data-exploration-tools"><span class="header-section-number">4.8</span> <code>group_by()</code> and <code>summarise()</code> as powerful data exploration tools</h2>
 <p>Although <code>dplyr</code> has a simpler syntax overall, everything we have looked at so far could have been done fairly easily with base <code>R</code> functions: data frame filtering, sorting, and adding and removing columns. One of the strengths of <code>dplyr</code> is explorative data analysis, and this is where <code>group_by()</code> and <code>summarize()</code> are really helpful. We’ll only look at very simple examples today.</p>
 <p>When browsing through the complete data table, it is very hard to recognize any patterns. Let’s assume we wanted to compare the average wing span of butterflies with that overwinter as adults vs all other butterflies:</p>
 <div class="cell">
@@ -713,8 +727,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="more-exercises" class="level2" data-number="4.10">
-<h2 data-number="4.10" class="anchored" data-anchor-id="more-exercises"><span class="header-section-number">4.10</span> More exercises</h2>
+<section id="more-exercises" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="more-exercises">More exercises</h2>
 <p>Using <code>dplyr</code> functions, determine</p>
 <ol type="a">
 <li>If butterflies overwintering as pupae have higher level of legal protection</li>

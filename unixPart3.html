@@ -279,18 +279,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Phylogenetic reconstruction using distance methods.</span></span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Microbiome</span></span>
-  </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./phylo3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Models and Maximum Likelihood</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylo4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Displaying phylogenetic trees</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylo5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bayesian phylogenetic reconstruction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylo6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Comparing trees</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -302,8 +316,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#redirecting-and-piping" id="toc-redirecting-and-piping" class="nav-link active" data-scroll-target="#redirecting-and-piping"><span class="header-section-number">9.1</span> Redirecting and piping</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
   <li><a href="#cut-sort-and-uniq" id="toc-cut-sort-and-uniq" class="nav-link" data-scroll-target="#cut-sort-and-uniq"><span class="header-section-number">9.2</span> cut, sort, and uniq</a></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise</a></li>
   <li><a href="#grep-and-regular-expressions" id="toc-grep-and-regular-expressions" class="nav-link" data-scroll-target="#grep-and-regular-expressions"><span class="header-section-number">9.3</span> grep and regular expressions</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise</a></li>
   <li><a href="#awk" id="toc-awk" class="nav-link" data-scroll-target="#awk"><span class="header-section-number">9.4</span> awk</a></li>
   </ul>
 </nav>
@@ -356,10 +373,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>While redirection allows us to save a command’s output to a file, UNIX also allows us to connect commands directly to one another. We can send the output of one command directly as input to another using the pipe (|) operator.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#list only the first 10 files of the /etc directory</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /etc <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 10</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Exercise</strong></p>
-<ul>
-<li>Using the pipe operator, find a way to count all contents (files and directories) in the /etc directory.</li>
-</ul>
+</section>
+<section id="exercise" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercise">Exercise</h2>
+<p>Using the pipe operator, find a way to count all contents (files and directories) in the /etc directory.</p>
 </section>
 <section id="cut-sort-and-uniq" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="cut-sort-and-uniq"><span class="header-section-number">9.2</span> cut, sort, and uniq</h2>
@@ -378,10 +395,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>uniq</code> command in Linux is used to filter out repeated lines from a text file or standard input, displaying only unique entries or counting repetitions. It works best when the input is sorted, as it only removes adjacent duplicate lines.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># families are represented in the butterfly_ecology.csv data?</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> butterfly_ecology.csv <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">','</span> <span class="at">-f</span> 2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Exercise</strong></p>
-<ul>
-<li>Can you use <code>cut</code>, <code>sort</code> and <code>uniq</code> commands to count the number of species per family species per family?</li>
-</ul>
+</section>
+<section id="exercise-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise</h2>
+<p>Can you use <code>cut</code>, <code>sort</code> and <code>uniq</code> commands to count the number of species per family species per family?</p>
 </section>
 <section id="grep-and-regular-expressions" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="grep-and-regular-expressions"><span class="header-section-number">9.3</span> grep and regular expressions</h2>
@@ -399,11 +416,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># We can search for patterns in multiple files (e.g. all the files in the directory)</span></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">'Papilionidae'</span> <span class="pp">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>grep</code> command is particularly powerful when used in combination with Regular Expressions. A regular expression (regex) in Linux is a sequence of characters that defines a search pattern, similar to the wildcards, and are commonly used for searching and manipulating text.</p>
-<p><strong>Exercises</strong></p>
-<ul>
+</section>
+<section id="exercise-2" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise</h2>
+<ol type="a">
 <li><p>In the butterfly_ecology.csv file find all “Aglais” species and save the fields species, family, range.size in a new file.</p></li>
 <li><p>The shell keeps a record of the commands you have previously run. You can display this list using the <code>history</code> command. Using this information, determine how many times you have used the ls command in your shell history. Hint: You may need to combine <code>history</code> with other command-line tools such as <code>grep</code>.</p></li>
-</ul>
+</ol>
 </section>
 <section id="awk" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="awk"><span class="header-section-number">9.4</span> awk</h2>

@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Stefanos Siozios">
-<meta name="author" content="Michael Gerth">
 
-<title>Methods in evolutionary ecology WS25/26</title>
+<title>16&nbsp; Displaying phylogenetic trees – Methods in evolutionary ecology WS25/26</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Rintro1.html" rel="next">
+<link href="./phylo5.html" rel="next">
+<link href="./phylo3.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -121,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">About</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./phylo1.html">Phylogenetics</a></li><li class="breadcrumb-item"><a href="./phylo4.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Displaying phylogenetic trees</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -152,7 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
@@ -290,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./phylo4.html" class="sidebar-item-text sidebar-link">
+  <a href="./phylo4.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Displaying phylogenetic trees</span></span></a>
   </div>
 </li>
@@ -318,33 +317,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a>
-  <ul class="collapse">
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
-  <li><a href="#how-to-find-your-way-around" id="toc-how-to-find-your-way-around" class="nav-link" data-scroll-target="#how-to-find-your-way-around">How to find your way around</a></li>
-  </ul></li>
+  <li><a href="#figtree" id="toc-figtree" class="nav-link active" data-scroll-target="#figtree"><span class="header-section-number">16.1</span> Figtree</a></li>
+  <li><a href="#plotting-trees-in-r" id="toc-plotting-trees-in-r" class="nav-link" data-scroll-target="#plotting-trees-in-r"><span class="header-section-number">16.2</span> Plotting trees in <code>R</code></a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./phylo1.html">Phylogenetics</a></li><li class="breadcrumb-item"><a href="./phylo4.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Displaying phylogenetic trees</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Methods in evolutionary ecology WS25/26</h1>
+<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Displaying phylogenetic trees</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Authors</div>
-    <div class="quarto-title-meta-contents">
-             <p>Stefanos Siozios <a href="mailto:stefanos.siozios@zoologie.uni-halle.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-             <p>Michael Gerth <a href="mailto:michael.gerth@zoologie.uni-halle.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-          </div>
-  </div>
     
   
     
@@ -355,39 +345,119 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="about" class="level1 unnumbered">
-<h1 class="unnumbered">About</h1>
-<p>This script covers the computational and bioinformatics parts of the module “Methods in Evolutionary Ecology”. We will introduce you to <code>R</code> and <code>BASH</code>, two of the most widely used scripting languages, and make you familiar with navigating in a UNIX environment. These skills are important for any biologist, irrespective of the field you may want to specialise in in the future. Building upon your new knowledge, we will learn how to reconstruct phylogenies from sequencing data, how to work with genomic data, and how to characterise microbiomes. At the end of three weeks computational work, you will tackle a small computational group project, putting your new skills into practise.</p>
-<p>The script is designed to cover the entire course content. While we will go you through all of the material together in detail during the course, the script should also enable you to work through the content on your own, e.g., to recap after the course has finished and as a reference and starting point for future computational endeavours.</p>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>The text is formatted using <a href="https://quarto.org/" title="Link to Quarto webpage">Quarto</a>, which comes with a number of benefits. It allows us to provide explanations as structured and nicely formatted regular text, and to include code blocks for all computational steps. When compiling Quarto documents, all of the code is run, which means that you not only see the code, but also the outputs it creates.</p>
-<p>Here is an example:</p>
-<p>This little block of <code>R</code> code generates 100 random coordinates and plots them. The code is shown below, together with the output the code has produced (in this case, a plot).</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The most convenient way of displaying phylogenetic trees is by using a software with a graphical user interface. However, <code>R</code> also has some convenient tools for displaying and altering trees.</p>
+<section id="figtree" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="figtree"><span class="header-section-number">16.1</span> Figtree</h2>
+<p>Open FigTree by double clicking on the corresponding file in your file manager. Load your tree file by clicking <code>File -&gt; Open</code> and navigating to your tree file. If the file contains support values (e.g., from Bootstrap analysis), FigTree will ask you to provide a name for these. There are a couple of things you should do when you first view your tree (Fig. 8).</p>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="_resources/Figtree.gif" class="img-fluid figure-img" style="width:90.0%"></p>
+<figcaption><strong>Fig. 8 |</strong> A simple workflow to display a phylogenetic tree using FigTree. The steps are: opening a tree file; rooting with an outgroup; ladderizing the tree; displaying bootstrap values; adjusting label size, aligning tip labels; exporting a pdf of the tree file.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The code can conveniently be copied from the block into your own scripts.</p>
-<p>Quarto supports many formats, we here provide the script as a webpage and a printable pdf. Writing Quarto documents is very simple and can be done using RStudio as an editor. The entire script is available for you on <a href="https://gerthmicha.github.io/MEE-WS25-26/">github</a> – feel free to download it and modify it with your own comments, notes, and code. We will provide a short introduction to github and Quarto in the course.</p>
+<p>Figtree offers many more functions that you should explore in detail. Publication-ready figures can be generated, or further modified in e.g., a vector graphics programme such as <a href="https://inkscape.org/">Inkscape</a>. A good alternative to Figtree is iTol (Interactive Tree of Life), an online platform that offers a similar set of tools as Figtree: <a href="https://itol.embl.de/">https://itol.embl.de/</a>.</p>
 </section>
-<section id="how-to-find-your-way-around" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-find-your-way-around">How to find your way around</h2>
-<p>Simply use the navigation on the left to quickly access the different topics, or flip through the individual pages using the buttons at the bottom of the page. You may wish to download the pdf version of the script (click the pdf icon in the top left) which is ideal for printing. The script is organized by topics, rather than course days, because we will adapt the tempo according to your needs.</p>
-<blockquote class="blockquote">
-<p>Please note: The script will very likely only be complete at the end of the course. We will still be modifying and correcting it throughtout the three weeks you are with us. So make sure to check out the final version at the end of the course.</p>
-</blockquote>
+<section id="plotting-trees-in-r" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="plotting-trees-in-r"><span class="header-section-number">16.2</span> Plotting trees in <code>R</code></h2>
+<p>Plotting trees in R is straightforward but we need to understand the structure of the tree format first.</p>
+<p>Read in a tree and plot using ape</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ape)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>coi.tre <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="st">"data/COI_NJ.tre"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(coi.tre, <span class="at">no.margin =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="phylo4_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s look at how tree data is stored in ape.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(coi.tre)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 4
+ $ edge       : int [1:123, 1:2] 64 65 66 67 68 69 70 71 71 70 ...
+ $ edge.length: num [1:123] 0.005542 0.011461 0.000545 0.004695 0.007226 ...
+ $ Nnode      : int 61
+ $ tip.label  : chr [1:63] "Andrena_clarkella" "Andrena_fulva" "Andrena_praecox" "Andrena_bicolor" ...
+ - attr(*, "class")= chr "phylo"
+ - attr(*, "order")= chr "cladewise"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(coi.tre, <span class="at">no.margin =</span> T)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nodelabels</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="phylo4_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Knowing the nodelabels helps us to re-root the tree. Some more options to alter the display of the tree are shown</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>coi.rooted <span class="ot">&lt;-</span> <span class="fu">root</span>(coi.tre, <span class="at">node =</span> <span class="dv">75</span>, <span class="at">resolve.root =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ladderize</span>(coi.rooted, <span class="at">right =</span> <span class="cn">FALSE</span>), </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">root.edge =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">no.margin =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.8</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">align.tip.label =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="phylo4_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's add some colours!</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># First we need to create color vectors for the elements we may want to change, e.g., node labels or edges of the tree</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>tipcolours <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"black"</span>, <span class="fu">length</span>(coi.rooted<span class="sc">$</span>tip.label))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Now let's alter the tip colours for each group we want to highlight</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>tipcolours[<span class="fu">grep</span>(<span class="st">"Andrena"</span>, coi.rooted<span class="sc">$</span>tip.label)] <span class="ot">&lt;-</span> <span class="st">"purple"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>tipcolours[<span class="fu">grep</span>(<span class="st">"Nomada"</span>, coi.rooted<span class="sc">$</span>tip.label)] <span class="ot">&lt;-</span> <span class="st">"turquoise"</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ladderize</span>(coi.rooted, <span class="at">right =</span> <span class="cn">FALSE</span>), </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">root.edge =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">no.margin =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">align.tip.label =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">tip.color =</span> tipcolours)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="phylo4_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
+<ol type="a">
+<li><p>Using tree displaying software such as Figtree and iTol, compare our trees resulting from NJ and ML analysis. Also compare the trees resulting from analysing the different loci COI and lwr. What could explain differences in the topologies?</p></li>
+<li><p>Remember the tree created under the worst model in our previous analysis? How different is it from the tree reconstructed under the best model?</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Try out the function <code>cophyloplot</code> to compare different phylogenies with each other.</p>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -793,10 +863,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./phylo3.html" class="pagination-link" aria-label="Models and Maximum Likelihood">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Models and Maximum Likelihood</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Rintro1.html" class="pagination-link" aria-label="First steps">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">First steps</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./phylo5.html" class="pagination-link" aria-label="Bayesian phylogenetic reconstruction">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bayesian phylogenetic reconstruction</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

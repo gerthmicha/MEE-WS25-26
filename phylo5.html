@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>References – Methods in evolutionary ecology WS25/26</title>
+<title>17&nbsp; Bayesian phylogenetic reconstruction – Methods in evolutionary ecology WS25/26</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,7 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./phylo2.html" rel="prev">
+<link href="./phylo6.html" rel="next">
+<link href="./phylo4.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -88,6 +70,8 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 </head>
@@ -101,7 +85,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./phylo1.html">Phylogenetics</a></li><li class="breadcrumb-item"><a href="./phylo5.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bayesian phylogenetic reconstruction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -262,32 +246,55 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Phylogenetic reconstruction using distance methods.</span></span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Microbiome</span></span>
-  </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">References</span></a>
+  <a href="./phylo3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Models and Maximum Likelihood</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylo4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Displaying phylogenetic trees</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylo5.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bayesian phylogenetic reconstruction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./phylo6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Comparing trees</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link active" data-scroll-target="#exercise">Exercise</a>
+  <ul class="collapse">
+  <li><a href="#mrbayes-models" id="toc-mrbayes-models" class="nav-link" data-scroll-target="#mrbayes-models"><span class="header-section-number">17.0.1</span> MrBayes Models</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./phylo1.html">Phylogenetics</a></li><li class="breadcrumb-item"><a href="./phylo5.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bayesian phylogenetic reconstruction</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bayesian phylogenetic reconstruction</span></h1>
 </div>
 
 
@@ -304,11 +311,185 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" role="list" style="display: none">
-
+<p>We will use MrBayes to reconstruct a phylogeny from our alignments. This requires a few more steps than our previous Maximum Likelihood analysis. First of all, we need to convert our alignment into the nexus format, as MrBayes won’t accept any other format. We can do this by using the online tool <a href="http://www.sing-group.org/ALTER/">ALTER</a> (Fig. 9).</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="_resources/Alter.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<figcaption><strong>Fig. 9 |</strong> Converting a fasta alignment into a nexus file: 1. Click <code>Autodetect</code>; 2. Upload your fasta alignment; 3. Select <code>MrBayes</code>; 4. select <code>NEXUS</code>; 5. click <code>convert!</code>; 6. choose your operating system; 7. click <code>save…</code> to download your nexus alignment</figcaption>
+</figure>
 </div>
+</div>
+</div>
+<p>A nexus file always begins with <code>#NEXUS</code> followed by different blocks. Each block begins with <code>begin &lt;BLOCK&gt;</code> and ends with <code>end;</code>. The only block present in our file is the <code>data</code> block, but the nexus format allows many additional data to be stored here. Open the nexus file in a text editor and scroll to the very bottom. We will add the options and instructions for MrBayes directly into this file – this is different to e.g., IQ-TREE where we provide all options on the command line. It is a bit more tedious, but comes at the advantage that the settings for our run will be stored together with the data in the same nexus file – this is good in terms of reproducibility.</p>
+<p>At the very bottom of the nexus file add</p>
+<pre><code>begin mrbayes;</code></pre>
+<p>This starts the MrBayes block – Reading the file, MrBayes will now know that this is where its instructions are at. First of all, we need to specify the substitution model to be used. Using Modelfinder, we have determined GTR+F+G+I to be the best fitting. On a new line, enter:</p>
+<pre><code>lset nst=6 rates=invgamma;</code></pre>
+<p><code>nst</code> stands for number of substitution rates. GTR has 6 in total (1 for each exchange possibility between the 4 bases), so we need to specify 6 here. To include gamma distribution of rate heterogeneity across sites plus invariable sites, you need to specify <code>invgamma</code>. Other options are <code>gamma</code> (no invariable sites) or <code>equal</code> (for homogeneous rates across sites). For an overview of how to specify the most commonly used substitution models in MrBayes, please see below.</p>
+<p>We now need to specify the priors for our analyses, i.e., our assumptions on what the data will look like. We want these to be uninformative, so will only use flat prior here. We can specify priors for all parameters (only 3 are considered here):</p>
+<pre><code>prset statefreqpr=fixed(empirical) revmatpr=Dirichlet(1,1,1,1,1,1) Shapepr=Uniform(0.1,50.0);</code></pre>
+<p>Note that <code>revmatprior</code> and <code>Shapeprior</code> are the default values, so we wouldn’t need to specify these explicitly. We are using fixed state frequencies (the +F in our model), because ModelTest told us this would fit the data best.</p>
+<p>Now we need to tell MrBayes how to perform the analyses:</p>
+<pre><code>mcmc nruns=2 nchains=4 ngen=100000 Printfreq=500 Samplefreq=500;</code></pre>
+<p>We are asking for 2 runs in parallel with 4 chains each. 100,000 generations will be performed, with samples taken and printed to screen avery 500 generations. This concludes our MrBayes block, so we add a</p>
+<pre><code>end;</code></pre>
+<p>As the final line.</p>
+<p>The complete MrBayes block now should look like this:</p>
+<pre><code>begin mrbayes;
+lset nst=6 rates=invgamma;
+prset statefreqpr=fixed(empirical) revmatpr=Dirichlet(1,1,1,1,1,1) shapepr=Uniform(0.1,50.0);
+mcmc nruns=2 nchains=4 ngen=100000 Printfreq=100 Samplefreq=100;
+end;</code></pre>
+<p>Make sure to save your changes into the nexus file!</p>
+<p>We can run MrBayes by executing the app and typing in its terminal:</p>
+<pre><code>MrBayes  &gt;  execute COI_aligned.nex</code></pre>
+<p>While MrBayes is running, it will print out information on the current status of the analysis (Fig 10.)</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="_resources/MrBayes.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<figcaption><strong>Fig. 10 |</strong> The column furthest on the left shows the number of generations passed, and the one on the far right an estimate of the remaining run time. All other values are log Likelihoods of the current state of the mcmc sampler. There are two runs (separated by a <code>*</code>) and 4 chains each, so 8 log Likelihoods in total. Heated chains are surrounded by parentheses, and cold chains surrounded by square brackets.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>In regular intervals MrBayes tells us about the standard deviation of split frequencies – this is a measure for how different the topologies of the two different runs are. We want them to be very similar of course, and a low value here is indicative of that.</p>
+<p>Once the initial 100,000 generations are done, MrBayes asks us if we want to continue. Type <code>no</code> and press <code>&lt;ENTER&gt;</code>. MrBayes will produce some run statistics. Type <code>sump</code> and press <code>&lt;ENTER&gt;</code>. Take some time to explore the run statistics here: did the runs converge? Should we let the program run a little longer?</p>
+<p>If you are happy and want to produce a consensus tree from the posterior samples, type <code>sumt</code> and press <code>&lt;ENTER&gt;</code>. You can quit the programme now by typing <code>quit</code> and pressing <code>&lt;ENTER&gt;</code>. MrBayes has produced a consensus tree file (ending with <code>.con.tre</code>), which can now be looked at using a tree viewer such as FigTree. MrBayes has further sampled all trees and model parameters over the generations (stored in the .t and .p files, respectively). THese files can be further explored to determine how well the runs have converged, e.g., by using <a href="https://gerthmicha.shinyapps.io/postpb/">this online tool</a>.</p>
+<section id="exercise" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercise">Exercise</h2>
+<p>Do a Bayesian phylogeny for the lwr alignment!</p>
+<section id="mrbayes-models" class="level3" data-number="17.0.1">
+<h3 data-number="17.0.1" class="anchored" data-anchor-id="mrbayes-models"><span class="header-section-number">17.0.1</span> MrBayes Models</h3>
+<p>A list of models supported by MrBayes and how to specify them</p>
+<section id="rate-heterogeneity" class="level4" data-number="17.0.1.1">
+<h4 data-number="17.0.1.1" class="anchored" data-anchor-id="rate-heterogeneity"><span class="header-section-number">17.0.1.1</span> Rate heterogeneity</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 83%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>I</td>
+<td><code>lset rates=propinv;</code></td>
+</tr>
+<tr class="even">
+<td>G</td>
+<td><code>lset rates=gamma;</code></td>
+</tr>
+<tr class="odd">
+<td>F</td>
+<td><code>prset statefreqpr=fixed(empirical);</code></td>
+</tr>
+<tr class="even">
+<td>I + G</td>
+<td><code>lset rates=invgamma;</code></td>
+</tr>
+<tr class="odd">
+<td>G + F</td>
+<td><code>prset statefreqpr=fixed(empirical); lset rates=gamma;</code></td>
+</tr>
+<tr class="even">
+<td>I + F</td>
+<td><code>prset statefreqpr=fixed(empirical); lset rates=propinv;</code></td>
+</tr>
+<tr class="odd">
+<td>I + G + F</td>
+<td><code>prset statefreqpr=fixed(empirical); lset rates=invgamma;</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="nucleotide-substitution-models" class="level4" data-number="17.0.1.2">
+<h4 data-number="17.0.1.2" class="anchored" data-anchor-id="nucleotide-substitution-models"><span class="header-section-number">17.0.1.2</span> Nucleotide substitution models</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 83%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>GTR</td>
+<td><code>lset nst=6;</code></td>
+</tr>
+<tr class="even">
+<td>SYM</td>
+<td><code>lset nst=6 prset statefreqpr=fixed(equal);</code></td>
+</tr>
+<tr class="odd">
+<td>HKY</td>
+<td><code>lset nst=2;</code></td>
+</tr>
+<tr class="even">
+<td>K2P</td>
+<td><code>lset nst=2 prset statefreqpr=fixed(equal);</code></td>
+</tr>
+<tr class="odd">
+<td>F81</td>
+<td><code>lset nst=1;</code></td>
+</tr>
+<tr class="even">
+<td>JC</td>
+<td><code>lset nst=1 prset statefreqpr=fixed(equal);</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="fixed-rate-protein-substitution-models" class="level4" data-number="17.0.1.3">
+<h4 data-number="17.0.1.3" class="anchored" data-anchor-id="fixed-rate-protein-substitution-models"><span class="header-section-number">17.0.1.3</span> Fixed rate protein substitution models</h4>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>Poisson</td>
+<td><code>prset aamodelpr=fixed(poisson);</code></td>
+</tr>
+<tr class="even">
+<td>Dayhoff</td>
+<td><code>prset aamodelpr=fixed(dayhoff);</code></td>
+</tr>
+<tr class="odd">
+<td>mtREV</td>
+<td><code>prset aamodelpr=fixed(mtrev);</code></td>
+</tr>
+<tr class="even">
+<td>mtMAM</td>
+<td><code>prset aamodelpr=fixed(mtmam);</code></td>
+</tr>
+<tr class="odd">
+<td>WAG</td>
+<td><code>prset aamodelpr=fixed(wag);</code></td>
+</tr>
+<tr class="even">
+<td>rtREV</td>
+<td><code>prset aamodelpr=fixed(rtrev);</code></td>
+</tr>
+<tr class="odd">
+<td>cpREV</td>
+<td><code>prset aamodelpr=fixed(cprev);</code></td>
+</tr>
+<tr class="even">
+<td>VT</td>
+<td><code>prset aamodelpr=fixed(vt);</code></td>
+</tr>
+<tr class="odd">
+<td>Blosum62</td>
+<td><code>prset aamodelpr=fixed(blosum);</code></td>
+</tr>
+<tr class="even">
+<td>JTT</td>
+<td><code>prset aamodelpr=fixed(jtt);</code></td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -713,11 +894,14 @@ div.csl-indent {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./phylo2.html" class="pagination-link" aria-label="Phylogenetic reconstruction using distance methods.">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Phylogenetic reconstruction using distance methods.</span></span>
+      <a href="./phylo4.html" class="pagination-link" aria-label="Displaying phylogenetic trees">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Displaying phylogenetic trees</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./phylo6.html" class="pagination-link" aria-label="Comparing trees">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Comparing trees</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
