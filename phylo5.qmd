@@ -73,11 +73,11 @@ If you are happy and want to produce a consensus tree from the posterior samples
 
 Do a Bayesian phylogeny for the lwr alignment! 
 
-### MrBayes Models
+### Appendix: MrBayes Models {.unnumbered}
 
 A list of models supported by MrBayes and how to specify them
 
-#### Rate heterogeneity
+#### Rate heterogeneity {.unnumbered}
 
 |      	      |                                                      	        |
 |------------	|-------------------------------------------------------------	|
@@ -90,7 +90,7 @@ A list of models supported by MrBayes and how to specify them
 | I + G + F  	|  `prset statefreqpr=fixed(empirical); lset rates=invgamma;` 	|
 
 
-#### Nucleotide substitution models
+#### Nucleotide substitution models {.unnumbered}
 
 |      	      |                                                      	        |
 |------------	|-------------------------------------------------------------	|
@@ -101,7 +101,7 @@ A list of models supported by MrBayes and how to specify them
 | F81       	|  `lset nst=1;`    	                                          |
 | JC        	|  `lset nst=1 prset statefreqpr=fixed(equal);`                	|
 
-#### Fixed rate protein substitution models
+#### Fixed rate protein substitution models {.unnumbered}
 
 |      	      |                                               |
 |------------	|----------------------------------------------	|
