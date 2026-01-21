@@ -1,0 +1,74 @@
+# Models and Maximum Likelihood
+
+## Model selection 
+
+Any phylogenetic reconstruction approach implicitly or explicitly uses a model of sequence evolution. You should employ a subjective measure for selecting the appropriate model. We will use ModelFinder, which is implemented in [IQ-TREE](http://www.iqtree.org/). A model selection process consists of calculating maximum likelihood phylogenies under a number of considered models of sequence evolution and subsequently ranking the models via their log likelihoods. Because parameter rich models are usually expected to fit the data better, but overparameterisation can be problematic, we select the best model via an approach that penalises additional parameters: the BIC.  
+
+To perform model selection using IQ-TREE, run the following command:
+
+```{bash eval = F}
+iqtree -s COI_ali.fas -pre COI_MF -m TESTONLY -mset mrbayes -mtree
+```
+
+Let's dissect this command: 
+
+|||
+|---|----------------|
+|`iqtree`        | Name of the executable  
+|`-s`            | Path to alignment file  
+|`-pre`          | Prefix for output files (important to choose a meaningful name here) 
+|`-m TESTONLY`   | specifies that we want to do a model test only
+|`-mset mrbayes` | This tells iqtree to only consider models that are also supported by MrBayes (we will be using this software later)
+| `-mtree`       | Do a complete ML search for all models (this is the most accurate model search) |
+
+IQ-TREE has created a number of output files, but we are really only interested in the file ending with .iqtree (Fig. 7).
+
+```{r Fig. 7, echo=FALSE, fig.align='center', fig.cap="**Fig. 7 |** Result of a ModelFinder analysis. GTR+F+I+G4 is the best model according to AIC and BIC", out.width="90%"}
+library(knitr)
+knitr::include_graphics("_resources/Modelfinder.png")
+```
+## Maximum Likelihood analysis
+
+Now that we have determined the best model, we can run IQ-TREE to reconstruct a phylogeny:
+
+```{bash eval = F}
+iqtree -s COI_aligned.fas -pre COI_ML -m GTR+F+I+G4 -bb 1000
+```
+
+We have used the following options: 
+
+|||
+|---|----------------|
+|`-s`            | Path to alignment file  
+|`-pre`          | Prefix for output files 
+|`-m GTR+F+I+G4` | The 'best' model as determined by us in the previous step
+|`-bb 1000`      | Performs 1000 pseudoreplicates of IQ-TREE's ultrafast bootstraps
+
+Further options that may be important for your analyses:
+
+|||
+|---|----------------|
+| `-nt`        | How many threads should be used for the analysis? This can considerably speed up you analysis
+| `-alrt 1000` | Performs a likelihood ratio test for each branch with 1000 replicates. This is a good complement to the bootstrap!
+| `-b 100`     | This is the standard, non-parametric bootstrap – long computation times, but useful in some cases. 
+| `-fast`      | If you are in a hurry, this is the option for you. Produces much faster results at the cost of accuracy. Good for quick first exploration and still more accurate than equally fast MP or NJ methods. 
+| `--runs 10`  | IQ-TREE uses heuristics to determine the best tree, and these may differ between runs. It is therefore important to have several independent runs of you ML analysis. IQ-TREE will automatically select the best of the runs.
+
+Btw, you can combine model selection and ML search in a single IQ-TREE run. IQ-TREE would then determine the best model, and use it to subsequently perform a ML search. The command would look like this: 
+
+```{bash eval = F}
+iqtree -s COI_aligned.fas -pre COI_ML_combined -bb 1000
+```
+
+Note how we don't need to specify a model here - the default behavior is to determine it automatically. Very convenient indeed. 
+
+IQ-TREE will have generated a `.treefile`, which can now be opened in FigTree or a different tree viewer. 
+
+
+## Exercises
+
+a) Repeat the model selection and ML analysis for the lwr alignment. 
+
+b) Repeat the ML tree search for one alignment and model 10 times using the option `-n 10` in `IQ-TREE`. Compare the log-likelihoods. Are they identical across the runs? Why/why not?
+
+c) Run an alignment under the worst possible model. Save the tree file for later!
