@@ -59,7 +59,7 @@ less 16S_primers.fasta
 Run specimux command for demultiplexing the ONT reads.
 
 ``` bash
-specimux.py 16S_primers.fasta 16S_specimens.txt calls_sup_ticks_16S_Q10_1200-1800.fastq\
+specimux 16S_primers.fasta 16S_specimens_sub.txt calls_sup_ticks_16S_Q10_1200-1800.fastq\
 --output-to-files\
 --trim primers\
 --search-len 100\
