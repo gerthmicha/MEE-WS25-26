@@ -40,7 +40,9 @@ library(knitr)
 knitr::include_graphics("_resources/ncbi2.png")
 ```
 
-Some words about the sequence data we will be using in the course. We will look at two loci from 60 different species of bees, all occurring in Germany. One locus is a part of the mitochondrial cytochrome subunit 1 (COI, also known as the "barcoding locus"). The other locus is the partial long-wavelength rhodopsin gene (lwr), which contains both coding regions and non-coding, intronic regions.
+Some words about the sequence data we will be using in the course. We will look at two loci from 60 different species of bees, all occurring in Germany. The data set also includes three outgroup taxa from sphecid and crabronid wasps, the closest relatives of bees. 
+
+One locus is a part of the mitochondrial cytochrome subunit 1 (COI, also known as the "barcoding locus"). I will demonstrate all of the steps using the COI locus. The other locus is the partial long-wavelength rhodopsin gene (lwr), which contains both coding regions and non-coding, intronic regions. 
 
 Before we move on, we should check and fix the sequence names. Often one has little control over the identifiers other people put on databases, and it is good to check and correct names at this stage. We can use the UNIX tools we learned about earlier to do this
 

@@ -35,6 +35,7 @@ book:
     - part: "Phylogenetics" 
       chapters:
         - phylo1.qmd
+        - phylo2.qmd
     - part: "Microbiome"
     - references.qmd
 
