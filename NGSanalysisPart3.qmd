@@ -20,7 +20,7 @@ Navigate to the extracted follder using the `cd` command
 cd ONT_metabarcoding
 ```
 
-## Quality filtering and inspection. 
+## Quality filtering and inspection.
 
 Before beginning any analyses is a good practice to perform a QC assessment and quality/length filtering of the data.
 
@@ -43,7 +43,7 @@ seqkit stats calls_sup_ticks_16S.fastq filtered_reads/calls_sup_ticks_16S_Q10_12
 fastqc calls_sup_ticks_16S.fastq filtered_reads/calls_sup_ticks_16S_Q10_1200-1800.fastq
 ```
 
-## Demultiplexing 
+## Demultiplexing
 
 Now we are ready to demultiplex your data (split the reads by sample). To do this we need some demuliplexing information that usually comes in a form of a table (depending on the specific tool). This table contains information on the sample IDs, the primers used for amplification and the unique dual indices used for each sample. We will use the tool speimux (https://github.com/joshuaowalker/specimux).
 
@@ -140,7 +140,7 @@ The option meanings are:
 `--db`: path to emu database; directory must include the following files, species_taxid.fasta, taxonomy.tsv
 
 | **Filename**        | **Description**                                                                                                                                                                                             |
-|-----------------------|------------------------------------------------|
+|------------------------|------------------------------------------------|
 | taxonomy.tsv        | tab separated datasheet of database taxonomy lineages containing at columns: 'tax_id' and any taxonomic ranks (i.e. species, genus, etc)                                                                    |
 | species_taxid.fasta | database sequences where each sequence header starts with the respective species-level tax id (or lowest level above species-level if missing) preceeding a colon \[<species_taxid>:<remainder of header>\] |
 

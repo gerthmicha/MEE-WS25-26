@@ -1,6 +1,6 @@
-# Phylogenetic reconstruction using distance methods. 
+# Phylogenetic reconstruction using distance methods.
 
-For many reasons distance based methods in phylogenetics are very prone to systematic biases and generally regarded inferior to character based methods. Distance based methods are still used widely, e.g., as a quick & dirty explorative technique or to generate starting trees for other methods. We will use the the `R` package `ape` to create a neighbor joining tree. 
+For many reasons distance based methods in phylogenetics are very prone to systematic biases and generally regarded inferior to character based methods. Distance based methods are still used widely, e.g., as a quick & dirty explorative technique or to generate starting trees for other methods. We will use the the `R` package `ape` to create a neighbor joining tree.
 
 You know your way around `R`, so most of this will be familiar.
 
@@ -22,7 +22,7 @@ coi <- read.dna("data/coi_ali.fas", format = "fasta")
 checkAlignment(coi)
 ```
 
-This looks all good and as expected. 
+This looks all good and as expected.
 
 Please note that the alignment is stored as a matrix. This means we can use the same tools we have learned about earlier in the course to access and modify the alignment.
 
@@ -31,6 +31,7 @@ For example, to only look at the first 100bp of the first 10 taxa, simply run
 ```{r}
 coi[1:10, 1:100]
 ```
+
 We can also determine the diversity of the alignment at the different codon positions. Consider this example
 
 ```{r}
@@ -51,11 +52,12 @@ names(poswisedivs) <- c("1st", "2nd", "3rd")
 # plot
 barplot(poswisedivs)
 ```
+
 What does this tell you about the reading frame in your alignment? Check if your assumption is correct in `Aliview`!
 
 ## Calculating the neighbor joining tree
 
-The first step in any distance based method is the creation of a distance matrix. To this end, we need to calculate phylogenetic distances between all pairs of sequences in our alignment. 
+The first step in any distance based method is the creation of a distance matrix. To this end, we need to calculate phylogenetic distances between all pairs of sequences in our alignment.
 
 ```{r}
 # calculate distance matrix – we could specify a model of sequence evolution here, but will use the raw distances for now
@@ -65,9 +67,9 @@ coi.mat <- dist.dna(coi, model = "raw", pairwise.deletion = TRUE)
 as.matrix(coi.mat)[1:10, 1:5]
 ```
 
-Observe that the size of distance matrix will always be determined by the number of taxa and is not influenced by the number of positions in your alignment! 
+Observe that the size of distance matrix will always be determined by the number of taxa and is not influenced by the number of positions in your alignment!
 
-From this we can now reconstruct a phylogenetic tree. There are various options available, and you may already be familiar with hierarchical clustering algorithms. Neigbor Joining is the most commonly used method for tree reconstruction from DNA sequences based on clustering. 
+From this we can now reconstruct a phylogenetic tree. There are various options available, and you may already be familiar with hierarchical clustering algorithms. Neigbor Joining is the most commonly used method for tree reconstruction from DNA sequences based on clustering.
 
 ```{r fig.height=10,fig.width=5}
 # The output of the nj function is a phylogenetic tree
@@ -82,13 +84,15 @@ plot(coi.nj.tree, no.margin = TRUE)
 write.tree(coi.nj.tree, "data/COI_NJ.tre")
 ```
 
-> As you may have guessed at this point, there are multiple different tree file formats. We will be using the newick file format, mainly because it is simple and can be read by humans and machines alike. The downside is that not much metadata can be stored using this format. 
-> Example of a simple tree (please note the semicolon at the end!): 
-> ```
+> As you may have guessed at this point, there are multiple different tree file formats. We will be using the newick file format, mainly because it is simple and can be read by humans and machines alike. The downside is that not much metadata can be stored using this format. Example of a simple tree (please note the semicolon at the end!):
+>
+> ```         
 > (((a,b),(c,d)),e); 
 > ```
-> To read the tree, follow the parentheses from inside out: a & b are closest relatives, as are c & d. a+b & c+d are united by the next set of parentheses, and e is the furthest outside. The resulting tree therefore looks like this: 
-> ```
+>
+> To read the tree, follow the parentheses from inside out: a & b are closest relatives, as are c & d. a+b & c+d are united by the next set of parentheses, and e is the furthest outside. The resulting tree therefore looks like this:
+>
+> ```         
 >         /-- a
 >     /---+
 >     |   \-- b
@@ -99,13 +103,15 @@ write.tree(coi.nj.tree, "data/COI_NJ.tre")
 > |
 > \---------- e
 > ```
-> Branch lengths can also be stored using the newick format. The tree we have just saved to disk looks like this: 
+>
+> Branch lengths can also be stored using the newick format. The tree we have just saved to disk looks like this:
+>
 > ```{bash}
 > cat data/COI_NJ.tre
 > ```
 
 ## Exercises {.unnumbered}
 
-a) Change the model in the `dist.dna` command. Determine if specifying a model increases or decreases the average nucleotide distances.
+a)  Change the model in the `dist.dna` command. Determine if specifying a model increases or decreases the average nucleotide distances.
 
-b) Repeat the above steps for the LW Rhodopsin alignment. What does the analysis of the segragating sites tell you about this locus? 
+b)  Repeat the above steps for the LW Rhodopsin alignment. What does the analysis of the segragating sites tell you about this locus?
