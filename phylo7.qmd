@@ -180,6 +180,6 @@ plotBranchbyTrait(tree = red.tree,
 
 ## Final excercise {.unnumbered}
 
-For the 
+For the final excercise, compile the data from the first part of the practical. Align the COI barcodes from all of the mystery *Drosophila* species you sequenced as a group and create a robust phylogeny of the taxa using Maximum Likelihood under an appropriate model of sequence evolution. Create a dataframe with all of the different traits that you measured (discrete and continuous). Determine which of the traits show phylogenetic signal and reconstruct ancestral states for these. Create appealing plots to illustrate your findings. Use Markdown or Quarto to record and annotate your code.   
 
 
