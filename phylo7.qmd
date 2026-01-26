@@ -4,45 +4,45 @@ In many cases we are not only interested in the phylogeny of a taxon itself, but
 
 ## Preparing the data
 
-Make sure you have a bee tree from one of the previous chapters ready. We will also read in data on preferred plant sources for the German bee taxa and data on nisting ecology of the bees.
+Make sure you have a bee tree from one of the previous chapters ready. We will also read in data on preferred plant sources for the German bee taxa and data on taxonomy and life style of the bees.
 
 ```{r}
-library(ape, quietly = TRUE)
-library(tidyverse, quietly = TRUE)
+library(ape)
+library(tidyverse)
 
 # tree file
-nj.tree <- read.tree("data/COI_NJ.tre")
+coi.tree <- read.tree("data/COI_ML.treefile")
 
 # pollination file
 pollen <- read.table("data/pollination.tsv", header = TRUE, sep = "\t")
 
+# taxonomy
 taxlife <- read.table("data/tax_lifestyle.tsv", header = TRUE, sep = "\t")
-
 ```
 
 Let's first look at our metadata files.
 
-The first table lists all flowers that were recorded as being visited by any bee species in Germany. The table is taken from the book (Die Wildbienen Deutschlands by Paul Westrich (2019, Ulmer))[https://elibrary.utb.de/doi/book/10.1399/9783818608811]. We digitalised the list through some semi-automatic steps, so it may not be free of errors.
+The first table lists all flowers that were recorded as being visited by any bee species in Germany. The table is taken from the book (Die Wildbienen Deutschlands by Paul Westrich (2019, Ulmer))\[https://elibrary.utb.de/doi/book/10.1399/9783818608811\]. We digitalised the list through some semi-automatic steps, so it may not be free of errors.
 
 ```{r}
 pollen
 ```
 
-Each line of the file corresponds to one combination of bee and flower species. For each bee species, the pollen preference is given (oligo= specialist, poly= generalist, oligo_str= strict specialist), and the genus and family names have been added to the plant names. We will now use our tidyverse tools to modify the table a little. 
+Each line of the file corresponds to one combination of bee and flower species. For each bee species, the pollen preference is given (oligo= specialist, poly= generalist, oligo_str= strict specialist), and the genus and family names have been added to the plant names. We will now use our tidyverse tools to modify the table a little.
 
 ```{r}
 pollen %>% 
   mutate(species = str_replace(species, " ", "_")) %>% 
-  filter(species %in% nj.tree$tip.label) %>% 
+  filter(species %in% coi.tree$tip.label) %>% 
   group_by(species, preference) %>% 
   summarise(num_species = n_distinct(plant_species),
             num_genus = n_distinct(plant_genus),
             num_familiy = n_distinct(plant_family)) 
 ```
 
-What have we done here? First, we created a new column ("species_tree"), using the bee species names in the original column, but replacing the white space with an underscore. This is necessary because the names in our tree use underscores. Next, we filtered the dataframe to only keep the lines for our species of interest which we find in the tree. We used `%in%` for this, a very convenient shortcut. Finally, we summarised the information in the file by counting how many different plant species each of the bee species in our dataset have visited. We also do this for number of plant genera and families.  
+What have we done here? First, we created a new column ("species_tree"), using the bee species names in the original column, but replacing the white space with an underscore. This is necessary because the names in our tree use underscores. Next, we filtered the dataframe to only keep the lines for our species of interest which we find in the tree. We used `%in%` for this, a very convenient shortcut. Finally, we summarised the information in the file by counting how many different plant species each of the bee species in our dataset have visited. We also do this for number of plant genera and families.
 
-The other file contains information on the taxonomy of the bees in our dataset (which bee family) and about whether or not they are parasitic taxa. 
+The other file contains information on the taxonomy of the bees in our dataset (which bee family) and about whether or not they are parasitic taxa.
 
 ```{r}
 taxlife
@@ -54,7 +54,7 @@ Using some more tidyverse magic, we'll combine the two datasets
 # this is the same as above!
 bee_metadata <- pollen %>% 
   mutate(species = str_replace(species, " ", "_")) %>% 
-  filter(species %in% nj.tree$tip.label) %>% 
+  filter(species %in% coi.tree$tip.label) %>% 
   group_by(species, preference) %>% 
   summarise(num_species = n_distinct(plant_species),
             num_genus = n_distinct(plant_genus),
@@ -65,39 +65,121 @@ bee_metadata <- pollen %>%
 bee_metadata
 ```
 
+## Mapping a discrete trait on the phylogeny
+
+We are now ready to map a discrete trait onto our phylogeny and investigate if it shows phylogenetic signal.
+
 ```{r fig.height=10,fig.width=7}
 library(colourvalues)
-library(phytools)
 
-# first plot the tree and find out which node to place the root on
-plot(nj.tree, no.margin = TRUE)
+# plot the tree to find out which node to place the root on
+plot(coi.tree, no.margin = TRUE)
 nodelabels()
 
 # generate the rooted tree
-coi.rooted <- root(nj.tree, node = 75, resolve.root = TRUE)
+coi.rooted <- root(coi.tree, node = 120, resolve.root = TRUE)
 
 # the metadata file must be in the same order as the tip labels
 bee_metadata <- arrange(bee_metadata, factor(species, levels = coi.rooted$tip.label))
 
-nj.tree$tip.label
-
+# plot highlighting the different bee families in our dataset
 plot(coi.rooted, 
-     align.tip.label = T, 
-     tip.color = colour_values(bee_metadata$num_species))
-tiplabels(col=bee_metadata$parasitic, bg=bee_metadata$parasitic, pch=21)
+     align.tip.label = T,
+     cex = 0.8,
+     label.offset = 0.01,
+     tip.color = colour_values(bee_metadata$family, 
+                               palette = "matlab_like2"))
+tiplabels(col=colour_values(bee_metadata$parasitic), 
+          pch = 20, cex = 1.5)
+```
 
+This definitely looks like a trait with a clear phylogenetic signal. Let's test this using the picante package! 
+
+```{r}
+library(picante)
+
+# this will only work if your metadata is sorted as shown in the previous code block!
+phylosignal(as.vector(bee_metadata$parasitic), coi.rooted)
+```
+
+The K statistic is a measure of phylogenetic signal that compares the observed signal in a trait to the signal under a Brownian motion model of trait evolution on a phylogeny (which corresponds to ~ random evolution). K values of 1 correspond to a Brownian motion process, which implies some degree of phylogenetic signal. K values closer to zero correspond to a random or convergent pattern of evolution, while K values greater than 1 indicate strong
+phylogenetic signal. The statistical significance of phylogenetic signal can be evaluated by comparing observed patterns of the trait to a null model of shuffling taxa labels across the tips of the phylogeny.
+
+What are the ancestral states for this trait in our phylogeny? We can use `ace` from the ape package to estimate these.
+
+```{r fig.height=10,fig.width=7}
+
+# ace calculates our ancestral states using ML
+ace.res <- ace(as.vector(bee_metadata$parasitic), 
+               coi.rooted, 
+               type = "discrete")
+
+# We can plot the ancestral states using pie charts
+plot(coi.rooted, 
+     align.tip.label = T,
+     cex = 0.8,
+     no.margin = T)
+nodelabels(pie = ace.res$lik.anc, cex = 0.7,
+           piecol = unique(colour_values(bee_metadata$parasitic)))
+```
+
+`ace` implements more approaches to reconstruct ancestral states, check out the help `?ace`.
+
+## Continuous traits
+
+In principle, the approach for estimating continuous trait evolution are the same as demonstrated for discrete traits. We will be using the number of visited flower species as continuous trait, but first we have to filter our dataset to exclude the parasitic species (for which information on flower visitations is missing)!
+
+```{r fig.height=10,fig.width=7}
+
+# remove all tips from parasitic species
 red.tree <- drop.tip(coi.rooted, tip = pull(bee_metadata[bee_metadata$parasitic != 0 , "species"]))
 
-
+# filter dataset to only include the species also present in the reduced tree
 red.metadata <- bee_metadata %>% 
   filter(species %in% red.tree$tip.label) %>% 
   arrange(factor(species, levels = red.tree$tip.label))
 
-red.metadata$num_familiy
+# plot the reduced tree, using the number of visited flowers as continuous trait. Let's also add a nice legend
+plot(red.tree, 
+     align.tip.label = T,
+     label.offset = 0.01, 
+     cex = 0.8,
+     main = "Number of flower species visited")
+tiplabels(col=colour_values(red.metadata$num_species), 
+          pch = 20, cex = 2)
+legend("bottomleft",
+       legend = sort(unique(red.metadata$num_species)), 
+       col = colour_values(sort(unique(red.metadata$num_species))), 
+       pt.cex = 2,
+       cex = 0.8, 
+       pch=15) 
+```
 
+We can also calculate the phylogenetic signal for this trait just as above.
+
+```{r}
+phylosignal(as.vector(red.metadata$num_species), red.tree)
+```
+
+To reconstruct the ancestral sequences, we will be using a plotting function from the phytools package. This uses ape's `ace` function under the hood, but plots the estimated ancestral values as branch colours instead of pie charts. We need to first generate a named vector from our dataframe that contains the information on number of plant species visited per bee species.
+
+```{r fig.height=10,fig.width=7}
+library(phytools)
+
+# create and check named vector
 vec1 <- pull(red.metadata, num_species)
 names(vec1) <- pull(red.metadata, species)
+vec1
 
-plotBranchbyTrait(tree = red.tree, x = vec1, mode = "tips", palette = colorRampPalette(c("lightgrey","darkred")))
+# plot the ancestral states
+plotBranchbyTrait(tree = red.tree, 
+                  x = vec1, 
+                  mode = "tips",
+                  palette = colorRampPalette(colour_values(sort(unique(red.metadata$num_species)))))
 ```
+
+## Final excercise {.unnumbered}
+
+For the 
+
 

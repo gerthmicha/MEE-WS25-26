@@ -76,7 +76,6 @@ nodelabels()
 plot(phytools::cophylo(root(njtree, node = 75), root(mltree, node = 120)))
 ```
 
-
 b)  Remember the tree created under the worst model in our previous analysis? How different is it from the tree reconstructed under the best model?
 
 ::: callout-tip
