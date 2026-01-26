@@ -21,8 +21,8 @@ Read in a tree and plot using ape
 
 ```{r fig.height=10,fig.width=5}
 library(ape)
-coi.tre <- read.tree("data/COI_NJ.tre")
-plot(coi.tre, no.margin = T)
+coi.tre <- read.tree("data/COI_ML.treefile")
+plot(coi.tre, no.margin = TRUE)
 ```
 
 Let's look at how tree data is stored in ape.
@@ -35,8 +35,8 @@ nodelabels()
 
 Knowing the nodelabels helps us to re-root the tree. Some more options to alter the display of the tree are shown
 
-```{r fig.height=10,fig.width=7}
-coi.rooted <- root(coi.tre, node = 75, resolve.root = TRUE)
+```{r fig.height=10,fig.width=6}
+coi.rooted <- root(coi.tre, node = 120, resolve.root = TRUE)
 
 plot(ladderize(coi.rooted, right = FALSE), 
      root.edge = TRUE, 
@@ -63,8 +63,22 @@ plot(ladderize(coi.rooted, right = FALSE),
 
 a)  Using tree displaying software such as Figtree and iTol, compare our trees resulting from NJ and ML analysis. Also compare the trees resulting from analysing the different loci COI and lwr. What could explain differences in the topologies?
 
+```{r fig.height=10,fig.width=30}
+njtree <- read.tree("data/COI_NJ.tre")
+plot(njtree)
+nodelabels()
+
+mltree <- read.tree("data/COI_ML.treefile")
+plot(mltree)
+nodelabels()
+
+
+plot(phytools::cophylo(root(njtree, node = 75), root(mltree, node = 120)))
+```
+
+
 b)  Remember the tree created under the worst model in our previous analysis? How different is it from the tree reconstructed under the best model?
 
 ::: callout-tip
-Try out the function `cophyloplot` to compare different phylogenies with each other.
+Try out the function `cophylo` from the phytools package to compare different phylogenies with each other.
 :::
