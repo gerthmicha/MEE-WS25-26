@@ -39,7 +39,6 @@ book:
         - phylo3.qmd
         - phylo4.qmd
         - phylo6.qmd
-        - phylo7.qmd
 
 format:
   html:
