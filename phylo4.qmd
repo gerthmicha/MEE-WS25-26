@@ -4,15 +4,14 @@ The most convenient way of displaying phylogenetic trees is by using a software 
 
 ## Figtree
 
-Open FigTree by double clicking on the corresponding file in your file manager. Load your tree file by clicking `File -> Open` and navigating to your tree file. If the file contains support values (e.g., from Bootstrap analysis), FigTree will ask you to provide a name for these. There are a couple of things you should do when you first view your tree (Fig. 8). 
+Open FigTree by double clicking on the corresponding file in your file manager. Load your tree file by clicking `File -> Open` and navigating to your tree file. If the file contains support values (e.g., from Bootstrap analysis), FigTree will ask you to provide a name for these. There are a couple of things you should do when you first view your tree (Fig. 8).
 
 ```{r Fig. 8, echo=FALSE, fig.align='center', fig.cap="**Fig. 8 |** A simple workflow to display a phylogenetic tree using FigTree. The steps are: opening a tree file; rooting with an outgroup; ladderizing the tree; displaying bootstrap values; adjusting label size, aligning tip labels; exporting a pdf of the tree file.", out.width="90%"}
 library(knitr)
 knitr::include_graphics("_resources/Figtree.gif")
 ```
 
-Figtree offers many more functions that you should explore in detail. Publication-ready figures can be generated, or further modified in e.g., a vector graphics programme such as [Inkscape](https://inkscape.org/). A good alternative to Figtree is iTol (Interactive Tree of Life), an online platform that offers a similar set of tools as Figtree: [https://itol.embl.de/](https://itol.embl.de/). 
-
+Figtree offers many more functions that you should explore in detail. Publication-ready figures can be generated, or further modified in e.g., a vector graphics programme such as [Inkscape](https://inkscape.org/). A good alternative to Figtree is iTol (Interactive Tree of Life), an online platform that offers a similar set of tools as Figtree: <https://itol.embl.de/>.
 
 ## Plotting trees in `R`
 
@@ -26,7 +25,7 @@ coi.tre <- read.tree("data/COI_NJ.tre")
 plot(coi.tre, no.margin = T)
 ```
 
-Let's look at how tree data is stored in ape. 
+Let's look at how tree data is stored in ape.
 
 ```{r fig.height=10,fig.width=5}
 str(coi.tre)
@@ -60,13 +59,12 @@ plot(ladderize(coi.rooted, right = FALSE),
      tip.color = tipcolours)
 ```
 
-
 ## Exercises {.unnumbered}
 
-a) Using tree displaying software such as Figtree and iTol, compare our trees resulting from NJ and ML analysis. Also compare the trees resulting from analysing the different loci COI and lwr. What could explain differences in the topologies? 
+a)  Using tree displaying software such as Figtree and iTol, compare our trees resulting from NJ and ML analysis. Also compare the trees resulting from analysing the different loci COI and lwr. What could explain differences in the topologies?
 
-b) Remember the tree created under the worst model in our previous analysis? How different is it from the tree reconstructed under the best model? 
+b)  Remember the tree created under the worst model in our previous analysis? How different is it from the tree reconstructed under the best model?
 
-:::{.callout-tip}
-Try out the function `cophyloplot` to compare different phylogenies with each other. 
+::: callout-tip
+Try out the function `cophyloplot` to compare different phylogenies with each other.
 :::

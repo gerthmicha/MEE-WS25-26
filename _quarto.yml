@@ -38,8 +38,8 @@ book:
         - phylo2.qmd
         - phylo3.qmd
         - phylo4.qmd
-        - phylo5.qmd
         - phylo6.qmd
+        - phylo7.qmd
 
 format:
   html:

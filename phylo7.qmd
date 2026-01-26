@@ -1,0 +1,103 @@
+# Trait evolution
+
+In many cases we are not only interested in the phylogeny of a taxon itself, but also and/or mostly in the evolution of traits associated with a taxon. Did a certain trait or lifestyle within a group of organisms evolve once or multiple times independently? Is the evolutionary diversifiction of a clade associated with a particular trait? What was the state of a trait in the last common ancestor of a taxon of interest? All these questions can be answered with phylogenetic methods, and we will look at some very basic examples in the course.
+
+## Preparing the data
+
+Make sure you have a bee tree from one of the previous chapters ready. We will also read in data on preferred plant sources for the German bee taxa and data on nisting ecology of the bees.
+
+```{r}
+library(ape, quietly = TRUE)
+library(tidyverse, quietly = TRUE)
+
+# tree file
+nj.tree <- read.tree("data/COI_NJ.tre")
+
+# pollination file
+pollen <- read.table("data/pollination.tsv", header = TRUE, sep = "\t")
+
+taxlife <- read.table("data/tax_lifestyle.tsv", header = TRUE, sep = "\t")
+
+```
+
+Let's first look at our metadata files.
+
+The first table lists all flowers that were recorded as being visited by any bee species in Germany. The table is taken from the book (Die Wildbienen Deutschlands by Paul Westrich (2019, Ulmer))[https://elibrary.utb.de/doi/book/10.1399/9783818608811]. We digitalised the list through some semi-automatic steps, so it may not be free of errors.
+
+```{r}
+pollen
+```
+
+Each line of the file corresponds to one combination of bee and flower species. For each bee species, the pollen preference is given (oligo= specialist, poly= generalist, oligo_str= strict specialist), and the genus and family names have been added to the plant names. We will now use our tidyverse tools to modify the table a little. 
+
+```{r}
+pollen %>% 
+  mutate(species = str_replace(species, " ", "_")) %>% 
+  filter(species %in% nj.tree$tip.label) %>% 
+  group_by(species, preference) %>% 
+  summarise(num_species = n_distinct(plant_species),
+            num_genus = n_distinct(plant_genus),
+            num_familiy = n_distinct(plant_family)) 
+```
+
+What have we done here? First, we created a new column ("species_tree"), using the bee species names in the original column, but replacing the white space with an underscore. This is necessary because the names in our tree use underscores. Next, we filtered the dataframe to only keep the lines for our species of interest which we find in the tree. We used `%in%` for this, a very convenient shortcut. Finally, we summarised the information in the file by counting how many different plant species each of the bee species in our dataset have visited. We also do this for number of plant genera and families.  
+
+The other file contains information on the taxonomy of the bees in our dataset (which bee family) and about whether or not they are parasitic taxa. 
+
+```{r}
+taxlife
+```
+
+Using some more tidyverse magic, we'll combine the two datasets
+
+```{r}
+# this is the same as above!
+bee_metadata <- pollen %>% 
+  mutate(species = str_replace(species, " ", "_")) %>% 
+  filter(species %in% nj.tree$tip.label) %>% 
+  group_by(species, preference) %>% 
+  summarise(num_species = n_distinct(plant_species),
+            num_genus = n_distinct(plant_genus),
+            num_familiy = n_distinct(plant_family)) %>% 
+  # that bit is new and merges the 2 dataframes
+  full_join(taxlife)
+
+bee_metadata
+```
+
+```{r fig.height=10,fig.width=7}
+library(colourvalues)
+library(phytools)
+
+# first plot the tree and find out which node to place the root on
+plot(nj.tree, no.margin = TRUE)
+nodelabels()
+
+# generate the rooted tree
+coi.rooted <- root(nj.tree, node = 75, resolve.root = TRUE)
+
+# the metadata file must be in the same order as the tip labels
+bee_metadata <- arrange(bee_metadata, factor(species, levels = coi.rooted$tip.label))
+
+nj.tree$tip.label
+
+plot(coi.rooted, 
+     align.tip.label = T, 
+     tip.color = colour_values(bee_metadata$num_species))
+tiplabels(col=bee_metadata$parasitic, bg=bee_metadata$parasitic, pch=21)
+
+red.tree <- drop.tip(coi.rooted, tip = pull(bee_metadata[bee_metadata$parasitic != 0 , "species"]))
+
+
+red.metadata <- bee_metadata %>% 
+  filter(species %in% red.tree$tip.label) %>% 
+  arrange(factor(species, levels = red.tree$tip.label))
+
+red.metadata$num_familiy
+
+vec1 <- pull(red.metadata, num_species)
+names(vec1) <- pull(red.metadata, species)
+
+plotBranchbyTrait(tree = red.tree, x = vec1, mode = "tips", palette = colorRampPalette(c("lightgrey","darkred")))
+```
+
