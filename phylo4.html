@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./phylo5.html" rel="next">
+<link href="./phylo6.html" rel="next">
 <link href="./phylo3.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -295,14 +295,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./phylo5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bayesian phylogenetic reconstruction</span></span></a>
+  <a href="./phylo6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Comparing trees</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./phylo6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Comparing trees</span></span></a>
+  <a href="./phylo7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Trait evolution</span></span></a>
   </div>
 </li>
       </ul>
@@ -359,7 +359,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Figtree offers many more functions that you should explore in detail. Publication-ready figures can be generated, or further modified in e.g., a vector graphics programme such as <a href="https://inkscape.org/">Inkscape</a>. A good alternative to Figtree is iTol (Interactive Tree of Life), an online platform that offers a similar set of tools as Figtree: <a href="https://itol.embl.de/">https://itol.embl.de/</a>.</p>
+<p>Figtree offers many more functions that you should explore in detail. Publication-ready figures can be generated, or further modified in e.g., a vector graphics programme such as <a href="https://inkscape.org/">Inkscape</a>. A good alternative to Figtree is iTol (Interactive Tree of Life), an online platform that offers a similar set of tools as Figtree: <a href="https://itol.embl.de/" class="uri">https://itol.embl.de/</a>.</p>
 </section>
 <section id="plotting-trees-in-r" class="level2" data-number="16.2">
 <h2 data-number="16.2" class="anchored" data-anchor-id="plotting-trees-in-r"><span class="header-section-number">16.2</span> Plotting trees in <code>R</code></h2>
@@ -367,8 +367,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Read in a tree and plot using ape</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ape)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>coi.tre <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="st">"data/COI_NJ.tre"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(coi.tre, <span class="at">no.margin =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>coi.tre <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="st">"data/COI_ML.treefile"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(coi.tre, <span class="at">no.margin =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -382,10 +382,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(coi.tre)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 4
- $ edge       : int [1:123, 1:2] 64 65 66 67 68 69 70 71 71 70 ...
- $ edge.length: num [1:123] 0.005542 0.011461 0.000545 0.004695 0.007226 ...
+ $ edge       : int [1:123, 1:2] 64 64 65 66 67 68 68 69 69 67 ...
+ $ edge.length: num [1:123] 0.0866 0.0196 0.0181 0.0148 0.0275 ...
  $ Nnode      : int 61
- $ tip.label  : chr [1:63] "Andrena_clarkella" "Andrena_fulva" "Andrena_praecox" "Andrena_bicolor" ...
+ $ tip.label  : chr [1:63] "Andrena_chrysosceles" "Andrena_tibialis" "Andrena_vaga" "Andrena_cineraria" ...
  - attr(*, "class")= chr "phylo"
  - attr(*, "order")= chr "cladewise"</code></pre>
 </div>
@@ -401,7 +401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Knowing the nodelabels helps us to re-root the tree. Some more options to alter the display of the tree are shown</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>coi.rooted <span class="ot">&lt;-</span> <span class="fu">root</span>(coi.tre, <span class="at">node =</span> <span class="dv">75</span>, <span class="at">resolve.root =</span> <span class="cn">TRUE</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>coi.rooted <span class="ot">&lt;-</span> <span class="fu">root</span>(coi.tre, <span class="at">node =</span> <span class="dv">120</span>, <span class="at">resolve.root =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ladderize</span>(coi.rooted, <span class="at">right =</span> <span class="cn">FALSE</span>), </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">root.edge =</span> <span class="cn">TRUE</span>, </span>
@@ -411,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="phylo4_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="phylo4_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -431,7 +431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="phylo4_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="phylo4_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -440,8 +440,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="exercises" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
 <ol type="a">
-<li><p>Using tree displaying software such as Figtree and iTol, compare our trees resulting from NJ and ML analysis. Also compare the trees resulting from analysing the different loci COI and lwr. What could explain differences in the topologies?</p></li>
-<li><p>Remember the tree created under the worst model in our previous analysis? How different is it from the tree reconstructed under the best model?</p></li>
+<li>Using tree displaying software such as Figtree and iTol, compare our trees resulting from NJ and ML analysis. Also compare the trees resulting from analysing the different loci COI and lwr. What could explain differences in the topologies?</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>njtree <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="st">"data/COI_NJ.tre"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(njtree)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nodelabels</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="phylo4_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="2880"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mltree <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="st">"data/COI_ML.treefile"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mltree)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nodelabels</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="phylo4_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="2880"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(phytools<span class="sc">::</span><span class="fu">cophylo</span>(<span class="fu">root</span>(njtree, <span class="at">node =</span> <span class="dv">75</span>), <span class="fu">root</span>(mltree, <span class="at">node =</span> <span class="dv">120</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rotating nodes to optimize matching...
+Done.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="phylo4_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid figure-img" width="2880"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Remember the tree created under the worst model in our previous analysis? How different is it from the tree reconstructed under the best model?</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -453,7 +489,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Try out the function <code>cophyloplot</code> to compare different phylogenies with each other.</p>
+<p>Try out the function <code>cophylo</code> from the phytools package to compare different phylogenies with each other.</p>
 </div>
 </div>
 
@@ -868,8 +904,8 @@ Tip
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./phylo5.html" class="pagination-link" aria-label="Bayesian phylogenetic reconstruction">
-        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bayesian phylogenetic reconstruction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./phylo6.html" class="pagination-link" aria-label="Comparing trees">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Comparing trees</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

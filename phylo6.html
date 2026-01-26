@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>18&nbsp; Comparing trees – Methods in evolutionary ecology WS25/26</title>
+<title>17&nbsp; Comparing trees – Methods in evolutionary ecology WS25/26</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./phylo5.html" rel="prev">
+<link href="./phylo7.html" rel="next">
+<link href="./phylo4.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -119,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./phylo1.html">Phylogenetics</a></li><li class="breadcrumb-item"><a href="./phylo6.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Comparing trees</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./phylo1.html">Phylogenetics</a></li><li class="breadcrumb-item"><a href="./phylo6.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Comparing trees</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -294,14 +295,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./phylo5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bayesian phylogenetic reconstruction</span></span></a>
+  <a href="./phylo6.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Comparing trees</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./phylo6.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Comparing trees</span></span></a>
+  <a href="./phylo7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Trait evolution</span></span></a>
   </div>
 </li>
       </ul>
@@ -316,8 +317,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#measuring-differences" id="toc-measuring-differences" class="nav-link active" data-scroll-target="#measuring-differences"><span class="header-section-number">18.1</span> Measuring differences</a></li>
-  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing"><span class="header-section-number">18.2</span> Hypothesis testing</a></li>
+  <li><a href="#measuring-differences" id="toc-measuring-differences" class="nav-link active" data-scroll-target="#measuring-differences"><span class="header-section-number">17.1</span> Measuring differences</a></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing"><span class="header-section-number">17.2</span> Hypothesis testing</a></li>
   <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
   </ul>
 </nav>
@@ -325,9 +326,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./phylo1.html">Phylogenetics</a></li><li class="breadcrumb-item"><a href="./phylo6.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Comparing trees</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./phylo1.html">Phylogenetics</a></li><li class="breadcrumb-item"><a href="./phylo6.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Comparing trees</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Comparing trees</span></h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Comparing trees</span></h1>
 </div>
 
 
@@ -345,8 +346,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>You will have noticed that different approaches may lead to different tree topologies. You can use a tree viewer and describe the differences, but for larger trees this may be cumbersome. Robinson-Foulds distances are an objective measurement of how much two trees differ. For two trees, the Robinson-Foulds distance is the number of splits in tree 1 that are missing in tree 2, PLUS the the number of splits in tree 2 that are missing in tree 1.</p>
-<section id="measuring-differences" class="level2" data-number="18.1">
-<h2 data-number="18.1" class="anchored" data-anchor-id="measuring-differences"><span class="header-section-number">18.1</span> Measuring differences</h2>
+<section id="measuring-differences" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="measuring-differences"><span class="header-section-number">17.1</span> Measuring differences</h2>
 <p>You will have noticed that different approaches may lead to different tree topologies. You can use a tree viewer and describe the differences, but for larger trees this may be cumbersome. Robinson-Foulds distances are an objective measurement of how much two trees differ. For two trees, the Robinson-Foulds distance is the number of splits in tree 1 that are missing in tree 2, PLUS the the number of splits in tree 2 that are missing in tree 1.</p>
 <p>Let’s compare the differences for our COI trees obtained by different methodologies: Neighbor Joining (NJ), Maximum Likelihood (ML), Bayesian Inference (BI).</p>
 <p>We require all tree files in Newick format, however MrBayes provided a tree in Nexus format. Open the tree in FigTree, and save it as a Newick tree.</p>
@@ -367,8 +368,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The distances are displayed in a distance matrix which makes comparison straightforward.</p>
 </section>
-<section id="hypothesis-testing" class="level2" data-number="18.2">
-<h2 data-number="18.2" class="anchored" data-anchor-id="hypothesis-testing"><span class="header-section-number">18.2</span> Hypothesis testing</h2>
+<section id="hypothesis-testing" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="hypothesis-testing"><span class="header-section-number">17.2</span> Hypothesis testing</h2>
 <p>In some cases it may be sufficient to obtain a single reasonable phylogeny, but for many applications you may want to know how well your topology is supported compared with other topologies – for example, if you have 2 competing hypotheses on the evolutionary history of a protein, you not only want to obtain the most likely phylogeny, but also want to know if the alternative topology can be rejected with confidence. This can be done by hypothesis testing, and the most common tests used are the Shimodaira-Hasegawa (SH) test and the approximately unbiased (AU) test. IQ-TREE supports these tests.</p>
 <p>As a very simple example, let us check if the COI trees tree recovered from our NJ, ML, and BI analyses differ significantly.</p>
 <div class="cell">
@@ -798,11 +799,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./phylo5.html" class="pagination-link" aria-label="Bayesian phylogenetic reconstruction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bayesian phylogenetic reconstruction</span></span>
+      <a href="./phylo4.html" class="pagination-link" aria-label="Displaying phylogenetic trees">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Displaying phylogenetic trees</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./phylo7.html" class="pagination-link" aria-label="Trait evolution">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Trait evolution</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
