@@ -375,7 +375,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>taxlife <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/tax_lifestyle.tsv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s first look at our metadata files.</p>
-<p>The first table lists all flowers that were recorded as being visited by any bee species in Germany. The table is taken from the book (Die Wildbienen Deutschlands by Paul Westrich (2019, Ulmer))[https://elibrary.utb.de/doi/book/10.1399/9783818608811]. We digitalised the list through some semi-automatic steps, so it may not be free of errors.</p>
+<p>The first table lists all flowers that were recorded as being visited by any bee species in Germany. The table is taken from the book <a href="https://elibrary.utb.de/doi/book/10.1399/9783818608811">Die Wildbienen Deutschlands by Paul Westrich (2019, Ulmer)</a>. We digitalised the list through some semi-automatic steps, so it may not be free of errors.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pollen</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -516,7 +516,7 @@ data and phy$tip.label are in the same order!</code></pre>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["K"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.obs"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.rnd.mean"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.P"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.Z"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"3.325602","2":"0.5152017","3":"14.6351","4":"0.001","5":"-1.763593"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["K"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.obs"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.rnd.mean"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.P"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.Z"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"3.325602","2":"0.5152017","3":"14.73971","4":"0.001","5":"-1.801169"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -591,12 +591,12 @@ data and phy$tip.label are in the same order!</code></pre>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["K"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.obs"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.rnd.mean"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.P"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.Z"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.3481248","2":"1945.977","3":"3548.731","4":"0.087","5":"-0.8895275"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["K"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.obs"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.rnd.mean"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.P"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["PIC.variance.Z"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.3481248","2":"1945.977","3":"3574.986","4":"0.082","5":"-0.8952604"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
 </div>
-<p>To reconstruct the ancestral sequences, we will be using a plotting function from the phytools package. This uses ape’s <code>ace</code> function under the hood, but plots the estimated ancestral values as branch colours instead of pie charts. We need to first generate a named vector from our dataframe that contains the information on number of plant species visited per bee species.</p>
+<p>To reconstruct the ancestral states, we will be using a plotting function from the phytools package. This uses ape’s <code>ace</code> function under the hood, but plots the estimated ancestral values as branch colours instead of pie charts. We need to first generate a named vector from our dataframe that contains the information on number of plant species visited per bee species.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phytools)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
