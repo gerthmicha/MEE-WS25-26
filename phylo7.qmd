@@ -123,18 +123,18 @@ nodelabels(pie = ace.res$lik.anc, cex = 0.7,
            piecol = unique(colour_values(bee_metadata$parasitic)))
 ```
 
-`ace` implements more approaches to reconstruct ancestral states, check out the help `?ace`.
+`ace` implements more approaches to reconstruct ancestral states, check out the help using `?ace`.
 
 ## Continuous traits
 
-In principle, the approach for estimating continuous trait evolution are the same as demonstrated for discrete traits. We will be using the number of visited flower species as continuous trait, but first we have to filter our dataset to exclude the parasitic species (for which information on flower visitations is missing)!
+In principle, the approach for estimating continuous trait evolution are the same as demonstrated for discrete traits. We will be using the number of visited flower species as continuous trait, but first we have to filter our data set to exclude the parasitic species (for which information on flower visitations is missing)!
 
 ```{r fig.height=10,fig.width=7}
 
 # remove all tips from parasitic species
 red.tree <- drop.tip(coi.rooted, tip = pull(bee_metadata[bee_metadata$parasitic != 0 , "species"]))
 
-# filter dataset to only include the species also present in the reduced tree
+# filter data set to only include the species also present in the reduced tree
 red.metadata <- bee_metadata %>% 
   filter(species %in% red.tree$tip.label) %>% 
   arrange(factor(species, levels = red.tree$tip.label))
@@ -155,7 +155,7 @@ legend("bottomleft",
        pch=15) 
 ```
 
-We can also calculate the phylogenetic signal for this trait just as above.
+We can calculate the phylogenetic signal for this trait just as above.
 
 ```{r}
 phylosignal(as.vector(red.metadata$num_species), red.tree)
@@ -180,6 +180,8 @@ plotBranchbyTrait(tree = red.tree,
 
 ## Final excercise {.unnumbered}
 
-For the final excercise, compile the data from the first part of the practical. Align the COI barcodes from all of the mystery *Drosophila* species you sequenced as a group and create a robust phylogeny of the taxa using Maximum Likelihood under an appropriate model of sequence evolution. Create a dataframe with all of the different traits that you measured (discrete and continuous). Determine which of the traits show phylogenetic signal and reconstruct ancestral states for these. Create appealing plots to illustrate your findings. Use Markdown or Quarto to record and annotate your code.   
+For the final excercise, compile the data from the first part of the practical. Align the COI barcodes from all of the mystery *Drosophila* species you sequenced as a group and create a robust phylogeny of the taxa using Maximum Likelihood under an appropriate model of sequence evolution. Compile protein sequences for "sex peptide" for each of the species in the tree using NCBI. Does the sex peptide phylogeny match the COI phylogeny? 
+
+Create a dataframe with all of the different traits that you measured (discrete and continuous). Determine which of the traits show phylogenetic signal and reconstruct ancestral states for these. Create appealing plots to illustrate your findings. Use Markdown or Quarto to record and annotate your code.   
 
 
